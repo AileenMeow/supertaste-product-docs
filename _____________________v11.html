@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>食尚玩家｜國旅第一服務平台 產品策略＋規劃</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --soft:#F7F9FB; --ink:#1B2430; --ink-2:#525C6B; --ink-3:#939DAA;
+  --line:#E7ECF1;
+  --coral:#FF7A59; --mint:#22B39A; --sky:#3D7DF2; --butter:#FFC53D; --plum:#8B6BD9;
+  --coral-t:#FFF1EC; --mint-t:#E9F8F5; --sky-t:#EDF3FE; --butter-t:#FFF8E6; --plum-t:#F3EFFC;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 32px 120px}
+.mono{font-family:"Space Grotesk",sans-serif;font-variant-numeric:tabular-nums}
+.mark{background:linear-gradient(transparent 58%,var(--butter) 58%,var(--butter) 92%,transparent 92%);padding:0 2px}
+
+header{padding:78px 0 40px}
+.pill{display:inline-block;background:var(--coral-t);color:var(--coral);font-size:12px;font-weight:700;
+  letter-spacing:.06em;padding:6px 14px;border-radius:999px;margin-bottom:24px}
+h1{font-size:clamp(30px,4.6vw,46px);font-weight:900;line-height:1.3;letter-spacing:-.01em;margin:0 0 18px}
+.lede{font-size:17px;color:var(--ink-2);max-width:44em;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--ink-2)}
+.chip b{color:var(--ink)}
+
+.toc{border:1px solid var(--line);border-radius:16px;padding:22px 26px;margin-top:40px;background:var(--soft)}
+.toc-k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:36px}
+.toc li{font-size:14px;margin-bottom:6px}
+.toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid transparent}
+.toc a:hover,.toc a:focus{color:var(--coral);border-bottom-color:var(--coral)}
+
+section{padding-top:68px;scroll-margin-top:20px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--coral);flex:none}
+.dot.m{background:var(--mint)} .dot.s{background:var(--sky)} .dot.p{background:var(--plum)} .dot.b{background:var(--butter)}
+h2{font-size:26px;font-weight:900;margin:0;letter-spacing:.01em}
+.sec-sub{color:var(--ink-3);font-size:13.5px;margin:0 0 30px;padding-left:21px}
+h3.blk{font-size:18px;font-weight:900;margin:38px 0 14px}
+p.body{font-size:15.5px;color:var(--ink-2);margin:0 0 18px;max-width:52em}
+.src{font-size:11.5px;color:var(--ink-3);margin-top:12px}
+
+.statement{border:2px solid var(--ink);border-radius:18px;padding:32px 34px;margin-bottom:12px}
+.statement .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.statement .v{font-size:clamp(21px,3vw,28px);font-weight:900;line-height:1.55;margin:0}
+.statement .sub{font-size:15px;color:var(--ink-2);margin:14px 0 0}
+
+.bricks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.brick{border-radius:14px;padding:22px 20px 20px;border:1px solid #FFDCD1;background:var(--coral-t)}
+.brick .n{font-family:"Space Grotesk",sans-serif;font-size:32px;font-weight:700;line-height:1;letter-spacing:-.02em;color:var(--coral)}
+.brick .t{font-size:14px;font-weight:700;margin-top:10px}
+.brick .s{font-size:12.5px;color:var(--ink-2);line-height:1.65;margin-top:4px}
+.brick.mint{background:var(--mint-t);border-color:#C9EDE5} .brick.mint .n{color:var(--mint)}
+.brick.sky{background:var(--sky-t);border-color:#D3E2FD} .brick.sky .n{color:var(--sky)}
+.brick.quiet{background:var(--soft);border-color:var(--line);grid-column:1/-1;display:flex;align-items:baseline;gap:16px}
+.brick.quiet .n{color:var(--ink-3);font-size:27px} .brick.quiet .t{margin-top:0}
+
+.callout{background:var(--sky-t);border-left:4px solid var(--sky);border-radius:0 12px 12px 0;padding:18px 22px;margin-top:24px;font-size:14.5px;color:var(--ink-2)}
+.callout b{color:var(--ink)}
+.callout.warn{background:var(--butter-t);border-left-color:var(--butter)}
+.callout.quiet{background:var(--soft);border-left-color:var(--ink-3)}
+.quote{background:var(--plum-t);border-radius:14px;padding:24px 26px;margin:24px 0}
+.quote p{margin:0;font-size:16px;font-weight:700;line-height:1.75}
+.quote cite{display:block;font-style:normal;font-size:12.5px;color:var(--ink-3);margin-top:10px}
+
+.ta{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.ta-card{border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.ta-card.main{border-color:#FFDCD1;background:var(--coral-t)}
+.ta-k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.ta-card h4{font-size:19px;font-weight:900;margin:0 0 14px}
+.ta-card ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.ta-card li{margin-bottom:6px}
+.ta-line{margin-top:16px;padding-top:14px;border-top:1px dashed #E3B9AB;font-size:15px;font-weight:700}
+.ta-card:not(.main) .ta-line{border-top-color:var(--line)}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.pillar{border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pillar-top{padding:24px 24px 20px}
+.p-no{font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;margin-bottom:10px}
+.pillar h4{font-size:20px;font-weight:900;margin:0 0 10px;line-height:1.45}
+.pillar p{margin:0;font-size:14px;color:var(--ink-2)}
+.pillar-foot{margin-top:auto;border-top:1px solid var(--line);padding:14px 24px;font-size:12.5px}
+.pillar-foot .k{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.pillar.c .p-no{color:var(--coral)} .pillar.c .pillar-foot{background:var(--coral-t);border-top-color:#FFDCD1}
+.pillar.m .p-no{color:var(--mint)} .pillar.m .pillar-foot{background:var(--mint-t);border-top-color:#C9EDE5}
+.pillar.s .p-no{color:var(--sky)} .pillar.s .pillar-foot{background:var(--sky-t);border-top-color:#D3E2FD}
+
+.nots{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.not{border:1px dashed #D8DEE5;border-radius:10px;padding:10px 16px;font-size:14px;color:var(--ink-3)}
+.not b{color:var(--ink-2);font-weight:700}
+
+/* nav mock */
+.mock{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.navbar{border:1px solid var(--line);border-radius:18px;padding:20px 10px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:var(--soft)}
+.nav-i{text-align:center;font-size:12.5px;color:var(--ink-3)}
+.nav-i .g{font-size:22px;display:block;margin-bottom:6px;filter:grayscale(1);opacity:.55}
+.nav-i.on{color:var(--coral);font-weight:700}
+.nav-i.on .g{filter:none;opacity:1}
+.screen{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.scr-row{padding:18px 22px;border-bottom:1px solid var(--line)}
+.scr-row:last-child{border-bottom:none}
+.scr-k{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.scr-t{font-size:16px;font-weight:900;margin-bottom:4px}
+.scr-s{font-size:13px;color:var(--ink-2)}
+.scr-row.a{background:var(--butter-t)} .scr-row.b{background:var(--mint-t)} .scr-row.c{background:var(--coral-t)}
+
+.group-bar{display:flex;align-items:baseline;gap:12px;margin:40px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--line)}
+.group-bar .g-no{font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--ink-3)}
+.group-bar h4{font-size:19px;font-weight:900;margin:0}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+.card-head{padding:20px 22px 18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap}
+.tag.money{background:var(--coral-t);color:var(--coral)}
+.tag.ip{background:var(--mint-t);color:#178A76}
+.tag.fast{background:var(--butter-t);color:#A67900}
+.tag.prep{background:var(--soft);color:var(--ink-3)}
+.tag.pass{background:var(--plum-t);color:#6B4FC0}
+.tag.mid{background:#FFF4E8;color:#B36A1D}
+.tag.imp{background:#1B2430;color:#fff}
+.tag.imp2{background:#E7ECF1;color:var(--ink-2)}
+.card h5{font-size:18px;font-weight:900;margin:0 0 10px;line-height:1.45}
+.card p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.card .why{margin-top:10px;font-size:13px;color:var(--ink-3)}
+.card-foot{margin-top:auto;border-top:1px solid var(--line);background:var(--soft);padding:13px 22px;display:flex;justify-content:space-between;gap:14px;font-size:12.5px;flex-wrap:wrap}
+.card-foot .k{color:var(--ink-3);display:block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.card-foot b{font-weight:700}
+.by{color:var(--mint)}
+
+.steps{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:10px}
+.step{border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center}
+.step .s-no{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.1em}
+.step .s-n{font-size:16px;font-weight:900;margin:8px 0 6px}
+.step .s-s{font-size:12px;color:var(--ink-2);line-height:1.6}
+.step.now{background:var(--coral-t);border-color:#FFDCD1}
+.step.now .s-no{color:var(--coral)}
+.step.late{background:var(--soft)}
+
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);border-bottom:2px solid var(--line)}
+td b{font-weight:700}
+td.tgt{font-family:"Space Grotesk",sans-serif;font-weight:700;color:var(--coral)}
+tr.star td{background:var(--butter-t)}
+
+.buckets{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.bucket{border-radius:16px;padding:22px 22px 20px}
+.bucket.a{background:var(--coral-t)} .bucket.b{background:var(--butter-t)} .bucket.c{background:var(--mint-t)}
+.bucket h4{font-size:17px;font-weight:900;margin:0 0 8px}
+.bucket p{font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
+.bucket ul{margin:0;padding-left:17px;font-size:13px;color:var(--ink-2)}
+.bucket li{margin-bottom:4px}
+
+.northstar{border:2px solid var(--coral);border-radius:18px;padding:28px 30px;background:var(--coral-t)}
+.northstar .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+.northstar .v{font-size:clamp(20px,2.6vw,25px);font-weight:900;line-height:1.55;margin:0}
+.northstar .sub{font-size:14.5px;color:var(--ink-2);margin:12px 0 0}
+
+footer{margin-top:84px;padding-top:22px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3)}
+
+@media(max-width:820px){
+  .pillars,.bricks,.ta,.buckets,.mock{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr}
+  .toc ol{columns:1}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px 80px}
+  .sec-sub{padding-left:0}
+  .card-foot{flex-direction:column;gap:10px}
+  table{font-size:13px}
+  th,td{padding:10px 8px}
+}
+</style>
+<style>
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.loop-step{border:1px solid var(--line);border-radius:14px;padding:20px 18px;background:var(--soft)}
+.loop-step .l-no{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink-3)}
+.loop-step .l-t{font-size:16px;font-weight:900;margin:8px 0 6px}
+.loop-step .l-s{font-size:13px;color:var(--ink-2);line-height:1.65}
+.loop-step.c{background:var(--butter-t);border-color:#F5E3B0}
+.loop-step.m{background:var(--coral-t);border-color:#FFDCD1}
+.loop-step.s{background:var(--mint-t);border-color:#C9EDE5}
+.loop-back{margin-top:12px;text-align:center;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--line);padding-top:12px}
+.phase{border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:16px}
+.phase-h{padding:18px 22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.phase-h .p-k{font-family:"Space Grotesk",sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em}
+.phase-h h4{font-size:19px;font-weight:900;margin:0}
+.phase-h .p-goal{font-size:13px;color:var(--ink-2);margin-left:auto}
+.phase-b{padding:16px 22px 20px;border-top:1px solid var(--line)}
+.phase-b ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
+.phase-b li{margin-bottom:6px}
+.phase.p1 .phase-h{background:var(--coral-t)} .phase.p1 .p-k{color:var(--coral)}
+.phase.p2 .phase-h{background:var(--butter-t)} .phase.p2 .p-k{color:#A67900}
+.phase.p3 .phase-h{background:var(--mint-t)} .phase.p3 .p-k{color:var(--mint)}
+.zone{border-left:4px solid var(--plum);background:var(--plum-t);border-radius:0 12px 12px 0;padding:14px 20px;margin:32px 0 18px}
+.zone b{font-size:15px}.zone span{color:var(--ink-2);font-size:13.5px}
+@media(max-width:820px){.loop{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.loop{grid-template-columns:1fr}.phase-h .p-goal{margin-left:0}}
+</style>
+<style>
+/* 側邊目錄 */
+#sidebar{position:fixed;left:0;top:0;height:100vh;width:216px;background:var(--soft);
+  border-right:1px solid var(--line);padding:26px 18px;overflow-y:auto;z-index:50;
+  transition:transform .25s ease}
+#sidebar.hide{transform:translateX(-216px)}
+#sidebar .sb-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+#sidebar a{display:block;font-size:13px;color:var(--ink-2);text-decoration:none;padding:7px 10px;border-radius:8px;line-height:1.45;margin-bottom:2px}
+#sidebar a:hover{background:#fff;color:var(--ink)}
+#sidebar a.active{background:var(--coral-t);color:var(--coral);font-weight:700}
+#sidebar a.sb-top{color:var(--ink-3);border-bottom:1px solid var(--line);border-radius:0;
+  margin-bottom:10px;padding-bottom:10px}
+#sidebar a.sb-top:hover{background:transparent;color:var(--coral)}
+#sbToggle{position:fixed;left:216px;top:22px;z-index:51;width:30px;height:30px;border:1px solid var(--line);
+  border-left:none;background:var(--soft);border-radius:0 8px 8px 0;cursor:pointer;
+  font-size:13px;color:var(--ink-2);line-height:28px;text-align:center;transition:left .25s ease;padding:0}
+#sbToggle.hide{left:0}
+body.has-sb .wrap{margin-left:216px;transition:margin-left .25s ease}
+body.has-sb.sb-off .wrap{margin-left:0}
+@media(max-width:1100px){
+  #sidebar,#sbToggle{display:none}
+  body.has-sb .wrap{margin-left:auto}
+}
+</style>
+<style>
+/* 改版路徑 */
+.rel{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:18px}
+.rel-h{padding:16px 22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;background:var(--soft);border-bottom:1px solid var(--line)}
+.rel-h .rv{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700}
+.rel-h h4{font-size:17px;font-weight:900;margin:0}
+.rel-h .rn{font-size:12.5px;color:var(--ink-3);margin-left:auto}
+.rel-b{display:grid;grid-template-columns:300px 1fr;gap:0}
+.rel-nav{padding:20px 16px;border-right:1px solid var(--line);background:#fff}
+.rel-c{padding:18px 22px}
+.rel-c ul{margin:0;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
+.rel-c li{margin-bottom:6px}
+.rel-c .chg{display:inline-block;font-size:11.5px;font-weight:700;background:var(--coral-t);color:var(--coral);padding:3px 9px;border-radius:6px;margin-bottom:10px}
+.rel-c .chg.none{background:var(--soft);color:var(--ink-3)}
+.nvb{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border:1px solid var(--line);border-radius:14px;padding:12px 6px;background:var(--soft)}
+.nvi{text-align:center;font-size:11px;color:var(--ink-3);line-height:1.4}
+.nvi .g{font-size:18px;display:block;margin-bottom:4px;filter:grayscale(1);opacity:.5}
+.nvi.on{color:var(--coral);font-weight:700}
+.nvi.on .g{filter:none;opacity:1}
+.nvi.new{color:var(--plum);font-weight:700}
+.nvi.new .g{filter:none;opacity:1}
+.nvcap{font-size:11px;color:var(--ink-3);margin-top:8px;text-align:center;line-height:1.5}
+.seed{background:var(--plum-t);border-radius:14px;padding:20px 24px;margin:22px 0}
+.seed b{font-size:16px}
+.seed p{margin:8px 0 0;font-size:14.5px;color:var(--ink-2)}
+@media(max-width:820px){.rel-b{grid-template-columns:1fr}.rel-nav{border-right:none;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body id="top">
+<button id="sbToggle" aria-label="收合目錄">‹</button>
+<nav id="sidebar">
+  <div class="sb-k">目錄</div>
+  <a href="#top" class="sb-top">↑ 回到頁首</a>
+  <a href="#s0">一頁摘要</a>
+  <a href="#s1">1. 定位</a>
+  <a href="#s2">2. 市場五種類型</a>
+  <a href="#s3">3. 用戶與需求</a>
+  <a href="#s4">4. 策略三支柱</a>
+  <a href="#s5">5. APP 改版第一眼</a>
+  <a href="#s6">6. 功能規劃</a>
+  <a href="#s7">7. 體驗優化項目</a>
+  <a href="#s8">8. 上線節奏</a>
+  <a href="#s8b">8.5　1.0 → 2.0 改版路徑</a>
+  <a href="#s9">9. 內容佈局與維護</a>
+  <a href="#s10">10. 成效目標</a>
+</nav>
+<div class="wrap">
+
+<header>
+  <div class="pill">食尚玩家　數位事業部　產品策略</div>
+  <h1>國旅第一服務平台<br>產品策略＋規劃</h1>
+  <p class="lede">深度經營食尚現有的核心用戶，做出可複製的服務模式，進而擴展到全台旅客。APP 從內容閱讀器轉為國旅服務工具。</p>
+  <div class="meta">
+    <span class="chip"><b>2026.08</b>　版本 v11.0</span>
+    <span class="chip"><b>PM Aileen</b>　數位產品</span>
+    <span class="chip"><b>APP 為主</b>　官網為輔</span>
+  </div>
+
+  <nav class="toc">
+    <div class="toc-k">目錄</div>
+    <ol>
+      <li><a href="#s0">一頁摘要</a></li>
+      <li><a href="#s1">定位：我們要成為什麼</a></li>
+      <li><a href="#s2">市場：旅遊 App 的五種類型</a></li>
+      <li><a href="#s3">用戶：是誰、需要什麼</a></li>
+      <li><a href="#s4">策略三支柱</a></li>
+      <li><a href="#s5">APP 改版後第一眼看到什麼</a></li>
+      <li><a href="#s6">功能規劃：四個功能主體</a></li>
+      <li><a href="#s7">體驗優化項目</a></li>
+      <li><a href="#s8">上線節奏</a></li>
+      <li><a href="#s8b">1.0 → 2.0 改版路徑</a></li>
+      <li><a href="#s9">內容佈局與維護</a></li>
+      <li><a href="#s10">成效目標</a></li>
+    </ol>
+  </nav>
+</header>
+
+<!-- 00 摘要 -->
+<section id="s0" style="padding-top:56px">
+  <div class="sec-head"><span class="dot p"></span><h2>一頁摘要</h2></div>
+  <p class="sec-sub">只看這一頁也能掌握重點</p>
+
+  <div class="statement" style="margin-bottom:20px">
+    <div class="k">Positioning</div>
+    <p class="v">讓食尚玩家成為<span class="mark">台灣人人手一本的國旅護照</span>。</p>
+    <p class="sub">出門前知道去哪、玩的時候知道怎麼玩、玩完了留下紀錄——一支 APP 就能完成一趟國旅。</p>
+  </div>
+
+  <table>
+    <tr><th style="width:20%">項目</th><th>內容</th></tr>
+    <tr><td><b>市場位置</b></td><td>站穩在地生活優惠型，跨進行程決策型與收集成就型，串接 OTA 補強交易環。不自建訂房訂票、不做海外規格的行程規劃工具</td></tr>
+    <tr><td><b>主要 TA</b></td><td>北部女性為主的短程出遊家庭客——女性 61.1%、30–50 代 81.3%、北北基桃竹 65%、88.7% 為短天數出遊、49.1% 有同行特殊需求</td></tr>
+    <tr><td><b>策略三支柱</b></td><td>① <b>現在不去就沒了</b>（出門前給理由）　② <b>從吃走進國旅</b>（出門時給方法）　③ <b>玩過的留下痕跡</b>（回來後留紀錄）</td></tr>
+    <tr><td><b>APP 改版</b></td><td>導覽列改為<b>玩家護照／報導／優惠／附近／我的</b>；玩家護照頁三區塊：為什麼是現在 → 你的護照 → 這樣玩</td></tr>
+    <tr><td><b>四個功能主體</b></td><td>主題行程包 · 旅行成就系統 · 我的收藏與票夾 · 附近（定位）</td></tr>
+    <tr class="star"><td><b>先做什麼</b></td><td>台北主題行程包 2–3 條，接著成就系統 MVP。用最低成本回答最關鍵的問題——使用者要不要這種包裝、願不願意為了收集而出門</td></tr>
+    <tr><td><b>北極星指標</b></td><td><b>完成一次國旅行程的人數</b>（以完成成就衡量，目標 MAU 的 15%；進階為單月完成 2 個以上）</td></tr>
+    <tr><td><b>其他關鍵指標</b></td><td>每次瀏覽 1.87 頁 → 3.0 頁　·　每人每月來訪 7.35 次 → 10 次　·　MAU 15.5 萬 → 25 萬　·　優惠券領取→兌換 19.5% → 30%　·　領一張即沉睡 47.5% → 35%　·　月均下載 6,468 → 10,000</td></tr>
+  </table>
+</section>
+
+<!-- 01 -->
+<section id="s1">
+  <div class="sec-head"><span class="dot"></span><h2>定位：我們要成為什麼</h2></div>
+  <p class="sec-sub">三年計劃「城市旅遊靈感引擎」的產品落地版本</p>
+
+  <div class="statement">
+    <div class="k">Positioning</div>
+    <p class="v">讓食尚玩家成為<span class="mark">台灣人人手一本的國旅護照</span>。</p>
+    <p class="sub">出門前知道去哪、玩的時候知道怎麼玩、玩完了留下紀錄——一支 APP 就能完成一趟國旅，這就是「國旅第一服務平台」的具體樣子。</p>
+  </div>
+
+  <p class="body" style="margin-top:24px">交易環節已有成熟的產業分工——Klook、KKday、Agoda、Trip.com 各自握有庫存與價格優勢，食尚的旅遊住宿券兌換僅達發券數 3.9%，是所有品類最低。與其投入交易，不如把流量導向這些平台換取分潤，這也是三年計劃中「觀光業商城分潤」的路線。</p>
+
+  <p class="body">真正的機會在決策環節。使用者的困擾集中在這裡，而這正是食尚累積近 20 年的資產：內容公信力、22 縣市在地店家網絡、電視節目 IP、500+ 帶路人。</p>
+</section>
+
+<!-- 02 -->
+<section id="s2">
+  <div class="sec-head"><span class="dot s"></span><h2>市場：旅遊 App 的五種類型</h2></div>
+  <p class="sec-sub">先看清楚榜上有哪幾種玩法，再決定食尚站哪一格</p>
+
+  <table>
+    <tr><th style="width:18%">類型</th><th style="width:26%">代表</th><th style="width:20%">變現方式</th><th>食尚的選擇</th></tr>
+    <tr><td><b>A　交易型 OTA</b></td><td>Klook、KKday、Agoda、Trip.com</td><td>庫存佣金</td><td>不自建，串接補強交易環</td></tr>
+    <tr class="star"><td><b>B　行程決策型</b></td><td>去趣 chicTrip、Funliday、LINE 旅遊、TripAdvisor<br><span style="color:var(--ink-3);font-size:12.5px">此類多同時提供行程規劃工具</span></td><td>內容導購、廣告</td><td><b>跨入，聚焦國旅</b></td></tr>
+    <tr><td><b>C　單點工具型</b></td><td>地圖、交通、天氣、停車、旅遊翻譯</td><td>廣告、訂閱</td><td>不投入（見下方說明）</td></tr>
+    <tr class="star"><td><b>D　收集成就型</b></td><td>世界迷霧、神秘遠足</td><td>訂閱、買斷</td><td><b>跨入，國旅尚無人經營</b></td></tr>
+    <tr class="star"><td><b>E　在地生活優惠型</b></td><td>優惠情報、好康地圖類</td><td>招商、行銷服務</td><td><b>現有位置，守住並升級</b></td></tr>
+  </table>
+
+  <div class="callout"><b>食尚的路徑：站穩 E，跨進 B 與 D，用 A 補強交易行動環。</b>這條路徑同時說明了三件事——為什麼 App Store 次分類要從美食佳飲轉為旅遊、為什麼成就收集是正規的產品方向而非裝飾、以及為什麼不自建訂房訂票。</div>
+
+  <h3 class="blk">C 類為什麼不投入</h3>
+  <table>
+    <tr><th style="width:24%">工具</th><th>不投入的理由</th></tr>
+    <tr><td><b>旅遊翻譯</b></td><td>國旅情境沒有語言需求，市場不存在。</td></tr>
+    <tr><td><b>地圖導航</b></td><td>Google Maps 等已高度成熟，圖資與導航能力的投入門檻遠超過可回收的效益。</td></tr>
+    <tr><td><b>大眾運輸查詢</b></td><td>高鐵、台鐵、客運與公車皆有官方或成熟的第三方 App，重做無差異化空間。行程包只需提供「最近的站與停車資訊」，導向既有工具即可。</td></tr>
+  </table>
+
+  <h3 class="blk">誰是競爭者、誰是合作對象</h3>
+  <p class="body"><b>B 類是直接競爭者。</b>去趣 chicTrip 是旅遊類目常駐榜單前 10 的實際對手，Funliday、LINE 旅遊也各自在經營行程規劃工具。他們的強項在海外行程，國旅深度相對是空白——這是食尚的切入點。</p>
+  <p class="body"><b>食尚目前的強項是在地內容，以美食與優惠為核心；旅行是接下來要補強的能力。</b>這也是這份規劃的重點：把既有的美食與優惠基礎，延伸成完整的國旅服務。</p>
+  <p class="body"><b>A 類才是合作對象。</b>訂房訂票平台握有庫存與交易能力，食尚握有決策階段的高意圖流量，雙方不重疊。<b>導流換取分潤是務實的合作路徑</b>，也是三年計劃中「觀光業商城分潤」的實際切入點。</p>
+</section>
+
+<!-- 03 -->
+<section id="s3">
+  <div class="sec-head"><span class="dot m"></span><h2>用戶：是誰、需要什麼</h2></div>
+  <p class="sec-sub">N=815 國旅需求調查</p>
+
+  <div class="ta">
+    <div class="ta-card main">
+      <div class="ta-k">主要 TA</div>
+      <h4>北部女性為主的短程出遊家庭客</h4>
+      <ul>
+        <li><b>女性 61.1%</b>；30–50 代占 <b>81.3%</b>（40 代 34.5%、50 代 26.9%、30 代 19.9%）</li>
+        <li>北北基桃＋新竹占 <b>65%</b></li>
+        <li><b>2 天 1 夜 34.6%</b>、一日遊 28.6%、天數不固定 25.5%，合計 88.7% 為短天數出遊</li>
+        <li>96.1% 有同行對象，<b>49.1% 有同行特殊需求</b>（長輩、學齡與嬰幼兒、寵物、行動不便）</li>
+        <li>61.2% 平時就在留意旅遊資訊，要出遊時才整理</li>
+      </ul>
+      <div class="ta-line">以女性為主、有車有假有伴，平常滑食尚看吃的，出門常去固定那幾個地方。多半也是替全家決定要去哪的人。</div>
+    </div>
+    <div class="ta-card">
+      <div class="ta-k">次要 TA</div>
+      <h4>APP 重度領券者</h4>
+      <ul>
+        <li>每人每月來訪 <b>7.35 次</b>，每次瀏覽 1.87 頁</li>
+        <li>14.1% 的會員領 <b>10 張以上</b>券</li>
+        <li><b>47.5%</b> 領一張後未再回流</li>
+      </ul>
+      <div class="ta-line">已經天天來，目前只被提供了一件事做。</div>
+    </div>
+  </div>
+
+  <h3 class="blk">使用者的四項需求，前兩項是最大的機會</h3>
+
+  <p class="body"><b>① 出門前：不確定該信誰，而且要查的東西散在各處</b></p>
+  <div class="bricks">
+    <div class="brick"><div class="n">59.4%</div><div class="t">評價真假難辨</div><div class="s">查到了也不確定能不能信</div></div>
+    <div class="brick"><div class="n">58.2%</div><div class="t">資訊過時</div><div class="s">遇到過期活動，32.9% 會降低信任或停用</div></div>
+    <div class="brick"><div class="n">42.5%</div><div class="t">資訊太分散</div><div class="s">平均要跨 3.1 個平台查</div></div>
+    <div class="brick quiet">
+      <div class="n">10.6%</div>
+      <div><div class="t">不知道從哪座城市開始選</div><div class="s">六項困擾中排名倒數第二</div></div>
+    </div>
+  </div>
+  <p class="src">城市玩家國旅需求調查，N=815（複選題）；行程規劃太耗時 28.6%、活動資訊不好找 17.3%</p>
+
+  <p class="body" style="margin-top:22px">而使用者在乎的資訊有五項，分別散落在不同平台上——這正是「太分散」的具體樣貌。</p>
+  <table>
+    <tr><th style="width:26%">核心資訊</th><th style="width:18%">選取比例</th><th>目前多半要去哪裡查</th></tr>
+    <tr><td><b>景點介紹</b></td><td>63.6%</td><td>部落格、社群、官方粉專</td></tr>
+    <tr><td><b>美食餐廳推薦</b></td><td>62.7%</td><td>社群、評論平台、美食媒體</td></tr>
+    <tr><td><b>交通方式與路線</b></td><td>53.9%</td><td>地圖 App、交通官方網站</td></tr>
+    <tr><td><b>住宿推薦</b></td><td>48.5%</td><td>訂房平台</td></tr>
+    <tr><td><b>費用預算</b></td><td>35.2%</td><td>沒有固定來源，自行估算</td></tr>
+  </table>
+  <p class="src">限選 4 項下的前五名，比例代表強迫取捨下的相對優先度。</p>
+
+  <div class="callout"><b>「城市」不是入口痛點，而是把資訊組織起來的軸。</b>城市玩家的價值不在幫使用者挑城市，在他挑完之後的行動。</div>
+
+  <p class="body" style="margin-top:34px"><b>② 需要一個「為什麼是現在」的理由</b></p>
+  <p class="body">使用者對榜單的期待說明了動機來源——他們要的不是熱門，是此刻的獨特性。</p>
+  <div class="bricks">
+    <div class="brick sky"><div class="n">50.1%</div><div class="t">季節限定、現在最值得去</div><div class="s">八類榜單中最有參考價值</div></div>
+    <div class="brick sky"><div class="n">49.0%</div><div class="t">近期美食評價最高</div><div class="s">美食是並列第一梯隊的理由</div></div>
+    <div class="brick quiet"><div class="n">19.5%</div><div><div class="t">近期最多人造訪</div><div class="s">八類中倒數第二</div></div></div>
+  </div>
+
+  <p class="body" style="margin-top:34px"><b>③ 出遊目的集中在三種類型</b></p>
+  <div class="bricks">
+    <div class="brick mint"><div class="n">66.1%</div><div class="t">美食探索</div><div class="s">夜市、特色餐廳</div></div>
+    <div class="brick mint"><div class="n">50.7%</div><div class="t">老街與特色市集</div><div class="s">手作、文創</div></div>
+    <div class="brick mint"><div class="n">45.6%</div><div class="t">山林自然</div><div class="s">步道、森林</div></div>
+  </div>
+  <p class="src">其後為海岸海島 28.0%、渡假放空 27.6%、城市消費 24.9%。三大類型即為主題行程包的設計模板。</p>
+
+  <p class="body" style="margin-top:34px"><b>④ 同行條件需要被支援</b></p>
+  <p class="body">49.1% 有同行特殊需求，帶長輩、帶小孩、帶寵物的人目前需要逐家確認無障礙、兒童座椅、寵物友善等條件。研究顯示這群人更重視友善資訊，也更期待能依需求篩選。</p>
+  <div class="callout"><b>值得注意：使用者本身往往就是熟齡族。</b>主要 TA 中 50 代占 26.9%、40 代占 34.5%——「不會太累的行程」不只是替長輩考量，也是替自己考量。<b>壯世代／熟齡族</b>的出遊需求（好停車、走路不多、中途有地方坐、用餐時段不用久候）目前少有平台明確標示，是可以直接做出差異的一塊。</div>
+
+  
+</section>
+
+<!-- 04 -->
+<section id="s4">
+  <div class="sec-head"><span class="dot b"></span><h2>策略三支柱</h2></div>
+  <p class="sec-sub">三個支點，撐起一趟完整的國旅</p>
+
+  <p class="body">使用者的需求可以濃縮成一句話：<b>把分散在各處的資訊，整理成可以直接安排的旅程。</b></p>
+  <p class="body">要做到這件事，APP 必須在三個時刻幫上忙——<b>出門前給一個理由、出門時給一套方法、回來後留下紀錄</b>。這三個時刻就是策略的三根支柱。</p>
+
+  
+
+  
+
+  <div class="pillars">
+    <div class="pillar c">
+      <div class="pillar-top">
+        <div class="p-no">PILLAR 01 ／ 出門前給理由</div>
+        <h4>現在不去就沒了</h4>
+        <p>用季節、活動、檔期與限定，給出「為什麼是現在、為什麼是這裡」。陽明山芒草季、天母萬聖節、燈會、貓空茶季——這些理由本身就有時效，錯過就要等下一輪。</p>
+      </div>
+      <div class="pillar-foot">
+        <span class="k">依據</span>季節限定 50.1% 是使用者自選最有參考價值的榜單，「最多人造訪」僅 19.5%；資訊過時 58.2% 是第二大困擾，過期活動使 32.9% 降低信任或停用
+        <span class="k" style="margin-top:8px">變現</span>檔期包檔、城市季節主題合作
+      </div>
+    </div>
+
+    <div class="pillar m">
+      <div class="pillar-top">
+        <div class="p-no">PILLAR 02 ／ 出門時給方法</div>
+        <h4>從吃走進國旅</h4>
+        <p>行程主題不限於美食——老街市集、山林步道、節慶活動都能當主題；但無論哪一種，<b>一天只有兩三餐，吃是最需要事先決定的事</b>，也是食尚最有把握的部分。因此每一條行程都以一餐或一個大景點定錨，周邊順路長出半天。一般旅遊平台從交通與住宿切入，食尚從餐桌切入。</p>
+      </div>
+      <div class="pillar-foot">
+        <span class="k">依據</span>美食探索 66.1% 是最普遍的出遊目的；美食 62.7% 與景點 63.6% 並列最看重的資訊；手搖飲兌換達發券數 40.9%，其餘品類皆 ≤11%
+        <span class="k" style="margin-top:8px">變現</span>優惠券招商、觀光商城分潤
+      </div>
+    </div>
+
+    <div class="pillar s">
+      <div class="pillar-top">
+        <div class="p-no">PILLAR 03 ／ 回來後留紀錄</div>
+        <h4>玩過的留下痕跡</h4>
+        <p>讓每一次出遊在 APP 裡留下紀錄，把一次性的工具使用變成回訪理由。想去的、去過的、手上還沒用的券，都收在同一個地方。</p>
+      </div>
+      <div class="pillar-foot">
+        <span class="k">依據</span>收藏行為 287 萬次，是領券 13 萬次的 21 倍；47.5% 領一張券後未再回流；世界迷霧、神秘遠足等成就收集型 App 在旅遊類榜單已有明確位置，證明此類機制本身即是被市場驗證的服務型態
+        <span class="k" style="margin-top:8px">變現</span>APP 訂閱、會員分級服務
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">三支柱串起來，是一個循環</h3>
+  <p class="body">三支柱各自都能單獨運作，但串起來會形成一個閉環——而閉環才是讓 APP 從一次性工具變成固定習慣的關鍵。</p>
+<div class="loop">
+    <div class="loop-step c">
+      <div class="l-no">STEP 01</div>
+      <div class="l-t">給一個出門的理由</div>
+      <div class="l-s">季節限定、活動節慶。使用者要的不是熱門，是「為什麼是現在」。<b>支柱 01</b></div>
+    </div>
+    <div class="loop-step m">
+      <div class="l-no">STEP 02</div>
+      <div class="l-t">照這個方法去玩</div>
+      <div class="l-s">一餐或一個大景點定錨，周邊順路長出半天。不用自己排，拿了就能出門。<b>支柱 02</b></div>
+    </div>
+    <div class="loop-step s">
+      <div class="l-no">STEP 03</div>
+      <div class="l-t">留下自己的足跡</div>
+      <div class="l-s">去過的地方被記錄下來，成為個人的旅遊版圖，而不是玩完就散。<b>支柱 03</b></div>
+    </div>
+    <div class="loop-step">
+      <div class="l-no">STEP 04</div>
+      <div class="l-t">下次想再玩別的</div>
+      <div class="l-s">看著自己還沒點亮的地方，回頭找下個月能去哪——回到第一步。</div>
+    </div>
+  </div>
+  <p class="loop-back">循環閉合：足跡累積得越多，回來看「下一個去哪」的動機越強</p>
+
+  <h3 class="blk">不投入的項目</h3>
+  <div class="nots">
+    <div class="not"><b>不自建</b>訂房訂票，導流換分潤</div>
+    <div class="not"><b>不做</b>海外規格的完整行程規劃工具</div>
+    <div class="not"><b>不投入</b>地圖覆蓋率競爭</div>
+    <div class="not"><b>不投入</b>折扣深度與價格戰</div>
+    <div class="not"><b>不等待</b>大架構完成才上線</div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="s5">
+  <div class="sec-head"><span class="dot p"></span><h2>APP 改版後，用戶第一眼看到什麼</h2></div>
+  <p class="sec-sub">導覽列與首頁結構調整</p>
+
+  <p class="body">目前 APP 是一支以文章閱讀為主的產品——每次瀏覽 1.87 頁、流量集中首頁約 68%，功能與文章混雜在同一頁。<b>這次改版的目的是擺脫閱讀器的形象，讓 APP 提供國旅服務</b>：使用者打開 APP 不是為了看文章，是為了決定這個週末去哪、怎麼玩、還有哪裡沒去過。</p>
+
+  <div class="mock" style="margin-top:24px">
+    <div>
+      <div class="ta-k" style="margin-bottom:10px">新導覽列</div>
+      <div class="navbar">
+        <div class="nav-i on"><span class="g">🛂</span>玩家護照</div>
+        <div class="nav-i"><span class="g">📰</span>報導</div>
+        <div class="nav-i"><span class="g">🎫</span>優惠</div>
+        <div class="nav-i"><span class="g">📍</span>附近</div>
+        <div class="nav-i"><span class="g">👤</span>我的</div>
+      </div>
+      <p class="body" style="margin-top:16px;font-size:14px">五個分頁各自對應一種使用狀態：旅行規劃與回顧（玩家護照）、瀏覽最新資訊（報導）、找優惠（優惠）、人在外面（附近）、帳號管理（我的）。搜尋移至頂部搜尋列。</p>
+      <p class="body" style="font-size:14px"><b>命名說明：</b>台灣既有集章護照的文化（鐵道紀念章、步道護照、小鎮漫遊護照），「護照」在國旅語境成立且帶有收集感；加上「玩家」承接食尚玩家 IP，並與出國聯想做出區隔。</p>
+    </div>
+
+    <div>
+      <div class="ta-k" style="margin-bottom:10px">玩家護照頁　三個區塊</div>
+      <div class="screen">
+        <div class="scr-row a">
+          <div class="scr-k">第一屏　Pillar 02</div>
+          <div class="scr-t">① 為什麼是現在</div>
+          <div class="scr-s">這個月的限定理由：陽明山芒草季、天母萬聖節、燈會、季節限定美食。每一則標明有效期限。</div>
+        </div>
+        <div class="scr-row b">
+          <div class="scr-k">第一屏可見　Pillar 03</div>
+          <div class="scr-t">② 你的護照</div>
+          <div class="scr-s"><b>想去</b>（收藏）·<b>去過</b>（足跡與收集品）·<b>票夾</b>（手上的券、到期提醒）。三個常用入口不往下埋，第一屏就要看得到。</div>
+        </div>
+        <div class="scr-row c">
+          <div class="scr-k">往下滑　Pillar 01＋02</div>
+          <div class="scr-t">③ 這樣玩</div>
+          <div class="scr-s">主題行程包，含當期限定行程。可依情境篩選：半天／一天、帶長輩／帶小孩、體力低、雨天可行、有券。</div>
+        </div>
+      </div>
+      <p class="body" style="margin-top:14px;font-size:14px"><b>不用時間軸排版。</b>使用者最常用的收藏與票夾必須在第一屏就摸得到，因此順序是「先給理由 → 我的東西 → 再展開內容」，而不是照旅程先後順序由上而下。</p>
+    </div>
+  </div>
+
+  <div class="callout quiet" style="margin-top:26px"><b>新用戶的第一眼：</b>以所在地區為起點，讓使用者第一次打開就有事情可以做。① 顯示所在地區這個月的限定理由，② 推薦 2–3 條當地的主題行程包，③ 護照區塊以「你附近有 8 個地方可以收集」的形式呈現，直接給出第一個可完成的目標。使用者不需要先累積任何紀錄，就能理解護照是什麼、以及要怎麼開始。
+
+  <div class="callout" style="margin-top:26px"><b>收藏與票夾要從深層拉到檯面。</b>這兩個功能目前都放在「我的」底下，位置很深不易被發現；收藏近期才調整到導覽列，成效尚待觀察。玩家護照頁的作法不只是搬位置，而是把這兩個功能<b>放大並做得更好</b>——收藏加入分組與想去／去過的標記，票夾依到期日排序並提供提醒，讓它們從被動的清單變成會主動提示下一步的工具。</div>
+
+  <div class="callout"><b>報導頁的角色：</b>目前首頁功能與文章混雜在一起，兩種需求互相干擾。改版後<b>將報導獨立成單獨的內容頁面並重整版位</b>，讓想看最新生活、美食資訊與優惠情報的人能更快滑到想要的內容。同時，護照要判斷推薦哪些行程、排序哪些榜單、優惠要推給誰，依據的是使用者的瀏覽與收藏行為——這些行為只有內容能產生。報導頁因此也是整個 APP 的資料來源，內容主題不需要全部與國旅相關。</div>
+
+  <div class="callout warn"><b>廣告版位需重新討論：</b>玩家護照頁作為服務入口，需重新安排適合的廣告版位與出現時機，避免干擾服務動線。實際配置方式與業務端共同討論。</div>
+</section>
+
+<!-- 06 -->
+<section id="s6">
+  <div class="sec-head"><span class="dot"></span><h2>功能規劃</h2></div>
+  <p class="sec-sub">四個功能主體撐起玩家護照，其餘為體驗優化</p>
+
+  <div class="quote">
+    <p>「簡單的小工具，不用拉很長或很完整的功能，只要功能跟 IP 相符，或變現邏輯清楚，就可以試跑看看。」</p>
+    <cite>數位事業部——本規劃篩選功能的判準</cite>
+  </div>
+
+  <p class="body"><b>判準檢核方式：</b></p>
+  <table>
+    <tr><th style="width:22%">判準</th><th>怎麼認定</th></tr>
+    <tr><td><b>IP 相符</b></td><td>最簡單的檢查方式：<b>把「食尚玩家」四個字拿掉之後，這個功能還做得出來嗎？</b>如果換成任何一家公司都做得一樣好，就不算 IP 相符。用得上食尚的內容判斷力、達人與帶路人、22 縣市店家網絡或既有優惠券資源的，才算。</td></tr>
+    <tr><td><b>變現邏輯清楚</b></td><td>能掛上三年計劃已核准的六條利潤模型之一：直售廣告／觀光商城分潤／優惠券招商／公部門標案／APP 訂閱／達人行程。</td></tr>
+  </table>
+  <p class="body" style="margin-top:14px">符合其一即可先行試跑。四個功能主體中，<b>主題行程包與旅行成就系統靠 IP 相符成立</b>（別人沒有食尚的內容與店家網絡），<b>票夾與附近兩項判準皆符合</b>（既用得上既有優惠券資源，也直接掛在優惠券招商上）。</p>
+
+  <p class="body"><b>四個功能主體：主題行程包、旅行成就系統、優惠券票夾、附近（定位）。</b>每一項都可以單獨提案、單獨上線、單獨驗證，疊起來構成完整的玩家護照。</p>
+
+  <div class="zone"><b>主體一｜主題行程包</b>　<span>對應循環 STEP 02「照這個方法去玩」·護照頁 ③</span></div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag ip">IP 相符</span><span class="tag pass">護照 ③</span><span class="tag prep">可行度低</span></div>
+        <h5>主題行程包</h5>
+        <p>以一餐或一個大景點定錨，周邊順路長出半天。三種模板對應三大出遊目的：<b>美食</b>（一頓泰式料理＋四面佛＋周邊選物）、<b>老街市集</b>（大稻埕、華山、松菸展覽、天母萬聖節）、<b>山林自然</b>（象山、陽明山芒草季、貓空）。</p>
+        <div class="why"><b>命名用時節或風情＋地點</b>，不把天數放進標題：「民初風情．大稻埕散策」而非「大稻埕一日遊」；天數與條件以標籤標示。先做半天與一日遊，2 天 1 夜待旅宿內容補齊後再開。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b class="by">Jesse C04／yuka C05</b></div>
+        <div><span class="k">變現</span><b>優惠券招商</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性中</span><span class="tag ip">IP 相符</span><span class="tag pass">護照 ③</span><span class="tag fast">可行度高</span></div>
+        <h5>情境篩選器</h5>
+        <p>以情境組合取代品類分類：半天／一天、帶長輩／帶小孩／一個人、體力低、雨天可行、有券。可依月份與節慶持續長出新組合。</p>
+        <div class="why">TA 有 81.3% 為 30–50 代、49.1% 有同行特殊需求，「不會太累的行程」目前少有平台明確標示。此為行程包的檢索層，不需另建內容。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有重組</b></div>
+        <div><span class="k">來源</span><b class="by">Jesse C04／yuka C05</b></div>
+        <div><span class="k">變現</span><b>無直接變現</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag ip">IP 相符</span><span class="tag pass">護照 ①</span><span class="tag mid">可行度中</span></div>
+        <h5>活動節慶行事曆</h5>
+        <p>依日期整理各縣市活動，回答「這個週末哪裡有事情發生」，並作為「為什麼是現在」的資料來源。</p>
+        <div class="why">研究中唯一成立的困擾與功能配對：受活動資訊不好找困擾者（17.3%），顯著更常將行事曆列為最有幫助的功能。<b>可行度中</b>：技術不難，但活動資訊需持續蒐集與更新，人力成本是主要考量，需搭配自動化蒐集與內容排程一併規劃。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b>問卷痛點（統計顯著）</b></div>
+        <div><span class="k">變現</span><b>城市季節主題合作</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性中</span><span class="tag ip">IP 相符</span><span class="tag prep">可行度低</span></div>
+        <h5>同行條件資料補齊</h5>
+        <p>店家與景點補上友善欄位：親子、嬰幼兒、寵物、行動不便、有無電梯、推車可否進入。</p>
+        <div class="why">49.1% 有同行特殊需求，且有對應需求者更重視友善資訊。此為行程包標示「適合誰」的資料基礎，補齊後篩選器才能真正運作。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有升級</b></div>
+        <div><span class="k">來源</span><b>問卷痛點（統計顯著）</b></div>
+        <div><span class="k">變現</span><b>無直接變現</b></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">主題行程包的規格</h3>
+  <p class="body">使用者最看重的五項資訊中，除住宿外全部納入。台灣國旅不需要海外規格的細密規劃，但需要「拿了就能出門」的可執行資訊——而交通與預算兩項，正是目前食尚內容較少直接提供的部分。</p>
+  <table>
+    <tr><th style="width:18%">資訊</th><th style="width:12%">需求度</th><th>行程包裡怎麼放</th></tr>
+    <tr><td><b>景點</b></td><td>63.6%</td><td>2–4 個點，步行 15 分鐘內可達，順序可調、少一站不影響</td></tr>
+    <tr><td><b>美食</b></td><td>62.7%</td><td>至少包含一餐作為錨點，標示是否需訂位、建議時段</td></tr>
+    <tr><td><b>交通</b></td><td>53.9%</td><td>不做路線規劃引擎，僅提供欄位：最近捷運站與停車資訊、點到點步行分鐘數</td></tr>
+    <tr><td><b>預算</b></td><td>35.2%</td><td>每個點標價位區間，整趟提供估算範圍</td></tr>
+    <tr style="opacity:.55"><td><b>住宿</b></td><td>48.5%</td><td>MVP 以半天與一日遊為主，暫不納入</td></tr>
+  </table>
+  <div class="callout warn"><b>MVP 為什麼先做半天與一日遊：</b>2 天 1 夜（34.6%）雖是最大宗的出遊型態，但它必須處理住宿——而住宿是目前食尚內容與變現皆較弱的環節（旅宿券兌換僅 3.9%），第一版就做會卡在最沒有把握的地方。半天與一日遊不需處理住宿、門檻最低、最快能驗證使用者是否接受這種包裝。<b>食尚旅宿大賞今年邁入第四屆，是補齊旅宿內容的既有基礎</b>；待內容量體足夠、且半天與一日遊已驗證成功後，再擴充到 2 天 1 夜並評估與訂房平台的合作。</div>
+
+  <div class="zone"><b>主體二｜旅行成就系統</b>　<span>對應循環 STEP 03–04「留下足跡、下次再玩」·護照頁 ②</span></div>
+  <p class="body">成就系統只會選一種先做，不會三種並行。三個候選機制彼此重疊，先擇一驗證，成效好再往上整併或擴充。</p>
+  <table>
+    <tr><th style="width:20%">候選做法</th><th style="width:12%">來源</th><th style="width:24%">優點</th><th style="width:24%">缺點</th><th style="width:20%">建議</th></tr>
+    <tr class="star">
+      <td><b>城市明信片收藏冊</b></td>
+      <td class="by">Aileen</td>
+      <td>僅打卡當下需定位，耗電與權限風險低；每縣市 6–10 張、數量可控；可記錄取得的時間地點；延伸性最高（實體化、聯名、城市合作）</td>
+      <td>視覺資產需逐張設計，內容端有製作成本；地點選擇需編輯判斷</td>
+      <td><b>建議 MVP 先做。</b>成本可控、風險低、商業延伸空間最大</td>
+    </tr>
+    <tr>
+      <td><b>足跡地圖／迷霧探索</b></td>
+      <td class="by">劉澐 C01<br>安啾 C11</td>
+      <td>視覺回饋強烈、成就感明確；參考世界迷霧與神秘遠足，已有市場驗證</td>
+      <td>需持續開啟定位，耗電與權限同意率是主要風險；地圖圖資與判定邏輯開發成本高</td>
+      <td>可整併或不做。若要保留視覺，建議用明信片累積的打卡資料反推足跡，不必獨立開發持續定位</td>
+    </tr>
+    <tr>
+      <td><b>商圈踩點護照</b></td>
+      <td class="by">Stephen C03<br>仲芸 B07<br>安啾 B01</td>
+      <td>與內容佈局「一次深耕一區」邏輯一致；可直接搭配招商與店家合作</td>
+      <td>前置作業重，需要編輯策展路線與店家 BD 同步到位；擴張速度受限於商圈數</td>
+      <td>可擴充：作為明信片在單一商圈的加強版，台北跑通後再落地</td>
+    </tr>
+  </table>
+
+  <h3 class="blk">成就的四種類型</h3>
+  <p class="body">同一套成就系統可以長出不同類型的成就，對應不同目的：</p>
+  <table>
+    <tr><th style="width:22%">類型</th><th style="width:38%">取得條件</th><th>用途</th></tr>
+    <tr><td><b>常駐型</b></td><td>所有人隨時都能取得，例如集滿台北 8 張明信片</td><td>長期累積的基本盤，讓護照隨時都有目標</td></tr>
+    <tr><td><b>時間限定</b></td><td>特定季節或期間才開放，例如陽明山芒草季、燈會期間</td><td>製造「現在不去就沒了」的行動理由</td></tr>
+    <tr><td><b>品牌合作限定</b></td><td>與品牌或地方單位合作期間限定發放</td><td>可販售的商品規格，對應檔期招商與城市合作</td></tr>
+    <tr><td><b>會員限定</b></td><td>需登入會員或訂閱才能取得</td><td>會員轉換與分級服務的誘因</td></tr>
+  </table>
+  <div class="callout"><b>成就要用什麼條件才算完成？</b>有兩種選擇，用途不同。<br>
+  <b>打卡</b>＝人到現場、按下按鈕就算完成。門檻低、任何人都能參與，適合常駐型與時間限定成就，目的是衝參與人數。<br>
+  <b>核銷</b>＝使用者實際到店用了一張券。門檻高但代表真的產生了消費，是店家與品牌唯一認可的成效證明，因此適合綁在<b>品牌合作限定成就</b>上——例如「本月於合作店家核銷 3 張券，取得限定徽章」，這種成就才賣得出去。</div>
+
+  <div class="zone"><b>主體三｜我的收藏與票夾</b>　<span>對應循環 STEP 02–03「準備去用」·護照頁 ②</span></div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag money">變現邏輯清楚</span><span class="tag pass">護照 ②</span><span class="tag fast">可行度高</span></div>
+        <h5>優惠券票夾</h5>
+        <p>把已領取的券集中在護照頁，依到期日排序，標示可用門市與距離，並與主題行程包中的店家互相連結。</p>
+        <div class="why">現行口袋清單「搶優惠」分頁已具雛形，但位置深、過期券以灰階「已錯過」呈現，僅傳達損失。移至護照頁後，未使用的券成為待完成的行程。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有升級</b></div>
+        <div><span class="k">來源</span><b>領取→兌換僅 19.5%</b></div>
+        <div><span class="k">變現</span><b>優惠券招商</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag ip">IP 相符</span><span class="tag pass">護照 ②</span><span class="tag prep">可行度低</span></div>
+        <h5>收藏升級：想去清單</h5>
+        <p>收藏分組與自動標籤（想去／去過、縣市、品類、來源節目），使收藏池成為可整理、可使用的個人清單，並可直接生成專屬的主題行程包。</p>
+        <div class="why">收藏 287 萬次是領券 13 萬次的 21 倍，收藏池與領券池幾乎不重疊。4,615 人收藏破百家，目前受限於無法整理的列表形式。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有升級</b></div>
+        <div><span class="k">來源</span><b class="by">Grayson C09</b></div>
+        <div><span class="k">變現</span><b>APP 訂閱（分級服務）</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone"><b>主體四｜附近（定位分頁）</b>　<span>對應循環 STEP 02「人已經在現場」</span></div>
+  <p class="body"><b>定位是 APP 目前完全沒有的能力，屬全新開發。</b>除技術實作外，還需一併討論店家資料的座標準確度與審核機制、定位權限的取得時機與說明方式、以及打卡的防作弊規則。前置討論項目較多，但這是讓「人在現場」的價值被接住的唯一途徑，也是成就系統能否運作的基礎，建議及早啟動評估。</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag ip">IP 相符</span><span class="tag prep">可行度低</span></div>
+        <h5>附近你收藏過的店</h5>
+        <p>使用者行經附近時，主動顯示其收藏過的店家，並提示是否有可用券、是否屬於某條行程包。</p>
+        <div class="why">結合擁有感、地理位置與時機的觸發方式，是不依賴推播的回訪路徑。需定位能力支援。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新（含定位）</b></div>
+        <div><span class="k">來源</span><b class="by">Grayson C09</b></div>
+        <div><span class="k">變現</span><b>無直接變現</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp">重要性高</span><span class="tag money">變現邏輯清楚</span><span class="tag fast">可行度高</span></div>
+        <h5>附近現在就能用的券</h5>
+        <p>在附近分頁與店家頁標示此刻可用的券，搭配店內 POP 與結帳檯 QR。</p>
+        <div class="why">27.1% 的兌換在領取後 1 小時內完成、22.7% 在 15 分鐘內——相當比例的使用者是到店後才領券，需要被即時接住。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新（含定位）</b></div>
+        <div><span class="k">來源</span><b>優惠券行為數據</b></div>
+        <div><span class="k">變現</span><b>優惠券招商</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性中</span><span class="tag ip">IP 相符</span><span class="tag prep">可行度低</span></div>
+        <h5>附近可以完成的成就</h5>
+        <p>顯示所在位置附近尚未取得的收集品與尚未完成的成就，讓使用者知道「順路就能拿」。</p>
+        <div class="why">把成就系統與實際位置連起來，是讓成就從擺設變成行動誘因的關鍵；同時支撐「在自己縣市玩半天」也能累積的設計前提。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b>成就系統延伸</b></div>
+        <div><span class="k">變現</span><b>無直接變現</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section id="s7">
+  <div class="sec-head"><span class="dot m"></span><h2>體驗優化項目</h2></div>
+  <p class="sec-sub">與旅行循環不直接相關，但對回訪與轉換有明確效益</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性中</span><span class="tag money">變現邏輯清楚</span><span class="tag fast">可行度高</span></div>
+        <h5>優惠券到期提醒（D+1／D+3）</h5>
+        <p>領券後第 1 天、第 3 天各推播一次，附最近門市導航。歸屬於票夾功能。</p>
+        <div class="why">已兌換的券中 40.6% 當天完成、50.7% 於 3 天內完成，超過一週後幾乎不再兌換。提醒須壓在黃金 3 天內。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有升級</b></div>
+        <div><span class="k">來源</span><b>優惠券行為數據</b></div>
+        <div><span class="k">變現</span><b>優惠券招商</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性中</span><span class="tag ip">IP 相符</span><span class="tag prep">可行度低</span></div>
+        <h5>推播個人化設定</h5>
+        <p>讓使用者自選想收到的主題（美食、市集、山林、活動、優惠）與地區，取代目前的一致性推播。</p>
+        <div class="why">目前回訪高度依賴推播（每人每月 7.35 次）。個人化設定同時降低推播疲乏，並提供明確的偏好標籤，供行程包推薦使用。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>既有升級</b></div>
+        <div><span class="k">來源</span><b>推播依賴度過高</b></div>
+        <div><span class="k">變現</span><b>APP 訂閱（分級服務）</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性低</span><span class="tag money">變現邏輯清楚</span><span class="tag prep">可行度低</span></div>
+        <h5>桌面 Widget：今日可用優惠</h5>
+        <p>不需開啟 APP，於手機桌面直接顯示今日最新、最近的獨家券與節目店家。</p>
+        <div class="why">少數能降低開啟門檻、不受推播疲乏影響的入口。前置作業：iOS／Android 原生開發。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b class="by">Charlie C08</b></div>
+        <div><span class="k">變現</span><b>優惠券招商</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性低</span><span class="tag money">變現邏輯清楚</span><span class="tag fast">可行度高</span></div>
+        <h5>省錢戰績週報</h5>
+        <p>本週省下金額、票夾中待使用張數、即將到期提醒。僅量化省錢，不評價用餐體驗。</p>
+        <div class="why"><b>歸屬票夾，目的是提升優惠券成效。</b>用券的成就感目前未被承接，此功能將「領而未用」轉化為每週待辦事項，同時提供不依賴推播的每週開啟理由。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b class="by">Grayson C07</b></div>
+        <div><span class="k">變現</span><b>APP 訂閱</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="tags"><span class="tag imp2">重要性低</span><span class="tag ip">IP 相符</span><span class="tag prep">可行度低</span></div>
+        <h5>一鍵存下外部推薦</h5>
+        <p>看到社群或影片推薦的餐廳景點，一鍵存入食尚收藏，自動帶入推薦重點與地圖位置。</p>
+        <div class="why">降低收藏摩擦力，同時將外部發現沉澱為食尚的行為資料。</div>
+      </div>
+      <div class="card-foot">
+        <div><span class="k">性質</span><b>全新</b></div>
+        <div><span class="k">來源</span><b class="by">仲芸 C12</b></div>
+        <div><span class="k">變現</span><b>無直接變現</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout quiet" style="margin-top:26px"><b>暫不列入的提案：</b>遊戲化領券機制（搖一搖盲盒抽卡／劉澐 C06、節目關鍵字抓寶／Phoebe C14、點數押金制／EJ C13）機制複雜度高於預期效益，且與成就系統的累積邏輯部分重疊，待護照驗證後再評估。食尚黑卡 VIP（Aileen C02）依賴與名店的個別談判，前置條件重，待會員體系成熟後再評估。B 端提案（商圈策展打包／Jesse B04、離峰導流券／EJ B05、LBS 即期優惠地圖／劉澐 B02、盲盒地圖截擊／Stephen B03、商圈振興聯盟／Aileen B06）屬招商方案設計，與本規劃共用同一批資料，另案處理。</div>
+</section>
+
+<!-- 08 -->
+<section id="s8">
+  <div class="sec-head"><span class="dot b"></span><h2>上線節奏</h2></div>
+  <p class="sec-sub">先做什麼、後做什麼，以及為什麼是這個順序</p>
+
+  <p class="body">不是所有功能都要做，也不是做完才上線。<b>每一次上線都是一小塊可用的東西</b>，使用者當下就拿得到價值，我們當下就看得到數據；成效好再往上疊，成效不好就換方向重試，成本只有這一塊。</p>
+
+  <h3 class="blk">順序怎麼決定</h3>
+  <table>
+    <tr><th style="width:22%">考量</th><th>說明</th></tr>
+    <tr><td><b>重要性</b></td><td>是否直接支撐三支柱與國旅循環。重要性低的項目即使容易做，也不優先。</td></tr>
+    <tr><td><b>可行度</b></td><td>現有系統與內容能否支援。可行度低的項目需要更多前置討論，但重要的仍要及早啟動評估（例如定位）。</td></tr>
+    <tr><td><b>前後依賴</b></td><td>部分項目要等前一項驗證成功才有意義。行程包沒人看，成就系統就不用做；半天與一日遊沒跑通，不會進到多日遊。</td></tr>
+  </table>
+
+  <h3 class="blk">近期：先驗證兩個最關鍵的假設</h3>
+  <p class="body">這兩項用最低成本回答最關鍵的問題——<b>使用者要不要這種包裝、願不願意為了收集而出門</b>。兩項沒過，後面的都不用做。</p>
+  <table>
+    <tr><th style="width:6%">順序</th><th style="width:26%">項目</th><th style="width:30%">使用者拿到什麼</th><th style="width:38%">看什麼數據</th></tr>
+    <tr class="star">
+      <td><b>1</b></td>
+      <td>台北主題行程包 2–3 條</td>
+      <td>拿了就能出門的半日／一日玩法</td>
+      <td>點擊、收藏、停留、行程內店家的券核銷</td>
+    </tr>
+    <tr class="star">
+      <td><b>2</b></td>
+      <td>成就系統 MVP（明信片 4 張＋打卡）</td>
+      <td>去了會留下第一批收集品</td>
+      <td>打卡人數、集滿率、是否帶動行程包點擊</td>
+    </tr>
+  </table>
+
+  <h3 class="blk">中期：把服務動線補完，正式改版</h3>
+  <table>
+    <tr><th style="width:6%">順序</th><th style="width:26%">項目</th><th style="width:30%">使用者拿到什麼</th><th style="width:38%">看什麼數據</th></tr>
+    <tr>
+      <td><b>3</b></td>
+      <td>票夾移至檯面＋到期提醒</td>
+      <td>手上的券不再被埋在「我的」底下</td>
+      <td>領取→兌換率、提醒開啟率</td>
+    </tr>
+    <tr>
+      <td><b>4</b></td>
+      <td>收藏升級</td>
+      <td>收藏池變成可用的想去清單</td>
+      <td>收藏整理率、收藏→到訪轉換</td>
+    </tr>
+    <tr>
+      <td><b>5</b></td>
+      <td>活動節慶行事曆＋情境篩選</td>
+      <td>知道這個週末哪裡有事情發生</td>
+      <td>篩選使用率、行程包二次瀏覽</td>
+    </tr>
+    <tr class="star">
+      <td><b>6</b></td>
+      <td><b>APP 正式改版：玩家護照成為第一頁、報導移至第二頁</b></td>
+      <td>完整的服務動線，APP 從閱讀器變成國旅工具</td>
+      <td>每次瀏覽頁數、來訪頻率、非推播開啟</td>
+    </tr>
+    <tr>
+      <td><b>7</b></td>
+      <td>附近分頁（定位）</td>
+      <td>人在外面時被主動接住</td>
+      <td>定位授權率、附近觸發的核銷與打卡</td>
+    </tr>
+  </table>
+
+  <h3 class="blk">後期：擴充與變現</h3>
+  <p class="body">方向性規劃，實際內容依中期成效調整。</p>
+  <table>
+    <tr><th style="width:6%">順序</th><th style="width:26%">項目</th><th>方向</th></tr>
+    <tr><td><b>8</b></td><td>行程包擴充至多日遊</td><td>半天與一日遊驗證成功後，配合旅宿內容累積進度，擴充 2 天 1 夜並評估訂房平台合作。同步跟著內容佈局往北北基、六都展開</td></tr>
+    <tr><td><b>9</b></td><td>限定成就與檔期合作</td><td>時間限定、品牌合作限定成就上線，對應城市檔期招商</td></tr>
+    <tr><td><b>10</b></td><td>其餘體驗優化</td><td>推播個人化、Widget、省錢週報等，依前期數據決定取捨</td></tr>
+  </table>
+
+  <div class="callout"><b>各項目之間沒有硬性相依。</b>順序可依工程排期與內容準備度調整，唯一的原則是：<b>順序 1 與 2 要先跑</b>，其餘的優先順序依這兩項的數據再決定。體驗優化章節中的項目重要性較低，可在任何階段穿插上線，不佔用主線資源。</div>
+</section>
+
+<!-- 08b -->
+<section id="s8b">
+  <div class="sec-head"><span class="dot p"></span><h2>1.0 → 2.0 改版路徑</h2></div>
+  <p class="sec-sub">功能一塊一塊疊加，介面漸進式過渡</p>
+
+  <p class="body">因為功能是一塊一塊上線，APP 不會一次改版到位。以下規劃四個過渡版本，讓使用者不是某天打開發現全變了，而是每一版多一點。</p>
+
+  <div class="seed">
+    <b>核心作法：收藏分頁就是玩家護照的種子。</b>
+    <p>第一個過渡版直接把「收藏」改名為<b>玩家護照</b>，名稱一次到位、之後不再更改；接著每一版往裡面加一塊——1.1 加明信片、1.2 加票夾、1.3 加「為什麼是現在」。等三個區塊都長齊，2.0 只是把它從第三格搬到第一格。</p>
+    <p><b>導覽列在 1.1 改名一次、2.0 調整位置一次，中間都不動。</b>每一步都可以停：若 1.1 的明信片沒人用，1.2 就不做，導覽列位置也還沒動過，退回成本極低。</p>
+  </div>
+
+  <!-- 1.0 -->
+  <div class="rel">
+    <div class="rel-h"><span class="rv">1.0</span><h4>現況</h4><span class="rn">起點</span></div>
+    <div class="rel-b">
+      <div class="rel-nav">
+        <div class="nvb">
+          <div class="nvi on"><span class="g">🍽</span>首頁</div>
+          <div class="nvi"><span class="g">🎫</span>優惠</div>
+          <div class="nvi"><span class="g">🤍</span>收藏</div>
+          <div class="nvi"><span class="g">🔍</span>熱搜</div>
+          <div class="nvi"><span class="g">👤</span>我的</div>
+        </div>
+        <div class="nvcap">收藏與票夾分散、位置深<br>首頁功能與文章混雜</div>
+      </div>
+      <div class="rel-c">
+        <span class="chg none">導覽列不變</span>
+        <ul>
+          <li>首頁：節目即時看、排行榜、達人地圖、文章流交錯</li>
+          <li>收藏：單一列表，無法整理</li>
+          <li>票夾（口袋清單）藏在「我的」底下</li>
+          <li>熱搜：22 縣市快選、找店家／看報導</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.1 -->
+  <div class="rel">
+    <div class="rel-h"><span class="rv">1.1</span><h4>主題行程包 ＋ 成就系統 MVP</h4><span class="rn">上線順序 1–2</span></div>
+    <div class="rel-b">
+      <div class="rel-nav">
+        <div class="nvb">
+          <div class="nvi on"><span class="g">🍽</span>首頁</div>
+          <div class="nvi"><span class="g">🎫</span>優惠</div>
+          <div class="nvi new"><span class="g">🛂</span>玩家護照</div>
+          <div class="nvi"><span class="g">🔍</span>熱搜</div>
+          <div class="nvi"><span class="g">👤</span>我的</div>
+        </div>
+        <div class="nvcap"><b style="color:var(--plum)">收藏 → 玩家護照</b><br>名稱一次到位，之後不再更改</div>
+      </div>
+      <div class="rel-c">
+        <span class="chg">導覽列：第三格改名</span>
+        <ul>
+          <li><b>首頁</b>新增主題行程包模組（台北 2–3 條），置於節目即時看下方</li>
+          <li><b>玩家護照</b>＝收藏清單＋明信片收藏冊</li>
+          <li>收藏項目可自行標記<b>想去／去過</b>，清單依標記篩選——不用分頁、不依賴定位</li>
+          <li>明信片 4 張埋在行程包沿線，行程包頁標示「這條路線可收集 2 張」</li>
+          <li>打卡採單次前景定位（按按鈕才取用一次）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.2 -->
+  <div class="rel">
+    <div class="rel-h"><span class="rv">1.2</span><h4>票夾歸位</h4><span class="rn">上線順序 3–4</span></div>
+    <div class="rel-b">
+      <div class="rel-nav">
+        <div class="nvb">
+          <div class="nvi on"><span class="g">🍽</span>首頁</div>
+          <div class="nvi"><span class="g">🎫</span>優惠</div>
+          <div class="nvi new"><span class="g">🛂</span>玩家護照</div>
+          <div class="nvi"><span class="g">🔍</span>熱搜</div>
+          <div class="nvi"><span class="g">👤</span>我的</div>
+        </div>
+        <div class="nvcap">導覽列不動<br>玩家護照內容變厚</div>
+      </div>
+      <div class="rel-c">
+        <span class="chg none">導覽列不變</span>
+        <ul>
+          <li>票夾從「我的」搬進<b>玩家護照</b>，依到期日排序、標示可用門市</li>
+          <li>優惠券到期提醒（D+1／D+3）上線</li>
+          <li>收藏升級：分組與自動標籤</li>
+          <li>此時玩家護照已有<b>想去 · 去過 · 票夾</b>三個入口</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1.3 -->
+  <div class="rel">
+    <div class="rel-h"><span class="rv">1.3</span><h4>加上時效性</h4><span class="rn">上線順序 5</span></div>
+    <div class="rel-b">
+      <div class="rel-nav">
+        <div class="nvb">
+          <div class="nvi on"><span class="g">🍽</span>首頁</div>
+          <div class="nvi"><span class="g">🎫</span>優惠</div>
+          <div class="nvi new"><span class="g">🛂</span>玩家護照</div>
+          <div class="nvi"><span class="g">🔍</span>熱搜</div>
+          <div class="nvi"><span class="g">👤</span>我的</div>
+        </div>
+        <div class="nvcap">導覽列不動<br>護照頁三區塊成形</div>
+      </div>
+      <div class="rel-c">
+        <span class="chg none">導覽列不變</span>
+        <ul>
+          <li>玩家護照頂部新增<b>「為什麼是現在」</b>：當期限定理由</li>
+          <li>活動節慶行事曆上線</li>
+          <li>主題行程包加入情境篩選（半天／一天、帶長輩、體力低、雨天可行）</li>
+          <li>至此玩家護照已具備 2.0 的完整三區塊，只是還在第三格</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2.0 -->
+  <div class="rel" style="border-color:var(--coral);border-width:2px">
+    <div class="rel-h" style="background:var(--coral-t);border-bottom-color:#FFDCD1">
+      <span class="rv" style="color:var(--coral)">2.0</span><h4>正式改版</h4><span class="rn">上線順序 6–7</span>
+    </div>
+    <div class="rel-b">
+      <div class="rel-nav">
+        <div class="nvb">
+          <div class="nvi on"><span class="g">🛂</span>玩家護照</div>
+          <div class="nvi new"><span class="g">📰</span>報導</div>
+          <div class="nvi"><span class="g">🎫</span>優惠</div>
+          <div class="nvi new"><span class="g">📍</span>附近</div>
+          <div class="nvi"><span class="g">👤</span>我的</div>
+        </div>
+        <div class="nvcap"><b style="color:var(--coral)">護照升第一格</b>　報導獨立第二格<br>附近取代熱搜，搜尋移至頂部</div>
+      </div>
+      <div class="rel-c">
+        <span class="chg">導覽列：位置調整</span>
+        <ul>
+          <li><b>玩家護照升為第一頁</b>——APP 從閱讀器變成國旅工具</li>
+          <li><b>報導獨立成第二格</b>，文章流不再與功能混雜，版位重整</li>
+          <li><b>附近</b>取代熱搜，含定位：附近收藏過的店、現在能用的券、可完成的成就</li>
+          <li>搜尋移至頂部搜尋列，不佔分頁</li>
+          <li>廣告版位配置一併重新安排</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">關於定位：MVP 打卡與 2.0 附近是兩個量級</h3>
+  <p class="body">1.1 的明信片打卡需要定位，但它與 2.0 附近分頁所需的定位服務差距很大。這一點在評估工程量時需要區分開來。</p>
+  <table>
+    <tr><th style="width:22%">項目</th><th style="width:39%">1.1 打卡</th><th style="width:39%">2.0 附近</th></tr>
+    <tr><td><b>取得方式</b></td><td>按下按鈕才取用一次前景定位</td><td>進入分頁即需定位，可能需常態更新</td></tr>
+    <tr><td><b>需要運算</b></td><td>與預存的 8 組座標比對距離</td><td>即時查詢周邊店家、券與成就</td></tr>
+    <tr><td><b>需要建置</b></td><td>一組地點座標表</td><td>地理索引、周邊搜尋、查詢效能優化</td></tr>
+    <tr><td><b>權限說明</b></td><td>單純：確認你在現場</td><td>複雜：需說服使用者長期授權</td></tr>
+    <tr><td><b>店家資料</b></td><td>只需 8 個地點</td><td>需全量店家座標與審核機制</td></tr>
+  </table>
+  <div class="callout"><b>MVP 的定位配套：</b>主要方式為單次前景定位；若未授權或定位失敗，提供現場 QR 掃描作為替代（僅在有合作的店家佈點）。<b>最小備案</b>：若單次定位無法排入首批排期，可先以「行程包走完後手動標記領取」上線——無法防偽，但仍能驗證使用者的出門意願，數據需標註為未驗證。</div>
+
+  <div class="callout quiet"><b>為什麼成就系統與主題行程包要一起推：</b>行程包提供出門的理由，明信片提供出門的獎勵，兩者互為因果。只有行程包，使用者看完覺得不錯就關掉；只有明信片，使用者不知道要去哪裡拿。合在一起才能回答關鍵問題——<b>使用者願不願意為了收集而走這一趟</b>。</div>
+</section>
+
+<!-- 09 -->
+<section id="s9">
+  <div class="sec-head"><span class="dot s"></span><h2>內容佈局與維護</h2></div>
+  <p class="sec-sub">主題行程包與成就要先做深哪一區，以及如何維持時效</p>
+
+  <p class="body">城市玩家已於 2026 年 6 月 30 日上線，22 縣市內容全數開通。此處規劃的是<b>主題行程包、成就與店家 BD 的投放先後</b>——在資源有限的前提下，先把一個區域做深，跑通後複製。</p>
+
+  <div class="steps">
+    <div class="step now"><div class="s-no">STEP 1</div><div class="s-n">台北</div><div class="s-s">從最有把握的地方開始</div></div>
+    <div class="step"><div class="s-no">STEP 2</div><div class="s-n">北北基</div><div class="s-s">TA 主要生活圈</div></div>
+    <div class="step"><div class="s-no">STEP 3</div><div class="s-n">六都</div><div class="s-s">複製第一套流程</div></div>
+    <div class="step"><div class="s-no">STEP 4</div><div class="s-n">北部其餘</div><div class="s-s">桃竹宜</div></div>
+    <div class="step"><div class="s-no">STEP 5</div><div class="s-n">中部</div><div class="s-s">山林 × 南投主題已驗證</div></div>
+    <div class="step"><div class="s-no">STEP 6</div><div class="s-n">南部</div><div class="s-s">依店家與券密度推進</div></div>
+    <div class="step late"><div class="s-no">STEP 7</div><div class="s-n">東部／離島</div><div class="s-s">深度經營最後，成就提前露出</div></div>
+  </div>
+
+  <h3 class="blk">為什麼從台北開始</h3>
+  <table>
+    <tr><th style="width:30%">理由</th><th>說明</th></tr>
+    <tr><td><b>TA 最集中</b></td><td>北北基桃竹占 65%，第一批使用者密度最高，回饋速度最快。</td></tr>
+    <tr><td><b>編輯最熟悉</b></td><td>台北是編輯部內容深度最足的區域，行程包設計、地點選擇、店家資料補齊的品質最有保障。</td></tr>
+    <tr><td><b>從最簡單的一步開始</b></td><td>先在最有把握的區域跑通完整流程，建立可複製的樣板，再往其他縣市推進。這與動腦會議「集中兵力、逐個商圈擊破」為同一邏輯，層級由商圈提升至縣市。<b class="by">（Stephen C03／B03）</b></td></tr>
+  </table>
+
+  <div class="callout"><b>國旅不等於跨縣市。</b>TA 有 88.7% 為短天數出遊、61.2% 平時就在留意旅遊資訊、出遊時才整理。他們的困難不在於沒有時間出遠門，而在於平時累積的資訊沒有地方存放、臨時要用時分散各處（42.5% 反映資訊太分散、平均跨 3.1 個平台）。玩家護照解決的正是這件事——平時看到就收進去，要出門時已經整理完成。半天的行程同樣適用。</div>
+
+  <div class="callout quiet"><b>東部與離島的提前處理：</b>「海岸海島 × 澎湖／花蓮」是控制居住地後仍成立的城市主題，具備明確的吸引力。建議不等深度經營，先以限定成就與收集品輕量露出——不需店家資料完整即可執行。</div>
+
+  <h3 class="blk">時效性的維護機制</h3>
+  <p class="body">推薦「這個月能去的」，同時解決了動機與信任兩個問題；反過來說，如果推薦的是已經結束的活動，就直接踩在第二大困擾上（資訊過時 58.2%、過期活動使 32.9% 降低信任或停用）。因此時效性是主題行程包能否成立的前提。</p>
+  <p class="body">城市玩家上線的過程累積了寶貴經驗：整合頁上線前後，編輯團隊投入大量心力逐一確認各縣市活動，才讓內容如期到位。這份投入證明了內容端對品質的重視，也讓我們看清楚——<b>要讓時效性長期穩定，需要把它變成制度，而不是仰賴每次上線前的集中衝刺</b>。以下機制建議與內容端一起討論定案：</p>
+  <table>
+    <tr><th style="width:20%">層次</th><th>做法</th></tr>
+    <tr><td><b>資料</b></td><td>主題行程、活動、限定成就皆帶有效期限欄位，到期自動下架而非灰階保留。</td></tr>
+    <tr><td><b>流程</b></td><td>主題行程改為按月常態排程（例如每月固定產出 4–6 條、提前一個月備稿），讓內容產製可預期、可分工。</td></tr>
+    <tr><td><b>提醒</b></td><td>系統於到期前自動通知負責編輯確認延續或下架，降低人工盤點成本。</td></tr>
+  </table>
+  <div class="callout"><b>這是產品與內容的共同課題。</b>產品端提供機制與工具讓維護成本降到最低，內容端提供判斷與策展能力——兩邊一起把時效性做成可長期運作的常態。這也是 APP 改版、WEB 後續優化都會沿用的合作模式。</div>
+</section>
+<!-- 10 -->
+<section id="s10">
+  <div class="sec-head"><span class="dot s"></span><h2>成效目標</h2></div>
+  <p class="sec-sub">以使用者互動與回訪為衡量核心，不追求 PV</p>
+  <div class="callout" style="margin-bottom:24px"><b>指標隨上線順序分階段生效：</b>順序 1–2 先看主題行程包的點擊、收藏與第一批打卡；順序 3–5 看優惠券兌換率與收集完成率；順序 6 正式改版後護照循環完整，才開始以北極星指標衡量整體成效。前期不要求後期指標達標。</div>
+
+  <div class="northstar">
+    <div class="k">North Star Metric</div>
+    <p class="v">完成一次國旅行程的人數</p>
+    <p class="sub">以完成成就作為衡量方式——成就的取得條件是實地打卡或核銷，代表使用者確實照著推薦出門走了一趟。<b>進階目標為單月完成 2 個以上成就</b>，代表這不是單次偶發行為，而是持續在使用護照安排出遊。在自己的縣市完成同樣成立，這正是 TA 實際的出遊型態（88.7% 為短天數出遊），也是「推廣國旅」最直接的證明。</p>
+  </div>
+
+  <h3 class="blk">① 護照使用：使用者真的走出去了</h3>
+  <table>
+    <tr><th style="width:44%">指標</th><th style="width:26%">現況</th><th style="width:30%">12 個月目標</th></tr>
+    <tr class="star"><td><b>月完成成就人數</b>（北極星）</td><td>全新</td><td class="tgt">MAU 的 15%</td></tr>
+    <tr class="star"><td><b>單月完成 2 個以上成就的人數</b></td><td>全新</td><td class="tgt">完成成就人數的 30%</td></tr>
+    <tr><td>人均月打卡／核銷次數</td><td>全新</td><td class="tgt">2.5 次</td></tr>
+    <tr><td>收集品持有人數（累積至少 1 件）</td><td>全新</td><td class="tgt">上線後建立基準</td></tr>
+    <tr><td>收藏 → 實際到訪轉換率</td><td>尚未追蹤</td><td class="tgt">建立基準後設定</td></tr>
+  </table>
+  <p class="src">擴散指標：人均造訪縣市數、跨縣市完成成就占比——用於觀察護照是否帶動使用者向外探索，先建立基準再設目標。</p>
+
+  <h3 class="blk">② 互動與回訪：使用者會回來</h3>
+  <table>
+    <tr><th style="width:44%">指標</th><th style="width:26%">現況</th><th style="width:30%">12 個月目標</th></tr>
+    <tr><td>每次瀏覽頁數</td><td>1.87 頁</td><td class="tgt">3.0 頁</td></tr>
+    <tr><td>每人每月來訪次數</td><td>7.35 次</td><td class="tgt">10 次</td></tr>
+    <tr><td>APP MAU</td><td>15.5 萬</td><td class="tgt">25 萬</td></tr>
+    <tr><td>月均新增下載</td><td>6,468（YoY −39.3%）</td><td class="tgt">10,000</td></tr>
+    <tr><td>優惠券領取 → 兌換率</td><td>19.5%</td><td class="tgt">30%</td></tr>
+    <tr><td>領一張券後未再回流的會員占比</td><td>47.5%</td><td class="tgt">降至 35%</td></tr>
+    <tr><td>非推播開啟占比</td><td>尚未追蹤</td><td class="tgt">建立基準</td></tr>
+  </table>
+  <p class="src">每次瀏覽頁數 2024 年為 2.83 頁，3.0 頁為回復並超越前一年水準；月均下載 2024 年為 10,653，目標為止跌回穩。</p>
+
+  <h3 class="blk">③ 市場位置：外界認得食尚是旅遊服務</h3>
+  <table>
+    <tr><th style="width:44%">指標</th><th style="width:26%">現況</th><th style="width:30%">12 個月目標</th></tr>
+    <tr><td>iOS 次分類</td><td>未設為旅遊</td><td class="tgt">設為旅遊</td></tr>
+    <tr><td>Google Play 標記（上限 5 個）</td><td>待盤點</td><td class="tgt">至少 3 個為旅遊相關</td></tr>
+    <tr><td>旅遊相關關鍵字搜尋排名</td><td>尚未追蹤</td><td class="tgt">建立基準後設定</td></tr>
+    <tr><td>城市檔期招商或外部合作檔數</td><td>0</td><td class="tgt">每季 3 檔</td></tr>
+  </table>
+  <div class="callout warn"><b>關於商店分類，需先釐清一件事：</b>iOS 可同時設定主分類與次分類，但依 Apple 說明，App 不會被列在<b>次分類的排行榜</b>中，只會出現在該分類的搜尋結果。因此設定次分類為旅遊能提升旅遊相關搜尋的曝光，但不會讓我們進入旅遊類榜單。Google Play 則只有單一類別，替代作法是最多五個標記。</div>
+  <div class="callout quiet"><b>主分類是否轉為旅遊，列為後續評估、不納入本階段目標。</b>這是一個需要單獨討論的取捨：美食佳飲是天天發生的需求，榜單關注度未必低於旅遊；兩個類別也都有量體龐大的對手（美食佳飲有 Uber Eats 等外送平台，旅遊有 OTA 與行程規劃 App）。要換榜之前，需先比較兩邊的實際流量價值與競爭密度，不宜以「看起來比較像旅遊 App」為理由決定。</div>
+
+  <div class="callout"><b>埋點需求：</b>打卡、成就完成、收藏轉換、非推播開啟等指標目前尚未追蹤，需納入 GA4 事件規格。建議與現行 V3 格式遷移一併規劃，於首批功能上線前完成。</div>
+</section>
+
+<footer>
+  食尚玩家 數位事業部｜國旅第一服務平台 產品策略＋規劃 v11.0｜2026.08<br>
+  資料來源：2026 數位事業部三年計畫、食尚玩家三年計畫、城市玩家國旅需求調查（N=815，清洗後樣本）、2025 產品成效分析報告、獨家優惠券活動分析報告、優惠券平台市場研究報告、食尚產品動腦會議服務提案表、城市玩家 × 2026 旅宿大賞連動規劃
+</footer>
+
+</div>
+<script>
+(function(){
+  document.body.classList.add('has-sb');
+  var sb=document.getElementById('sidebar'), bt=document.getElementById('sbToggle');
+  bt.addEventListener('click',function(){
+    var off=sb.classList.toggle('hide');
+    bt.classList.toggle('hide',off);
+    document.body.classList.toggle('sb-off',off);
+    bt.textContent=off?'›':'‹';
+  });
+  var links=[].slice.call(sb.querySelectorAll('a:not(.sb-top)'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var y=window.scrollY+140, cur=0;
+    secs.forEach(function(el,i){ if(el&&el.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>
