@@ -12,8 +12,17 @@
 | `proposal.html` | 國旅第一服務平台　APP 2.0 改版提案 | v3.1 | 2026.10 |
 | `strategy.html` | 國旅第一服務平台　產品策略＋規劃 | v16.1 | 2026.10 |
 | `achievements.html` | 玩家護照 Hook／Gamification 設計 | v3.1 | 2026.10 |
+| `passport-poc-mvp.html` | 玩家護照｜聖誕點燈 POC × MVP Scope & Timeline | v7 | 2026.10 |
 
 ## 版本紀錄
+
+**2026.10.08　聖誕點燈 POC 提案 v7（passport-poc-mvp）**
+
+- 新增 App 畫面示意（景點清單／任務頁）、分享卡、創作者聯名、完成禮明信片示意圖
+- 24 點清單重排：北 10（北北基 7 點）、中 6、南 6、東 2，北部玩家在附近就能先亮半棵
+- 成功指標加入「參與率＝完成第 1 點 ÷ App MAU」，分成「會不會來玩」與「玩了會不會繼續」兩層
+- 新增「風險與因應」章節：時程、點位資料、App 與 GPS、樣本數
+- 下一步卡片改版；玩家護照僅在 App 提供，不做 Web
 
 
 **2026.10　主管回饋後節奏更新（strategy v16.1、proposal v3.1、achievements v3.1）**
