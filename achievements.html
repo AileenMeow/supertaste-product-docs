@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>食尚玩家｜成就系統設計規格（C＋A 整合）</title>
+<title>食尚玩家｜玩家護照 Hook／Gamification 設計規格</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -383,14 +383,14 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <header>
   <a href="index.html" class="backlink"><em>←</em>產品文件目錄</a>
-  <div class="pill">成就系統　·　設計規格</div>
-  <h1>玩家護照 成就系統<br>縣市任務 ＋ 主題徽章 整合設計</h1>
-  <p class="lede">「玩過的留下痕跡」這根支柱的落地規格。取得方式已定案：<b>縣市任務蓋章（地理軸）＋ 主題徽章（主題軸）兩層整合</b>，底層共用同一份任務池。本文件說明兩層的關係、認定規則、畫面結構與社群分享設計。</p>
+  <div class="pill">玩家護照　·　Hook / Gamification 規格</div>
+  <h1>玩家護照 Hook 設計<br>點亮・收藏・分享・Benefit</h1>
+  <p class="lede">本文件由原「成就系統定案」調整為<b>Hook 候選機制與驗證規格</b>。縣市任務＋主題徽章仍保留為完整產品 Blueprint，但先用「聖誕點燈」POC 驗證：什麼會讓使用者完成第一個任務後，還想完成第二個。</p>
   <div class="meta">
-    <span class="chip"><b>2026.09</b>　v2.0</span>
+    <span class="chip"><b>2026.10</b>　v3.1</span>
     <span class="chip"><b>PM Aileen</b>　數位產品</span>
-    <span class="chip"><b>上線順序 2</b>　成就系統 MVP</span>
-    <span class="chip"><b>對應</b>　產品策略 v15.0 第 6 章</span>
+    <span class="chip"><b>近期</b>　聖誕點燈 POC ＋ MVP v1</span>
+    <span class="chip"><b>對應</b>　產品策略 v16.1</span>
   </div>
 
   <nav class="toc">
@@ -398,7 +398,8 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
     <ol>
       <li><a href="#s0">整合結構：一份任務池，兩種收集</a></li>
       <li><a href="#s1">共用呈現層</a></li>
-      <li><a href="#s2">第一版畫面構想：首頁、玩家護照、活動懶人包</a></li>
+      <li><a href="#spoc">聖誕點燈：最小核心循環</a></li>
+      <li><a href="#s2">完整產品畫面 Blueprint：首頁、玩家護照、活動懶人包</a></li>
       <li><a href="#sc">第一層　縣市任務與蓋章</a></li>
       <li><a href="#sa">第二層　主題徽章</a></li>
       <li><a href="#sr">規則總表：認定、計數、階梯、期間限定</a></li>
@@ -412,45 +413,22 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 
 <section id="s0" style="padding-top:56px">
-  <div class="sec-head"><span class="dot"></span><h2>整合結構：一份任務池，兩種收集</h2></div>
-  <p class="sec-sub">先講清楚兩層的關係，後面的規則才成立</p>
+  <div class="sec-head"><span class="dot"></span><h2>設計狀態：完整 Blueprint，不等於第一版 Scope</h2></div>
+  <p class="sec-sub">先驗證 Hook，再決定縣市任務與主題徽章要以什麼深度進正式 MVP</p>
 
-  <p class="big">底層只有一份資料：22 縣市任務池。蓋章與徽章是它的兩種讀法，不是兩組內容。</p>
+  <div class="callout warn"><b>2026.10 更新：</b>9/30 與年度計畫討論後，「縣市任務蓋章＋主題徽章」不再標示為已定案 MVP。真正要先證明的是：<b>使用者為什麼會想再完成下一個？</b></div>
 
-  <p class="body">每一項任務掛三個標籤——<b>縣市</b>、<b>類型</b>、<b>認定方式</b>。編輯部只維護這一份清單，產品端用不同方式讀它：按縣市讀，就是蓋章；按類型跨縣市讀，就是徽章。</p>
+  <p class="big">長期核心不變：讓每一次出門都留下痕跡，慢慢把自己的台灣填滿。</p>
+  <p class="body">下面既有的 22 縣市任務池、縣市點亮、主題徽章、稀有度與分享卡規格都保留，因為它們是未來 Scale 可直接使用的設計資產；正式 MVP v1 與 POC 同步規劃；POC 行為數據用來校正點亮、收藏、分享與 Benefit 的深度。</p>
 
   <table>
-    <tr><th style="width:16%">層</th><th style="width:16%">收集軸</th><th style="width:16%">單位</th><th style="width:22%">怎麼取得</th><th>入口</th></tr>
-    <tr class="star"><td><b>第一層<br>縣市任務</b></td><td>地理<br><span class="by">去過哪裡</span></td><td><b>章</b><br><span class="by">stamp</span></td><td>完成清單上任一項任務，該縣市蓋一個章。累積 3 項點亮該縣市</td><td>玩家護照 › 22 縣市足跡 › 點進單一縣市</td></tr>
-    <tr class="star"><td><b>第二層<br>主題徽章</b></td><td>主題<br><span class="by">玩過什麼</span></td><td><b>徽章</b><br><span class="by">badge／稱號</span></td><td>同一批任務，用「類型＋數量」跨縣市篩選。達標掙到一個稱號</td><td>玩家護照 › 成就 › 徽章牆</td></tr>
+    <tr><th style="width:20%">層級</th><th style="width:28%">候選 Hook</th><th>目前狀態</th></tr>
+    <tr class="star"><td><b>核心</b></td><td>任務完成／足跡／點亮</td><td>「聖誕點燈」優先驗證。要看完成第一點後是否願意繼續。</td></tr>
+    <tr class="star"><td><b>社群</b></td><td>成果卡／進度分享</td><td>POC 納入。不是只看產出數，也看回流與再次完成。</td></tr>
+    <tr><td><b>收藏</b></td><td>主題徽章／城市特色物／稀有度</td><td>候選。若能顯著提高第二次完成，才進正式 MVP 核心。</td></tr>
+    <tr><td><b>加速器</b></td><td>IP／創作者合作</td><td>候選。可降低從零建立收藏認同的成本，但不作為 POC 必要前置。</td></tr>
+    <tr><td><b>Benefit</b></td><td>優惠、實體小物、品牌合作</td><td>Secondary Hook。可以提高當下完成，但不能讓產品退化成純抽獎／兌獎活動。</td></tr>
   </table>
-
-  <div class="callout plum"><b>核心原則：徽章的條件項全部來自縣市任務清單，不存在清單外的孤兒項目。</b><br>徽章不是第二組要另外策展的內容，而是<b>對任務池的一組查詢條件</b>。「夜市王」＝篩出踩點類中子類為夜市的任務，完成 20 項；「火鍋達人」＝篩出美食類中子類為火鍋的任務，完成 12 項。條件由產品端定義，內容由編輯部一次供應。</div>
-
-  <h3 class="blk">這個結構帶來三件事</h3>
-  <table>
-    <tr><th style="width:24%">結果</th><th>說明</th></tr>
-    <tr><td><b>內容成本不加倍</b></td><td>原本兩套機制要兩份內容（22 份縣市清單 ＋ 一組徽章條件與對應地點）。整合後編輯部只做 22 份清單，徽章是產品端寫規則長出來的，新增一枚徽章的邊際成本接近零。</td></tr>
-    <tr><td><b>一個行為推兩條進度</b></td><td>在台南花園夜市核銷一次：台南的章 +1（往點燈推進），夜市王的進度 +1（往稱號推進）。使用者做一件事看到兩個地方前進，這是整合最直接的體感差異。</td></tr>
-    <tr class="star"><td><b>兩個入口都成立</b></td><td>訪談六位中五位是<b>主題先決</b>（先被主題吸引，地點其次），但點燈與環島是<b>地理先決</b>。單做一層就會丟掉另一半使用者。整合後從縣市進來的人看到「這裡有什麼可以做」，從主題進來的人看到「這個稱號還差哪幾個縣市」，互相導流。</td></tr>
-  </table>
-
-  <h3 class="blk">名詞定義</h3>
-  <p class="body">章與徽章在中文裡都叫「章」，這是最容易在跨部門討論中出錯的地方，文件與 UI 文案一律照下表使用。</p>
-  <div class="dual">
-    <div class="dcard trace-k">
-      <div class="dk">STAMP</div>
-      <h5>章</h5>
-      <p><b>地點的證明。</b>完成一項縣市任務就蓋一個，章面上帶地點名與完成日期。視覺為印章質感、單色、帶邊框。收在各縣市的任務清單頁上。</p>
-    </div>
-    <div class="dcard cert-k">
-      <div class="dk">BADGE</div>
-      <h5>徽章</h5>
-      <p><b>主題的成就。</b>集滿一組同類型任務才掙到一枚，代表一個稱號。視覺為金屬質感、彩色、圓形。收在徽章牆上，是分享與周邊的載體。</p>
-    </div>
-  </div>
-
-  <div class="callout warn"><b>這個結構要回答的問題沒有變：使用者願不願意為了收集而出門？</b>整合降低的是內容成本，不是這個假設的風險。若上線後完成人數與人均完成數都偏低，處理方式仍是停掉成就系統、把資源轉往主題行程包本身，而不是再加一層收集（見第 8 節）。</div>
 </section>
 
 <section id="s1">
@@ -487,6 +465,36 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
 
   <div class="callout warn"><b>環島是結果，不是計畫。</b>縣市足跡地圖天然構成一個環島進度，但<b>不要求使用者事先宣告或規劃環島</b>——訪談顯示使用者進來時多半沒有目的地，也不想做前置規劃，一開始就要填一張計畫表會直接勸退。正確作法是默默替他累積：今天在某地完成一項任務，進度就往前一格；他哪天發現自己已經走了 9／22，才第一次意識到可以把它走完。<br>至於「怎麼環島」——單車環島、全程大眾運輸、幾天內完成——不做成計畫欄位，做成<b>成就的變體</b>：同一張地圖、不同的走法解鎖不同的章。成本從「開發一套計畫管理系統」降到「多幾筆成就定義」。</div>
 </section>
+<section id="spoc">
+  <div class="sec-head"><span class="dot b"></span><h2>聖誕點燈：第一個最小核心循環</h2></div>
+  <p class="sec-sub">不用完整 22 縣市，也能先回答「會不會玩第二次」</p>
+  <div class="flow">
+    <div class="fs"><div class="fn">01</div><div class="ft">看到「聖誕點燈」</div><div class="fd">用聖誕燈飾／節慶點位降低第一次啟動成本</div></div>
+    <div class="fs"><div class="fn">02</div><div class="ft">完成第一點</div><div class="fd">GPS／既有可行方式完成認定</div></div>
+    <div class="fs"><div class="fn">03</div><div class="ft">點亮／得到結果</div><div class="fd">讓完成不是只有「打卡成功」</div></div>
+    <div class="fs"><div class="fn">04</div><div class="ft">生成成果卡</div><div class="fd">讓使用者有值得曬的個人成果</div></div>
+    <div class="fs"><div class="fn">05</div><div class="ft">去完成第二點</div><div class="fd">這一步是否發生，就是 Hook 是否成立</div></div>
+  </div>
+  <div class="callout"><b>Primary Metric：</b>完成第 1 點後，再完成第 2 點的比例。IP、貼紙、明信片、優惠等可做變因或加速器，但不能取代這個核心循環。</div>
+
+  <h3 class="blk">POC 成功後：常駐主線 ＋ 期間限定</h3>
+  <div class="dual">
+    <div class="dcard trace-k"><div class="dk">ALWAYS-ON</div><h5>🗺️ 22 縣市環島任務</h5><p><b>長期進度。</b>完成各地任務、留下足跡、慢慢把自己的台灣填滿。這是真正玩家護照的常駐精神。</p></div>
+    <div class="dcard cert-k"><div class="dk">SEASONAL</div><h5>🎉 期間限定主題</h5><p><b>短期回來理由。</b>用節慶與大型事件定期換題目，讓使用者即使長期地圖還沒走完，也有「現在就想再打開一次」的理由。</p></div>
+  </div>
+  <div class="callout plum"><b>產品一句話：</b>22 縣市是長期進度，期間限定主題是短期回來理由。</div>
+
+  <h3 class="blk">期間限定只先舉幾個例子</h3>
+  <table>
+    <tr><th style="width:27%">主題</th><th>簡單玩法</th></tr>
+    <tr class="star"><td><b>🎄 聖誕點燈</b></td><td>走訪聖誕燈飾／節慶點位，把自己的聖誕地圖點亮。</td></tr>
+    <tr><td><b>🧧 新春開運巡禮</b></td><td>拜訪不同祈福主題的宮廟，例如媽祖、關聖帝君、觀音、月老、財神；完成整套可串合作宮廟限定完成禮。</td></tr>
+    <tr><td><b>🛕 媽祖繞境</b></td><td>配合大型年度宗教節慶做限定路線、踩點或收藏。</td></tr>
+    <tr><td><b>🎆 夏日煙花</b></td><td>串連夏季煙火活動，形成跨城市的限定足跡與分享成果。</td></tr>
+  </table>
+  <p class="body" style="font-size:13.5px;margin-top:12px">合作獎勵先寫成「<b>合作宮廟限定完成禮</b>」即可，例如限定紀念卡、數位御守、聯名紀念章等；實際品項與宮廟名稱等 BD／合作確認後再定，不在產品規格先承諾。</p>
+</section>
+
 <section id="s2">
   <div class="sec-head"><span class="dot s"></span><h2>第一版畫面構想</h2></div>
   <p class="sec-sub">成就系統要放在哪裡、旁邊接什麼</p>
@@ -989,8 +997,7 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
   <div class="flow">
     <div class="fs"><div class="fn">STEP 01</div><div class="ft">看到徽章牆</div><div class="fd">在玩家護照的成就切頁看到一整面徽章，多數是灰的，知道有東西可以掙</div></div>
     <div class="fs"><div class="fn">STEP 02</div><div class="ft">挑一個稱號</div><div class="fd">被「夜市王」三個字吸引，點開看到銅銀金三階與還差幾項</div></div>
-    <div class="fs"><div class="fn">STEP 03</div><div class="ft">看到哪裡可以完成</div><div class="fd">徽章頁列出還沒完成的任務與所在縣市，挑一個順路的</div></div>
-    <div class="fs"><div class="fn">STEP 04</div><div class="ft">出門完成</div><div class="fd">核銷或打卡，徽章進度 +1，該縣市的章同時 +1</div></div>
+    <div class="fs"><div class="fn">STEP 03</div><div class="ft">看到哪裡可以完成</div><div class="fd">徽章頁列出還沒完成的任務與所在縣市，挑一個順路的</div></div>    <div class="fs"><div class="fn">STEP 04</div><div class="ft">出門完成</div><div class="fd">核銷或打卡，徽章進度 +1，該縣市的章同時 +1</div></div>
     <div class="fs"><div class="fn">STEP 05</div><div class="ft">升階或換一枚</div><div class="fd">升到銀階，或回牆上看哪一枚只差一項——回到 STEP 02</div></div>
   </div>
 
@@ -1186,106 +1193,63 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--line);font-si
 
 <section id="s5">
   <div class="sec-head"><span class="dot m"></span><h2>成效指標</h2></div>
-  <p class="sec-sub">判斷「使用者願不願意為了收集而出門」</p>
+  <p class="sec-sub">先判斷 Hook 是否成立，再判斷哪一層值得進正式 MVP</p>
 
-  <p class="body">兩層整合後指標仍是同一組，但需要分開看蓋章與徽章的表現——若徽章的完成貢獻接近零，代表主題軸沒有加值，第二版可收斂回單層，把資源放回縣市清單的深度。</p>
+  <h3 class="blk">聖誕點燈 POC</h3>
   <table>
-    <tr><th style="width:34%">指標</th><th style="width:36%">說明</th><th style="width:30%">初期目標</th></tr>
-    <tr class="star"><td><b>完成人數</b></td><td>至少完成 1 項任務的人</td><td>上線後建立基準</td></tr>
-    <tr><td>人均完成數</td><td>有完成的人平均做了幾項任務</td><td>2 項以上</td></tr>
-    <tr class="star"><td><b>點燈人數與人均點燈數</b></td><td>點亮至少 1 個縣市的人、平均點亮幾個</td><td>建立基準</td></tr>
-    <tr class="star"><td><b>徽章取得人數</b></td><td>掙到至少 1 枚徽章（銅階以上）的人</td><td>建立基準</td></tr>
-    <tr><td>銅階達成率</td><td>有完成任務的人裡，掙到任一銅階的比例</td><td><b>50% 以上</b><br><span class="by">低於此代表銅階門檻訂太高</span></td></tr>
-    <tr><td>徽章導入的完成占比</td><td>從徽章頁點進任務後完成的比例，對照從縣市頁進入的</td><td>判斷主題軸是否有加值</td></tr>
-    <tr><td>由行程包導入的完成占比</td><td>驗證行程包與護照的連動是否有效</td><td>建立基準</td></tr>
-    <tr><td>完成後 7 日內回訪率</td><td>收集是否真的帶來回訪</td><td>高於未完成者</td></tr>
-    <tr class="star"><td><b>完成首項任務者的註冊率</b></td><td>護照是會員註冊的主要入口，這項看它有沒有真的轉成會員</td><td>建立基準</td></tr>
-    <tr class="star"><td><b>分享卡產出數與回流數</b></td><td>站外擴散的唯一出口。產出數看意願，回流數看成效</td><td>建立基準</td></tr>
-    <tr><td>核銷型任務完成數</td><td>對店家招商時唯一有說服力的數據</td><td>建立基準</td></tr>
+    <tr><th style="width:35%">指標</th><th>判讀</th></tr>
+    <tr class="star"><td><b>第 1 點 → 第 2 點完成率</b></td><td>Primary Metric。完成後有沒有自然想繼續。</td></tr>
+    <tr><td>首點完成率</td><td>認定流程是否太難、活動點位是否合理。</td></tr>
+    <tr><td>點亮／收藏結果頁互動</td><td>使用者有沒有在意「我得到什麼」。</td></tr>
+    <tr><td>成果卡產出／分享率</td><td>是否具有社群炫耀／紀念價值。</td></tr>
+    <tr><td>分享回流＋7–14 日回訪</td><td>是否超越單次檔期使用。</td></tr>
   </table>
 
-  <div class="callout"><b>如果數據不佳：</b>完成人數與人均完成數都偏低，代表收集機制對食尚的受眾沒有吸引力。此時不應再加一層收集或換一種玩法，而是<b>停掉成就系統、把資源轉往主題行程包本身</b>——兩層共用同一個假設，一層沒過，另一層也不會過。</div>
-
-  <div class="callout warn"><b>埋點需求要在首批功能上線前完成規格。</b>任務完成（以任務為單位發一次）、縣市點燈、徽章升階、徽章頁瀏覽、由徽章頁導入任務、由行程包導入任務、分享卡產出、分享卡回流——這些事件需納入 GA4 規格。<b>完成事件只發一次</b>，縣市與徽章進度都是衍生計算，不可各發一次（見第 6 節末）。</div>
+  <h3 class="blk">正式 MVP / Scale</h3>
+  <p class="body">既有的完成人數、人均完成數、縣市點燈、徽章取得、分享回流、會員註冊與核銷等指標保留，但只在相對應功能真正進 scope 後生效。<b>不再要求第一個 POC 同時證明完整成就系統。</b></p>
+  <div class="callout warn"><b>決策原則：</b>若第二次完成低，先調整 Hook／任務／成果，而不是直接擴充更多徽章；若點亮有效但徽章貢獻低，正式 MVP 可先做單層；若 Benefit 明顯提升完成率，再評估 Location-based promotion 是否提前。</div>
 </section>
 
 <section id="s6">
-  <div class="sec-head"><span class="dot"></span><h2>商務延伸：IP 聯名與實體周邊</h2></div>
-  <p class="sec-sub">收集品可販售的部分：徽章優先</p>
+  <div class="sec-head"><span class="dot"></span><h2>Hook 加速器與商務延伸</h2></div>
+  <p class="sec-sub">IP／Benefit 先用來強化產品，再延伸成「資源前線」的商業能力</p>
 
-  <p class="body">收集品本身就是可販售的規格。蓋章與徽章都可以做期間限定的 IP 聯名版本，對應產品策略中「品牌合作限定成就」這一類。本節說明合作結構與可談的商機。</p>
+  <h3 class="blk">IP／創作者：從「後續聯名」提升為 Hook 候選</h3>
+  <p class="body">既有 IP 的價值不只在授權與周邊，而是它本身已有收藏認同與社群語言。若自有數位徽章吸引力不足，可以優先評估中小型 IP／創作者合作，以較低養成成本測試「有辨識度的收藏物」是否提高任務完成與分享。</p>
+  <div class="callout warn"><b>但不把 IP 變成 MVP 前置條件。</b>授權成本與談判時程都可能拖慢上線；「聖誕點燈」即使沒有 IP 也應能 run。IP 是加速器，不是產品存在的唯一理由。</div>
 
-  <div class="callout warn"><b>主從關係先定義清楚：</b>常駐型收集品一律使用<b>食尚自有角色</b>，貫穿 22 縣市，作為長期累積的品牌資產；<b>外部 IP 只用於期間限定聯名，不取代主體</b>。兩個理由——自有角色的價值隨時間累積且不會因合約到期歸零；IP 授權談判週期長，主體綁上就會拖累上線時程。<b>IP 談判不得成為 MVP 上線的前置條件。</b></div>
+  <h3 class="blk">Location-based Benefit：有用，但要服務核心循環</h3>
+  <p class="body">優惠、貼紙／明信片、限定兌換、連鎖品牌合作等都可以提高當下完成率，尤其適合作為 POC 的 Secondary Hook；但誘因必須回到「完成這趟／這張地圖」的動機，避免產品最後只剩抽獎或兌獎。</p>
 
-  <h3 class="blk">合作結構</h3>
+  <h3 class="blk">商務商品化：資源前線</h3>
+  <p class="body">當玩家護照開始知道使用者已完成哪些城市／主題、接下來可能去哪裡，就能形成傳統廣告較難取得的「正在旅行／準備旅行」情境。未來可把品牌提供的商品、優惠或預算放進任務旅程，形成<b>城市 × 任務 × 內容 × Benefit × 品牌</b>的廣告／合作提案。</p>
   <table>
-    <tr><th style="width:20%">項目</th><th>內容</th></tr>
-    <tr><td><b>授權條件</b></td><td>爭取<b>零預付授權金（無保底）</b>，改以營收拆分。合作期間建議一年期，附續約優先權與達標自動延長條款。先談三年對方通常不會給，且我方尚未驗證使用者是否接受收集機制。</td></tr>
-    <tr><td><b>首選對象</b></td><td><b>旅行青蛙（旅かえる）。</b>玩法核心與本功能高度一致——使用者出門，帶回一個只有那裡才拿得到的紀念。受眾輪廓偏熟齡懷舊向，與食尚主要 TA（30–50 代占 81.3%）重疊；也與三年計畫「台灣 80%／日文 20%」的定位、以及國旅受眾中對日本旅遊高度關注的族群相接（三年計畫：台灣出境約 1,894 萬人次，赴日約 673 萬人次、占 35%），可同時服務國旅與後續日本旅遊擴充。</td></tr>
-    <tr><td><b>對方誘因</b></td><td>透過台灣國旅場景取得新的市場曝光與新受眾接觸點，且無需前期投入。</td></tr>
-    <tr><td><b>我方投入</b></td><td>內容製作、資料架構、行銷資源與通路曝光。</td></tr>
-    <tr><td><b>備案</b></td><td><b>台灣自有中小型原創 IP</b>（如咖波等）。同一套零預付＋拆分邏輯適用，且彈性更高——可同時與多家洽談，不同縣市或檔期搭配不同 IP，形成「城市 × 節慶 × IP」的組合矩陣，並分散單一破局風險。</td></tr>
+    <tr><th style="width:24%">商務方向</th><th>產品接點</th></tr>
+    <tr><td><b>品牌／連鎖據點</b></td><td>Location-based benefit、指定任務、完成後兌換。</td></tr>
+    <tr><td><b>政府／城市活動</b></td><td>節慶 POC、限定城市收藏、實體集章或明信片。</td></tr>
+    <tr><td><b>IP／創作者</b></td><td>限定收藏物與社群分享，提高辨識度與傳播。</td></tr>
+    <tr><td><b>資源前線</b></td><td>針對「正在玩／下一站可能去哪」的人做即時或目的地置入。</td></tr>
   </table>
-
-  <h3 class="blk">B2G 商機</h3>
-  <p class="body">呼應「C 端反哺 B2G」的機制，差別在於這裡是帶著現成、有知名度的 IP 去談，而不只是帶自家內容。</p>
-  <table>
-    <tr><th style="width:22%">機會</th><th>結構</th></tr>
-    <tr><td><b>公部門合作案</b></td><td>例如「IP × 基隆壽司節」期間限定收集品，由縣市政府支付合作費用，食尚依約與 IP 原廠拆分，形成三方都有收益的結構。</td></tr>
-    <tr><td><b>周邊商品</b></td><td>聯名周邊（徽章組、小物），銷售利潤依合作條件拆分。</td></tr>
-    <tr><td><b>檔期擴張</b></td><td>驗證成功後逐年擴大縣市數，讓 BD 對外提案時能依政府客戶偏好彈性搭配不同 IP。</td></tr>
-  </table>
-
-  <h3 class="blk">實體周邊：先走會員權益與贈品，不走零售</h3>
-  <p class="body">收集品實體化有明確的市場基礎——日本鐵道紀念章、百名山徽章都證明這類商品有收藏客群。<b>徽章的實體化潛力遠高於章</b>：徽章可做鐵盒組、磁鐵、別針、扣在背包上；縣市蓋章是數位紀錄，難以實體化。因此周邊一律從徽章出發，以稱號為單位設計。</p>
-  <div class="callout"><b>但第一步不建議走零售。</b>零售會帶來庫存、金流與出貨三件事，產品端接不住。<br><b>第一條路是付費會員權益。</b>把實體品綁在訂閱裡——年度周邊寄送、成就達人實體證書、實體徽章寄送——同樣不需建置電商，件數可控，而且替訂閱找到一個看得見摸得到的理由。<b>建議首版只做金級徽章的證書</b>：件數最少、最有紀念價值，稀有度數字印在上面就是最好的說明。分層規格見《APP 2.0 改版提案》第 10 章。<br>第二條路是<b>贈品</b>——政府檔期合作的贈品、店家核銷達標的兌換品、聯名活動的限量發放。成本掛在合作案裡，稀有度反而更高。這兩條都跑通、確認有需求之後，再談零售。<br>談 IP 授權時，實體徽章是好籌碼——市面上聯名紙品到處都是，聯名徽章有收藏價值，也有日本鐵道紀念章與百名山徽章的市場前例可佐證。</div>
-
-  <h3 class="blk">前置確認事項（依風險排序）</h3>
-  <table>
-    <tr><th style="width:8%">順序</th><th>項目</th></tr>
-    <tr class="star"><td><b>1</b></td><td><b>轉授權（sublicense）權限。</b>原廠合約是否允許將 IP 再授權給第三方（政府、商圈）做商業活動。此條不成立，上述 B2G 結構即無法執行，須最先確認。</td></tr>
-    <tr><td><b>2</b></td><td>拆分比例、結算週期與稽核方式——需財務意見。</td></tr>
-    <tr><td><b>3</b></td><td>授權範圍：是否含實體周邊、是否含跨年度檔期、地域是否限台灣。</td></tr>
-    <tr><td><b>4</b></td><td>談判時程對排期的影響——本節不得成為 MVP 上線的前置條件。</td></tr>
-  </table>
-  <p class="src">本節為待評估構想，涉及 IP 授權談判可行性與法務、財務對利潤拆分機制的意見，尚未定案，建議列入下一輪產品／BD 跨部門討論。</p>
 </section>
 
 <section id="s7">
   <div class="sec-head"><span class="dot c"></span><h2>待確認事項</h2></div>
-  <p class="sec-sub">取得方式已定案，以下為執行前需對齊的部分</p>
+  <p class="sec-sub">同步完成聖誕點燈 POC 與 MVP v1；POC 後再 Review v2</p>
 
-  <div class="callout plum"><b>已定案，不再討論：</b>① 採縣市任務 ＋ 主題徽章兩層整合。② 徽章條件全部來自縣市任務清單，不另開內容。③ 認定方式綁在類型上：踩點打卡、美食與體驗核銷；全核銷的徽章才掛食尚玩家認證。④ 分享卡分成就當下與護照總覽兩個入口，共五種版型，比較基準用稀有度。</div>
-
-  <h3 class="blk">需要跨部門對齊的事</h3>
   <table>
-    <tr><th style="width:20%">項目</th><th style="width:16%">對象</th><th>需要確認的內容</th></tr>
-    <tr class="star"><td><b>類型總量表</b><br><span class="by">提案書第 13 章開工前定案</span></td><td>編輯部</td><td>22 份縣市清單提案時需同時提供「每一類型／子類在全台各有幾項」。<b>這份表不到位，徽章門檻就無法定義。</b>是整個第二層的前置條件。</td></tr>
-    <tr class="star"><td><b>子類分類法</b></td><td>編輯部 ＋ 產品</td><td>美食下要切到什麼程度（火鍋、壽司、異國、小吃⋯⋯）、體驗下怎麼分（水上、手作、觀光工廠⋯⋯）。切太粗徽章開不出來，切太細每一類都湊不到門檻。建議先定<b>第一版子類表</b>，隨內容成長再擴充。</td></tr>
-    <tr class="star"><td><b>首批縣市</b><br><span class="by">提案書第 13 章今天定案</span></td><td>產品 ＋ 業務</td><td>建議 3–5 個跨區選（台北、台中、台南、台東），但若商圈振興招商方案要往前推，首批需與業務端的商圈名單對齊。同時決定首批的徽章過渡門檻。</td></tr>
-    <tr class="star"><td><b>付費會員實體權益範圍</b><br><span class="by">提案書第 13 章今天定案</span></td><td>業務 ＋ 行政</td><td>年度周邊寄送、成就達人實體證書、實體徽章寄送——首版做到哪一項。建議先做金級徽章的證書。單位成本、寄送方式、每年預估件數、是否設兌換上限需一併評估。</td></tr>
-    <tr><td><b>核銷機制</b></td><td>技術 ＋ 業務</td><td>體驗類業者（衝浪教室、熱氣球、DIY 工廠）不是既有店家網絡，核銷要走既有券機制還是另開。這批 BD 對象需要新談，時程需納入排期。</td></tr>
-    <tr><td><b>視覺資產</b></td><td>設計</td><td>徽章需兩套質感（金色＝有食尚玩家認證／銀色＝無）、章需印章質感統一樣式、分享卡五種版型。首版徽章可用統一風格的圖示系統，不需逐枚插畫。是否由 AI 生成後由設計調整，需與設計端確認產製方式與時程。</td></tr>
-    <tr><td><b>打卡座標建置</b></td><td>編輯部 ＋ 技術</td><td>打卡型任務需逐項建座標與判定半徑。夜市、商圈這類大範圍場域的半徑需個別設定，不能套用單一數值。</td></tr>
-    <tr><td><b>分享卡回流追蹤</b></td><td>技術 ＋ 數據</td><td>短網址或 QR 的歸因方式，需與現有 GA4 設定整合。</td></tr>
-    <tr><td><b>廣告版位</b></td><td>業務</td><td>成就相關頁面作為服務動線，廣告版位與出現時機需共同討論，避免干擾。</td></tr>
+    <tr><th style="width:8%">順序</th><th style="width:30%">項目</th><th>要定義什麼</th></tr>
+    <tr class="star"><td><b>1</b></td><td><b>POC 範圍與任務池</b></td><td>聖誕主題涵蓋哪些城市／點位、每人最少需要完成幾點。</td></tr>
+    <tr class="star"><td><b>2</b></td><td><b>完成認定</b></td><td>GPS、手動、核銷或其他既有能力的取捨；優先選能在檔期前落地的方案。</td></tr>
+    <tr class="star"><td><b>3</b></td><td><b>完成後得到什麼</b></td><td>點亮、限定收藏、成果卡的最小表現；是否加入 Secondary Benefit。</td></tr>
+    <tr><td><b>4</b></td><td>埋點</td><td>曝光、開始、首點、第二點、完成、分享、回流與回訪。</td></tr>
+    <tr><td><b>5</b></td><td>合作／IP</td><td>有資源則同步談，但不得阻塞 POC 上線。</td></tr>
+    <tr><td><b>6</b></td><td>MVP Review v2</td><td>POC 後校正 22 縣市主線中的點亮／收藏／分享深度，以及主題徽章、Location benefit 的優先序；不重新從零定義 MVP。</td></tr>
   </table>
-
-  <h3 class="blk">開發順序建議</h3>
-  <table>
-    <tr><th style="width:12%">順序</th><th style="width:26%">範圍</th><th>理由</th></tr>
-    <tr class="star"><td><b>1</b></td><td>任務池資料結構 ＋ 首批縣市清單 ＋ 蓋章與點燈</td><td>底層資料先成立，徽章才有東西可以篩。這一段跑通就已經是一個可用的功能。</td></tr>
-    <tr class="star"><td><b>2</b></td><td>主題徽章（篩選規則 ＋ 徽章牆 ＋ 三階）</td><td>不需要新內容，只需要規則與畫面，可與第 1 段並行開發、稍後上線。</td></tr>
-    <tr><td><b>3</b></td><td>分享卡四種版型</td><td>需要前兩段的資料才有數字可放，但<b>必須與首版同批上線</b>——沒有分享卡，整套機制沒有對外的出口。</td></tr>
-    <tr><td><b>4</b></td><td>動線圖輕量版、年度回顧版型</td><td>成效良好再投入。</td></tr>
-  </table>
-
-  <div class="callout warn"><b>提醒：畫面均為模擬稿，精緻度不代表最終品質。</b>本文件的手機畫面用來說明結構與資訊層級——哪些東西要放在同一頁、誰在上誰在下、使用者在每一頁要能回答什麼問題。視覺細節由設計端定稿。</div>
 </section>
 
 <footer>
-  食尚玩家 數位事業部｜玩家護照 成就系統設計規格 v2.0（縣市任務 ＋ 主題徽章 整合）｜2026.09<br>
-  對應文件：國旅第一服務平台 產品策略＋規劃 v15.0 第 6 章。畫面均為 AI 模擬稿，非最終設計。<br>
+  食尚玩家 數位事業部｜玩家護照 Hook／Gamification 設計規格 v3.1｜2026.10<br>
+  對應文件：國旅第一服務平台 產品策略＋規劃 v16.1 第 6 章。畫面均為 AI 模擬稿，非最終設計。<br>
   資料來源：城市玩家國旅需求調查（N=815）、城市玩家使用者訪談報告（6 位深度訪談，2026/08/19–21）、獨家優惠券活動分析報告、食尚產品動腦會議服務提案表、2026 數位事業部三年計畫
 </footer>
 
