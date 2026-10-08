@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>玩家護照｜聖誕點燈 POC 與 MVP Scope & Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#ff5a1f; --orange2:#fff1e9; --orange3:#ffd8c5;
+  --black:#151515; --ink:#20242a; --ink2:#555d68; --ink3:#8b929b;
+  --line:#e8e8e8; --soft:#f6f6f4; --paper:#fff; --sand:#fbf3e7;
+  --green:#167a62; --green2:#eaf7f2; --blue:#3d6fcd; --blue2:#eef4ff;
+  --yellow:#f3b82e; --yellow2:#fff7df; --red:#c94a3b; --red2:#fff0ed;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1280px;margin:auto;padding:11px 30px;display:flex;align-items:center;gap:24px}
+.brand{font-size:13px;font-weight:900;white-space:nowrap}.brand span{display:block;color:var(--orange);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+nav{margin-left:auto;display:flex;gap:15px;flex-wrap:wrap}nav a{text-decoration:none;color:var(--ink3);font-size:11.5px;font-weight:700}nav a:hover{color:var(--orange)}
+.page{min-height:86vh;border-bottom:1px solid var(--line);padding:72px 0}.page.compact{min-height:auto}
+.wrap{max-width:1280px;margin:auto;padding:0 32px}
+.hero{min-height:78vh;display:flex;align-items:center;background:linear-gradient(125deg,#fff 0 56%,#fff4ed 56% 100%);border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.eyebrow{font-family:"Space Grotesk",sans-serif;color:var(--orange);font-size:13px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:clamp(40px,5vw,68px);line-height:1.16;margin:0 0 22px;font-weight:900;letter-spacing:-.035em}
+.hero .lead{font-size:19px;color:var(--ink2);max-width:40em;margin:0 0 24px}.hero .lead b{color:var(--black)}
+.hero-kicker{display:inline-block;background:var(--black);color:#fff;padding:9px 15px;border-radius:8px;font-size:13px;font-weight:900;margin-bottom:14px}
+.hero-answer{font-size:28px;font-weight:900;line-height:1.45;margin:0}.hero-answer em{font-style:normal;color:var(--orange)}
+.hero-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 50px rgba(0,0,0,.06)}
+.hero-panel .k{font-size:11px;color:var(--ink3);font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.hero-points{display:grid;gap:10px}.hero-point{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.hero-point:last-child{border-bottom:0}.hero-point b{font-size:15px}.hero-point span{display:block;color:var(--ink2);font-size:13px}
+.section-head{display:grid;grid-template-columns:58px 1fr;gap:10px;margin-bottom:34px}.no{width:42px;height:42px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font:700 13px "Space Grotesk",sans-serif;margin-top:3px}
+h2{font-size:34px;line-height:1.3;margin:0;font-weight:900;letter-spacing:-.02em}.sub{font-size:15px;color:var(--ink2);margin:8px 0 0;max-width:58em}
+.value-statement{font-size:32px;font-weight:900;line-height:1.5;margin:10px 0 28px}.value-statement em{font-style:normal;color:var(--orange)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:24px}.card h3{font-size:20px;margin:0 0 9px;line-height:1.45}.card p{margin:0;color:var(--ink2);font-size:14px}.card .micro{margin-top:10px;font-size:12px;color:var(--ink3)}
+.card.orange{background:var(--orange2);border-color:var(--orange3)}.card.green{background:var(--green2);border-color:#c9e9dd}.card.blue{background:var(--blue2);border-color:#d4e0fb}.card.yellow{background:var(--yellow2);border-color:#f1d98b}
+.label{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 10px;font-size:10.5px;font-weight:900;letter-spacing:.08em;color:var(--ink2);margin-bottom:10px}.label.orange{background:#fff;color:var(--orange);border:1px solid var(--orange3)}
+.two-track{display:grid;grid-template-columns:1fr 1fr;gap:20px}.track{border:2px solid var(--line);border-radius:24px;padding:28px}.track.always{border-color:#bfe0d4;background:#f0faf6}.track.seasonal{border-color:#ffd1bf;background:#fff6f1}.track .title{font-size:24px;font-weight:900;margin-bottom:8px}.track .quote{font-size:17px;font-weight:700;color:var(--ink2);margin:12px 0}.track ul{margin:15px 0 0;padding-left:19px;color:var(--ink2);font-size:14px}.track li{margin:5px 0}
+/* Tree */
+.poc-visual{display:grid;grid-template-columns:.85fr 1.15fr;gap:42px;align-items:center}
+.tree-card{background:linear-gradient(145deg,#fff5e9,#fff);border:1px solid #f1dfc7;border-radius:30px;padding:30px;min-height:520px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.tree-card:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:#ffe8dc;right:-80px;top:-70px}.tree{width:350px;height:455px;position:relative;z-index:1}.tri{position:absolute;left:50%;transform:translateX(-50%);width:0;height:0;border-left:90px solid transparent;border-right:90px solid transparent;border-bottom:120px solid #1a6c50}.tri.a{top:30px}.tri.b{top:110px;border-left-width:125px;border-right-width:125px;border-bottom-width:155px}.tri.c{top:215px;border-left-width:160px;border-right-width:160px;border-bottom-width:185px}.trunk{position:absolute;width:52px;height:72px;background:#86552f;border-radius:8px;left:149px;top:368px}.topstar{position:absolute;left:50%;top:-3px;transform:translateX(-50%);font-size:52px;z-index:3}.orn{position:absolute;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:3px solid #f1b932;box-shadow:0 5px 18px rgba(0,0,0,.15);font-size:19px;z-index:4}.orn.off{background:#fff8ec;border:2px dashed #cdbda8;color:#ad9f8c;box-shadow:none;font-size:13px;font-weight:900}.o1{left:153px;top:82px}.o2{left:104px;top:150px}.o3{left:203px;top:153px}.o4{left:73px;top:232px}.o5{left:153px;top:227px}.o6{left:235px;top:236px}.o7{left:40px;top:325px}.o8{left:100px;top:335px}.o9{left:161px;top:315px}.o10{left:222px;top:336px}.o11{left:281px;top:321px}.o12{left:155px;top:385px}
+.rule{font-size:36px;font-weight:900;line-height:1.35;margin:0 0 16px}.rule strong{color:var(--orange)}.rule-sub{font-size:17px;color:var(--ink2);margin:0 0 24px}.simple-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}.flow-step{text-align:center;border:1px solid var(--line);border-radius:14px;padding:15px 8px;background:#fff}.flow-step .ico{font-size:27px}.flow-step b{display:block;font-size:12.5px;margin-top:5px}.flow-step span{display:block;font-size:10.5px;color:var(--ink3);margin-top:2px}
+/* Hook */
+.hook-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px}.hook-main{border:2px solid var(--black);border-radius:24px;padding:30px;background:#fff}.hook-main .big{font-size:31px;font-weight:900;line-height:1.45;margin:0 0 22px}.hook-main .big em{color:var(--orange);font-style:normal}.hook-list{display:grid;gap:12px}.hook-item{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}.hook-item:first-child{border-top:0}.hook-item .n{width:34px;height:34px;border-radius:8px;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900}.hook-item h3{font-size:17px;margin:0 0 3px}.hook-item p{font-size:13.5px;color:var(--ink2);margin:0}
+.stamp-panel{border-radius:24px;background:var(--orange2);border:1px solid var(--orange3);padding:26px}.stamp-panel h3{font-size:22px;margin:0 0 6px}.stamp-panel p{font-size:13.5px;color:var(--ink2);margin:0 0 15px}.stamp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.stamp{aspect-ratio:1;border:2px dashed #d78767;border-radius:14px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-2deg)}.stamp:nth-child(even){transform:rotate(2deg)}.stamp .e{font-size:25px}.stamp b{font-size:9.5px;color:#aa5539;margin-top:3px;text-align:center}.stamp.on{border-style:solid;border-color:var(--orange)}
+/* Creator */
+.creator-hero{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.creator-art{border-radius:24px;background:linear-gradient(145deg,#fff0e7,#fff9f5);border:1px solid var(--orange3);padding:30px;display:flex;flex-direction:column;justify-content:center}.creator-art .seal{font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:.15em;color:var(--orange);font-weight:700}.creator-art .name{font-size:42px;font-weight:900;line-height:1.25;margin:12px 0}.creator-art .name span{display:block;font-size:18px;color:var(--ink2);margin-top:8px}.creator-art .caption{font-size:13px;color:var(--ink3)}.creator-value{display:grid;gap:12px}.creator-value .v{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}.creator-value .v b{display:block;font-size:16px;margin-bottom:4px}.creator-value .v span{font-size:13px;color:var(--ink2)}
+/* Share */
+.share-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}.share-card{background:linear-gradient(150deg,#fff6e6 0 54%,#fff 54%);border:1px solid #efd4ae;border-radius:30px;padding:28px;box-shadow:0 14px 38px rgba(35,25,10,.08)}.share-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.share-card h3{font-size:29px;line-height:1.25;margin:0}.share-score{font:700 34px "Space Grotesk",sans-serif;color:var(--orange)}.share-tree{height:260px;position:relative;margin:12px 0 4px}.share-tree .s1,.share-tree .s2,.share-tree .s3{position:absolute;left:50%;transform:translateX(-50%);width:0;height:0;border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:95px solid #1a6c50}.share-tree .s1{top:5px}.share-tree .s2{top:65px;border-left-width:95px;border-right-width:95px;border-bottom-width:120px}.share-tree .s3{top:145px;border-left-width:120px;border-right-width:120px;border-bottom-width:132px}.share-tree .dot{position:absolute;width:22px;height:22px;border-radius:50%;background:#f3b82e;z-index:2;border:2px solid #fff}.d1{left:47%;top:45px}.d2{left:35%;top:105px}.d3{left:58%;top:108px}.d4{left:28%;top:180px}.d5{left:45%;top:165px}.d6{left:64%;top:185px}.d7{left:39%;top:228px}.d8{left:57%;top:224px}
+.share-stamps{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin:12px 0}.share-stamps span{aspect-ratio:1;border-radius:7px;background:#fff;border:1px solid #ecc7b8;display:flex;align-items:center;justify-content:center;font-size:15px}.share-stamps span.off{opacity:.25;filter:grayscale(1)}
+.share-text{font-size:18px;font-weight:900;margin:12px 0 4px}.share-meta{font-size:12.5px;color:var(--ink2)}.share-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.share-btns div{background:var(--black);color:#fff;border-radius:12px;text-align:center;padding:10px;font-size:12px;font-weight:900}.share-btns div:last-child{background:#fff;color:var(--black);border:1px solid var(--black)}
+.future-box{border-left:5px solid var(--black);background:var(--soft);padding:22px 24px;border-radius:0 16px 16px 0}.future-box h3{font-size:19px;margin:0 0 8px}.future-box p{font-size:13.5px;color:var(--ink2);margin:0 0 10px}.future-options{display:grid;gap:9px;margin-top:14px}.future-option{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}.future-option b{font-size:13px}.future-option span{display:block;font-size:11.5px;color:var(--ink3);margin-top:2px}
+/* Enhancements */
+.big-opportunity{display:grid;grid-template-columns:1fr .9fr;gap:30px;align-items:center}.op-copy .tag{font-size:11px;font-weight:900;color:var(--orange);letter-spacing:.12em;text-transform:uppercase}.op-copy h3{font-size:38px;line-height:1.3;margin:10px 0 14px}.op-copy p{font-size:16px;color:var(--ink2);margin:0 0 22px}.op-values{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.op-values .v{border-top:3px solid var(--orange);padding:11px 5px}.op-values b{display:block;font-size:14px}.op-values span{font-size:11.5px;color:var(--ink3)}
+.redeem-demo{background:var(--sand);border:1px solid #eedfc8;border-radius:26px;padding:26px}.coupon{background:#fff;border:2px dashed #d4a06c;border-radius:18px;padding:22px}.coupon .status{font-size:11px;font-weight:900;color:var(--green);letter-spacing:.08em}.coupon h4{font-size:22px;margin:8px 0 6px}.coupon p{margin:0;color:var(--ink2);font-size:13px}.coupon .code{margin-top:15px;background:var(--black);color:#fff;border-radius:10px;padding:12px;text-align:center;font:700 16px "Space Grotesk",sans-serif;letter-spacing:.12em}.redeem-note{font-size:12px;color:var(--ink3);margin-top:10px}
+.brand-demo{border-radius:26px;background:linear-gradient(145deg,#f2f7ff,#fff);border:1px solid #d8e4fb;padding:28px}.brand-trigger{font-size:34px;font-weight:900;line-height:1.35;margin:0}.brand-trigger em{font-style:normal;color:var(--blue)}.benefit-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.benefit{background:#fff;border:1px solid #dbe4f5;border-radius:14px;padding:16px;text-align:center}.benefit .ico{font-size:28px}.benefit b{display:block;font-size:13px;margin-top:5px}.benefit span{font-size:10.5px;color:var(--ink3)}
+/* Scope */
+.scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.scope-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff}.scope-card .ico{font-size:28px}.scope-card h3{font-size:17px;margin:8px 0 6px}.scope-card p{font-size:12.5px;color:var(--ink2);margin:0}.scope-card.core{border-top:5px solid var(--orange)}.scope-card.data{border-top:5px solid var(--green)}.scope-card.share{border-top:5px solid var(--blue)}.scope-card.measure{border-top:5px solid var(--yellow)}
+.metric-band{margin-top:22px;background:var(--black);color:#fff;border-radius:20px;padding:24px 28px;display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:center}.metric-band .main{font-size:25px;font-weight:900;line-height:1.4}.metric-band .main em{font-style:normal;color:#ffbe94}.metric-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.metric{border:1px solid #3b3b3b;border-radius:10px;padding:10px}.metric b{font-size:12px}.metric span{display:block;color:#aaa;font-size:10.5px}
+/* MVP */
+.mvp-cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0 28px}.mvp-step{border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;background:#fff}.mvp-step .ico{font-size:30px}.mvp-step b{display:block;font-size:13px;margin-top:5px}.mvp-step span{display:block;font-size:10.5px;color:var(--ink3);margin-top:3px}.mvp-step:nth-child(1),.mvp-step:nth-child(5){background:var(--orange2);border-color:var(--orange3)}
+/* Timelines */
+.timeline-title{font-size:20px;font-weight:900;margin:34px 0 12px}.roadmap{display:grid;grid-template-columns:150px repeat(12,minmax(62px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);font-size:12px;overflow-x:auto}.roadmap>div{min-height:52px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:6px;text-align:center}.roadmap .labelcell{justify-content:flex-start;background:#fafafa;font-weight:900;padding-left:12px}.roadmap .month{background:var(--black);color:#fff;font-weight:900;font-size:12px}.roadmap .blank{background:#fff}.bar{margin:6px;border-radius:9px;font-weight:900;line-height:1.35;padding:8px!important;border:0!important;min-height:40px!important}.bar.orange{background:var(--orange);color:#fff}.bar.softorange{background:var(--orange2);color:#be4317}.bar.green{background:#e5f2ed;color:#185f4d}.bar.blue{background:#e9f0ff;color:#315fbe}.bar.gray{background:#f1f1ef;color:#555}.bar.yellow{background:#fff3c9;color:#8b6714}
+.near{display:grid;grid-template-columns:150px repeat(6,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);font-size:12px}.near>div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:58px;display:flex;align-items:center;justify-content:center;padding:8px;text-align:center}.near .head{background:var(--black);color:#fff;font-weight:900}.near .row{background:#fafafa;justify-content:flex-start;font-weight:900;padding-left:12px}.near .active{margin:6px;border-radius:9px;background:var(--orange2);color:#a63e18;font-weight:900}.near .dev{background:#eef4ff;color:#315fbe}.near .qa{background:#eaf7f2;color:#176a55}.near .launch{background:var(--orange);color:#fff}.near .run{background:#fff3c9;color:#7a5a12}
+/* Decisions */
+.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.decision{border:2px solid var(--line);border-radius:20px;padding:24px;background:#fff}.decision .num{background:var(--orange);margin:0 0 14px;width:34px;height:34px}.decision h3{font-size:20px;margin:0 0 8px}.decision p{font-size:13.5px;color:var(--ink2);margin:0}.recommend{margin-top:24px;background:var(--orange2);border-left:5px solid var(--orange);padding:18px 20px;border-radius:0 14px 14px 0;font-size:14px}.recommend b{color:#a43d16}
+footer{padding:40px 0 60px;color:var(--ink3);font-size:12px}
+@media(max-width:980px){.hero-grid,.poc-visual,.hook-grid,.creator-hero,.share-layout,.big-opportunity,.metric-band{grid-template-columns:1fr}.grid3,.grid4,.scope-grid,.decision-grid{grid-template-columns:1fr 1fr}.two-track{grid-template-columns:1fr}.simple-flow{grid-template-columns:repeat(3,1fr)}.hero{background:#fff}.roadmap{grid-template-columns:130px repeat(12,72px)}.near{grid-template-columns:130px repeat(6,110px);overflow-x:auto}}
+@media(max-width:640px){nav{display:none}.page{padding:52px 0;min-height:auto}.wrap,.topbar .in{padding-left:20px;padding-right:20px}.grid2,.grid3,.grid4,.scope-grid,.decision-grid,.op-values,.benefit-row{grid-template-columns:1fr}.simple-flow{grid-template-columns:1fr 1fr}.value-statement{font-size:25px}.rule{font-size:29px}.tree{transform:scale(.82);margin:-30px auto}.tree-card{min-height:430px}.mvp-cycle{grid-template-columns:1fr 1fr}}
+
+/* v3 proposal additions */
+.case-intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}
+.case-stat{border:2px solid var(--black);border-radius:24px;padding:30px;background:#fff}.case-stat .numx{font:700 68px/1 "Space Grotesk",sans-serif;color:var(--orange)}.case-stat h3{font-size:24px;margin:10px 0 8px}.case-stat p{margin:0;color:var(--ink2);font-size:14px}
+.region-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.region{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff}.region h3{font-size:18px;margin:0 0 10px}.region.n{border-top:5px solid var(--orange)}.region.c{border-top:5px solid var(--green)}.region.s{border-top:5px solid var(--blue)}
+.spot{display:flex;gap:8px;align-items:center;padding:7px 0;border-top:1px dashed var(--line);font-size:12.5px}.spot:first-of-type{border-top:0}.spot i{font-style:normal;width:23px;height:23px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}.spot b{font-size:12.5px}.spot span{color:var(--ink3);font-size:11px;margin-left:auto}
+.source-note{margin-top:16px;background:var(--soft);border-radius:12px;padding:13px 16px;color:var(--ink2);font-size:12px}.source-note a{color:var(--orange);font-weight:700;text-decoration:none}
+.hook-formula{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.hf{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}.hf .ico{font-size:25px}.hf b{display:block;margin-top:5px;font-size:14px}.hf span{display:block;color:var(--ink2);font-size:12px;margin-top:3px}
+.core-arrow{text-align:center;font-size:26px;font-weight:900;color:var(--orange);padding:8px 0}
+.enhance-badge{display:inline-flex;align-items:center;gap:7px;background:var(--yellow2);color:#7a5a12;border:1px solid #efd57b;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:900;letter-spacing:.06em;margin-bottom:12px}
+.creator-share{border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff}.creator-share .post{background:var(--soft);border-radius:14px;padding:16px;margin-top:12px}.creator-share .post b{font-size:14px}.creator-share .post p{font-size:12.5px;color:var(--ink2);margin:6px 0 0}
+.sleigh-track{position:relative;height:44px;margin:14px 0 6px}.sleigh-track:before{content:"";position:absolute;left:4%;right:4%;top:23px;height:4px;background:linear-gradient(90deg,var(--orange) 0 67%,#e8e8e8 67% 100%);border-radius:99px}.sleigh{position:absolute;left:63%;top:0;font-size:30px;transform:translateX(-50%)}.track-labels{display:flex;justify-content:space-between;color:var(--ink3);font-size:10px;padding:0 3%}
+.share-caption{margin-top:12px;border-top:1px dashed #dfc9a6;padding-top:12px;font-size:13px;font-weight:700;color:#5c4a2e}
+.scope-call{margin-top:18px;border:2px solid var(--black);border-radius:18px;padding:20px 22px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.scope-call b{font-size:14px}.scope-call span{display:block;color:var(--ink2);font-size:12.5px;margin-top:4px}
+.roadmap15{display:grid;grid-template-columns:145px repeat(15,minmax(58px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);font-size:11px;overflow-x:auto}.roadmap15>div{min-height:50px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:5px;text-align:center}.roadmap15 .labelcell{justify-content:flex-start;background:#fafafa;font-weight:900;padding-left:12px}.roadmap15 .month{background:var(--black);color:#fff;font-weight:900}.roadmap15 .month.q4{background:#5b5b5b}.roadmap15 .yearcell{background:#fff6f1;color:#b9471e;font-weight:900;font-size:12px}.roadmap15 .bar{margin:5px;border-radius:9px;font-weight:900;line-height:1.35;padding:7px!important;border:0!important;min-height:38px!important}.roadmap15 .bar.orange{background:var(--orange);color:#fff}.roadmap15 .bar.softorange{background:var(--orange2);color:#b9471e}.roadmap15 .bar.green{background:#e5f2ed;color:#185f4d}.roadmap15 .bar.blue{background:#e9f0ff;color:#315fbe}.roadmap15 .bar.gray{background:#f1f1ef;color:#555}.roadmap15 .bar.yellow{background:#fff3c9;color:#8b6714}
+.proposal-answer{font-size:28px;font-weight:900;line-height:1.5;margin:4px 0 22px}.proposal-answer em{font-style:normal;color:var(--orange)}
+
+.proposal-note{margin:14px 0 18px;background:var(--orange2);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:14px 16px;font-size:13.5px;color:var(--ink2);line-height:1.75}.proposal-note b{color:#a43d16}
+.success-gate{margin-top:22px;border:2px solid var(--black);border-radius:22px;padding:24px;background:#fff}.success-title{display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center}.success-title span{grid-row:1/3;background:var(--black);color:#fff;border-radius:999px;padding:7px 11px;font:700 10px/1 "Space Grotesk",sans-serif;letter-spacing:.1em}.success-title h3{font-size:26px;line-height:1.3;margin:0}.success-title p{grid-column:2;margin:4px 0 0;color:var(--ink2);font-size:13.5px}.success-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.success-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--soft)}.success-card.primary{background:var(--orange2);border-color:var(--orange3)}.success-card b{display:block;font-size:12px;color:var(--ink3);margin-bottom:8px}.success-card strong{display:block;font-size:21px;line-height:1.35;color:var(--black);margin-bottom:7px}.success-card.primary strong{color:#b64018}.success-card span{display:block;font-size:12.5px;color:var(--ink2);line-height:1.7}.success-rule{margin-top:14px;background:var(--yellow2);border-radius:13px;padding:14px 16px;font-size:13px;color:#6c571d}.success-rule span{display:block;margin-top:5px;color:var(--ink3);font-size:11.5px}
+
+
+/* Fill markers */
+.need-fill{display:inline-flex;align-items:center;gap:5px;background:#fff3c9;border:1px solid #efd777;color:#7e6113;border-radius:999px;padding:3px 8px;font-size:10.5px;font-weight:900;white-space:nowrap}
+.fill-board{margin-top:16px;border:1px dashed #e0b84b;background:#fffaf0;border-radius:16px;padding:17px 19px}.fill-board h4{margin:0 0 10px;font-size:15px}.fill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.fill-item{background:#fff;border:1px solid #eee3bf;border-radius:12px;padding:12px}.fill-item b{display:block;font-size:11px;color:#8a6b1b;margin-bottom:5px}.fill-item strong{display:block;font-size:16px;color:var(--black)}.fill-item span{display:block;font-size:10.5px;color:var(--ink3);margin-top:4px}
+/* Future themes */
+.future-lead{font-size:30px;font-weight:900;line-height:1.45;margin:4px 0 24px}.future-lead em{font-style:normal;color:var(--orange)}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.theme-card{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff}.theme-top{padding:25px 26px 20px}.theme-card.spring .theme-top{background:linear-gradient(135deg,#fff3ec,#fff)}.theme-card.hotpot .theme-top{background:linear-gradient(135deg,#fff1e9,#fff8f4)}.theme-kicker{font:700 10px/1 "Space Grotesk",sans-serif;letter-spacing:.12em;color:var(--orange);margin-bottom:10px}.theme-card h3{font-size:26px;line-height:1.35;margin:0 0 8px}.theme-card .tagline{font-size:16px;font-weight:800;color:var(--ink2);margin:0}.theme-body{padding:20px 26px 24px}.collect-row{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 15px}.collect-chip{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:7px 10px;font-size:11.5px;font-weight:800}.theme-loop{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.theme-loop div{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center}.theme-loop b{display:block;font-size:12px}.theme-loop span{display:block;font-size:10.5px;color:var(--ink3);margin-top:2px}.theme-extra{margin-top:20px;border:1px solid var(--line);border-radius:18px;padding:18px 20px;background:#fff}.theme-extra .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}.theme-extra .chips span{background:var(--soft);border-radius:999px;padding:7px 11px;font-size:11.5px;font-weight:800}.creator-rule{margin-top:16px;background:var(--orange2);border-left:5px solid var(--orange);border-radius:0 14px 14px 0;padding:15px 18px;font-size:13px}.creator-rule b{color:#a43d16}
+@media(max-width:980px){.theme-grid{grid-template-columns:1fr}.fill-grid{grid-template-columns:1fr 1fr}}
+
+@media(max-width:980px){.case-intro,.scope-call{grid-template-columns:1fr}.region-grid,.hook-formula{grid-template-columns:1fr 1fr}.roadmap15{grid-template-columns:130px repeat(15,74px)}.roadmap12{grid-template-columns:130px repeat(12,80px)}}
+@media(max-width:640px){.region-grid,.hook-formula,.success-grid{grid-template-columns:1fr}}
+
+.timeline-title{font-size:18px;font-weight:900;margin:8px 0 14px}.timeline-title.annual{margin-top:32px}
+.visited-list{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:12px 0 10px}.visited-list b{font-size:11px;color:var(--ink3);margin-right:2px}.visited-list span,.visited-list em{font-style:normal;font-size:10.5px;border:1px solid #ead8bf;background:#fff;border-radius:999px;padding:5px 8px;color:var(--ink2)}.visited-list em{background:var(--orange2);color:#a43d16;border-color:#ffd4c1;font-weight:900}
+.roadmap12{display:grid;grid-template-columns:145px repeat(12,minmax(66px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);font-size:11px;overflow-x:auto}.roadmap12>div{min-height:54px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:5px;text-align:center}.roadmap12 .labelcell{justify-content:flex-start;background:#fafafa;font-weight:900;padding-left:12px}.roadmap12 .month{background:var(--black);color:#fff;font-weight:900}.roadmap12 .bar{margin:5px;border-radius:9px;font-weight:900;line-height:1.35;padding:7px!important;border:0!important;min-height:38px!important}.roadmap12 .bar.orange{background:var(--orange);color:#fff}.roadmap12 .bar.softorange{background:var(--orange2);color:#b9471e}.roadmap12 .bar.green{background:#e5f2ed;color:#185f4d}.roadmap12 .bar.blue{background:#e9f0ff;color:#315fbe}.roadmap12 .bar.gray{background:#f1f1ef;color:#555}.roadmap12 .bar.yellow{background:#fff3c9;color:#8b6714}
+
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in"><div class="brand">食尚玩家<span>PLAYER PASSPORT · POC PROPOSAL</span></div><nav>
+<a href="#vision">產品主線</a><a href="#poc">聖誕點燈</a><a href="#case">全台踩點</a><a href="#share">分享</a><a href="#hook">Hook</a><a href="#scope">POC 驗證</a><a href="#creator">加分方案</a><a href="#mvp">MVP</a><a href="#future">未來主題</a><a href="#timeline">Timeline</a>
+</nav></div></div>
+
+<header class="hero"><div class="wrap"><div class="hero-grid">
+<div><div class="eyebrow">PLAYER PASSPORT · 2026 Q4 → 2027</div><h1>玩家護照<br>聖誕點燈 POC<br>× MVP Scope & Timeline</h1>
+<p class="lead">把 2027 玩家護照的核心體驗先縮成一個可以在今年聖誕節跑起來的 POC：<b>每一次出門都留下進度，還沒完成的地方，成為下一次再回來的理由。</b></p>
+<div class="hero-kicker">本次提案重點</div><p class="hero-answer">先用一棵聖誕樹，驗證未來能不能讓使用者<em>慢慢把自己的台灣填滿</em>。</p></div>
+<div class="hero-panel"><div class="k">主管最關心的 4 件事</div><div class="hero-points">
+<div class="hero-point"><div>01</div><div><b>POC 在測什麼？</b><span>玩家護照的核心循環，不是單一聖誕活動成效。</span></div></div>
+<div class="hero-point"><div>02</div><div><b>Hook 是什麼？</b><span>累積進度 × 未完成感 × 收集成果 × 分享，讓完成一點後還想去下一點。</span></div></div>
+<div class="hero-point"><div>03</div><div><b>今年做得到什麼？</b><span>全台 12 個聖誕點燈點，12 裝飾、12 枚章，12 月直接跑 POC。</span></div></div>
+<div class="hero-point"><div>04</div><div><b>成功後怎麼接？</b><span>Q1 延伸成 22 縣市環島任務；Q2 才是 Scale，不是第一次上線。</span></div></div>
+</div></div>
+</div></div></header>
+
+<main>
+<section class="page" id="vision"><div class="wrap">
+<div class="section-head"><div class="no">01</div><div><h2>玩家護照的產品主線</h2><p class="sub">產品精神不變：把每次出門留下來，讓使用者看見自己已經走了多少、還有哪些地方沒完成。</p></div></div>
+<p class="value-statement"><em>全台環島是長期進度，期間限定主題是短期回來理由。</em></p>
+<div class="two-track">
+<div class="track always"><div class="label">ALWAYS-ON</div><div class="title">🗺️ 全台環島任務</div><div class="quote">讓每一次出門，都累積成一張屬於自己的台灣。</div><ul><li>玩家護照的常態主線</li><li>縣市任務、點亮台灣、長期完成度</li><li>看著還沒點亮的縣市，產生「下一個去哪」</li></ul></div>
+<div class="track seasonal"><div class="label orange">SEASONAL</div><div class="title">🎄 期間限定主題</div><div class="quote">把同一套核心體驗換成當下最想玩的節慶主題，製造近期回來理由。</div><ul><li>第一個 POC：聖誕點燈</li><li>未來可延伸新春開運巡禮、媽祖繞境、夏日煙花</li><li>活動視覺／創作者／Benefit 可換，Core 不必重做</li></ul></div>
+</div></div></section>
+
+<section class="page" id="poc"><div class="wrap">
+<div class="section-head"><div class="no">02</div><div><h2>🎄 全台聖誕樹踩點｜今年你想點亮哪幾棵？</h2><p class="sub">把全台值得去的聖誕樹、市集與燈飾整理成一場可以玩的聖誕踩點：去一個地方，就替自己的聖誕樹點亮一個新裝飾。</p></div></div>
+<div class="poc-visual"><div class="tree-card"><div class="tree"><div class="topstar">⭐</div><div class="tri a"></div><div class="tri b"></div><div class="tri c"></div><div class="trunk"></div>
+<div class="orn o1">🎄</div><div class="orn o2">🎁</div><div class="orn o3">🔔</div><div class="orn o4">🦌</div><div class="orn o5">⭐</div><div class="orn o6">🎅</div>
+<div class="orn off o7">07</div><div class="orn off o8">08</div><div class="orn off o9">09</div><div class="orn off o10">10</div><div class="orn off o11">11</div><div class="orn off o12">12</div></div></div>
+<div><div class="label orange">今年的玩法</div><p class="rule"><strong>12 個聖誕踩點</strong><br>＝ 12 個裝飾<br>＝ 12 枚戳記</p>
+<p class="rule-sub">從一棵空空的聖誕樹開始。每去一棵值得踩的聖誕樹／市集，樹上就多一個裝飾、手上多一枚章；今年跑過哪些地方，一眼就看得出來。</p>
+<div class="simple-flow"><div class="flow-step"><div class="ico">🎄</div><b>找一棵想去的</b><span>聖誕樹／市集</span></div><div class="flow-step"><div class="ico">📍</div><b>到現場踩點</b><span>GPS 完成</span></div><div class="flow-step"><div class="ico">✨</div><b>點亮我的樹</b><span>裝飾 +1</span></div><div class="flow-step"><div class="ico">✍️</div><b>收下一枚章</b><span>一點一章</span></div><div class="flow-step"><div class="ico">📣</div><b>曬出今年成果</b><span>IG / Threads</span></div></div>
+</div></div></div></section>
+
+<section class="page" id="case"><div class="wrap">
+<div class="section-head"><div class="no">03</div><div><h2>今年全台有哪些聖誕樹、市集值得去？</h2><p class="sub">食尚本來就在告訴大家「今年哪裡最值得去」。這次把內容再往前一步：不只看完收藏，而是直接變成一張會想出門踩、會想把它收完的全台清單。</p></div></div>
+<div class="case-intro"><div class="case-stat"><div class="numx">28</div><h3>去年就有一張「全台聖誕必去清單」</h3><p>台北、新北、桃園、台中、台南、高雄、屏東都有代表性聖誕樹、市集與城市燈節。今年可從同樣的全台內容盤點中，挑出最有代表性、展期夠長、適合踩點的 12 個地標。</p></div>
+<div class="region-grid">
+<div class="region n"><h3>北部｜5 點</h3><div class="spot"><i>01</i><b>台北・信義商圈</b><span>聖誕樹／燈海</span></div><div class="spot"><i>02</i><b>台北・南港 LaLaport</b><span>主題造景</span></div><div class="spot"><i>03</i><b>新北・新北耶誕城</b><span>城市節慶</span></div><div class="spot"><i>04</i><b>桃園・華泰名品城</b><span>聖誕村</span></div><div class="spot"><i>05</i><b>桃園・台茂購物中心</b><span>主題聖誕樹</span></div></div>
+<div class="region c"><h3>中部｜3 點</h3><div class="spot"><i>06</i><b>台中・柳川耶誕嘉年華</b><span>水岸燈飾</span></div><div class="spot"><i>07</i><b>台中・勤美草悟聖誕村</b><span>光之道</span></div><div class="spot"><i>08</i><b>台中・山谷燈光節</b><span>谷關／梨山</span></div></div>
+<div class="region s"><h3>南部｜4 點</h3><div class="spot"><i>09</i><b>台南・台南三井 OUTLET</b><span>聖誕造景</span></div><div class="spot"><i>10</i><b>台南・誠品生活台南</b><span>禮物樹</span></div><div class="spot"><i>11</i><b>高雄・中央公園</b><span>聖誕生活節</span></div><div class="spot"><i>12</i><b>屏東・屏東公園</b><span>聖誕村</span></div></div>
+</div></div>
+<div class="source-note"><b>2025 實際內容試排：</b>今年正式 12 點依 2026 活動檔期、GPS 可辨識度、展期長度與素材完整度更新。來源：<a href="https://supertaste.tvbs.com.tw/pack/357356" target="_blank">2025 全台聖誕樹 28 大必拍景點</a>、<a href="https://supertaste.tvbs.com.tw/kids/357748" target="_blank">2025 全台聖誕活動整理</a>。</div>
+</div></section>
+
+<section class="page" id="share"><div class="wrap">
+<div class="section-head"><div class="no">04</div><div><h2>我想炫耀：今年我踩了哪幾棵聖誕樹</h2><p class="sub">不是分享一張成績單，而是曬出「今年我追了哪些聖誕樹」。朋友一看就懂、會想比較，也會想跟著去踩下一棵。</p></div></div>
+<div class="share-layout"><div class="share-card"><div class="share-top"><h3>🎄 我的 2026<br>聖誕點燈</h3><div class="share-score">8 / 12</div></div>
+<div class="share-tree"><div class="s1"></div><div class="s2"></div><div class="s3"></div><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="dot d4"></span><span class="dot d5"></span><span class="dot d6"></span><span class="dot d7"></span><span class="dot d8"></span></div>
+<div class="sleigh-track"><div class="sleigh">🎅🛷</div></div><div class="track-labels"><span>0 / 12</span><span>完成進度</span><span>12 / 12</span></div>
+<div class="share-stamps"><span>🎄</span><span>🎁</span><span>🦌</span><span>⭐</span><span>🔔</span><span>☃️</span><span>🧦</span><span>🎅</span><span class="off">?</span><span class="off">?</span><span class="off">?</span><span class="off">?</span></div>
+<div class="share-text">今年的聖誕樹，還差 4 個裝飾就完成 ✨</div><div class="visited-list"><b>今年踩過</b><span>新北耶誕城</span><span>華泰名品城</span><span>柳川耶誕嘉年華</span><span>高雄中央公園</span><em>＋4</em></div><div class="share-meta">已點亮 8 個景點 · 跑過 4 座城市 · 聖誕樹完成度 67%</div><div class="share-caption">「我今年已經點亮 8 棵 🎄 你踩了哪幾棵？」</div><div class="share-btns"><div>分享 IG</div><div>分享 Threads</div></div></div>
+<div><div class="label orange">分享卡重點</div><h3 style="font-size:30px;line-height:1.35;margin:0 0 12px">先讓「今年我去了哪裡」值得曬；旅行距離留給正式足跡功能。</h3><p style="font-size:15px;color:var(--ink2);margin:0 0 18px">這次先用一定拿得到的資料：踩過哪些聖誕樹、點亮數、城市數、章與完成度。雪橇可以當進度視覺，但不宣稱真實移動距離。</p>
+<div class="future-box"><h3>未來玩家護照可再加「我走了多遠」</h3><p>距離是值得做的足跡深化，但要先把資料定義講清楚。</p><div class="future-options"><div class="future-option"><b>GPS 打卡點 → 任務軌跡距離</b><span>依完成點座標與時間排序，估算點位間移動距離。</span></div><div class="future-option"><b>照片 GPS → 補足旅行足跡</b><span>匯入有 EXIF 座標的照片，可增加更多旅程節點。</span></div><div class="future-option"><b>真實步數／步行距離</b><span>需 HealthKit / Health Connect 或背景定位，留到後續版本評估。</span></div></div></div></div>
+</div></div></section>
+
+<section class="page" id="hook"><div class="wrap">
+<div class="section-head"><div class="no">05</div><div><h2>為什麼我會想再去下一棵？</h2><p class="sub">玩家護照真正要建立的 Hook，是「我已經開始累積，而且還看得到沒完成」：去過一棵之後，下一個空著的位置自然變成下一次出門的理由。</p></div></div>
+<p class="proposal-answer">Hook 不是一個獎品或一枚章，而是：<em>我已經開始了、越收越完整，還差一點就想把它補完。</em></p>
+<div class="hook-formula"><div class="hf"><div class="ico">📍</div><b>留下進度</b><span>每次出門都有東西被留下，不是看完即走。</span></div><div class="hf"><div class="ico">◻️</div><b>看見未完成</b><span>空著的裝飾／灰色的縣市，就是下一次行動提示。</span></div><div class="hf"><div class="ico">✍️</div><b>收集成果</b><span>12 點＝12 章，完成一套有清楚終點。</span></div><div class="hf"><div class="ico">📣</div><b>值得分享</b><span>把完成度與成果變成社群上看得懂的內容。</span></div></div>
+<div class="core-arrow">完成一點 → 看見下一點 → 再出門 → 累積更多 → 分享成果 → 再回來</div>
+<div class="grid2"><div class="card orange"><h3>今年先用聖誕樹試</h3><p>空聖誕樹 → 一個一個踩點、蓋章、加裝飾 → 最後完成「我的 2026 聖誕樹」。</p></div><div class="card green"><h3>明年換成全台環島</h3><p>灰色台灣地圖 → 一次次出門留下足跡 → 慢慢完成「我的台灣」。</p></div></div>
+</div></section>
+
+<section class="page compact" id="scope"><div class="wrap">
+<div class="section-head"><div class="no">06</div><div><h2>POC 要驗證什麼｜這套玩家護照，會不會讓人真的繼續玩？</h2><p class="sub">功能不用一次做滿；先確認這個核心體驗能不能讓人從第一個點走到第二個、第三個，最後願意完成與分享。</p></div></div>
+<div class="scope-grid"><div class="scope-card core"><div class="ico">🎯</div><h3>Mission</h3><p>全台 12 個點燈點；一點一章、一點一裝飾。</p></div><div class="scope-card data"><div class="ico">📍</div><h3>Check-in & Progress</h3><p>GPS 到場完成、個人紀錄、12 格進度與聖誕樹狀態。</p></div><div class="scope-card share"><div class="ico">📣</div><h3>Share</h3><p>進行中／完成版分享卡、完成度、章面與站外回流。</p></div><div class="scope-card measure"><div class="ico">📊</div><h3>Measurement</h3><p>完成事件、1→2 點轉換、平均完成數、分享、回訪與會員轉換。</p></div></div>
+<div class="metric-band"><div class="main">最重要的驗證：<br><em>完成第 1 個點的人，有多少會去完成第 2 個？</em></div><div class="metric-list"><div class="metric"><b>Primary</b><span>第 1 → 第 2 點轉換率</span></div><div class="metric"><b>Depth</b><span>平均點亮數、6/12、12/12 完成率</span></div><div class="metric"><b>Share</b><span>分享卡產出率、站外回流</span></div><div class="metric"><b>Return</b><span>完成後 7 日回訪</span></div></div></div>
+<div class="success-gate">
+  <div class="success-title"><span>POC SUCCESS</span><h3>什麼叫成功？</h3><p>先用明確數字判斷：玩家護照的 Hook 有沒有真的讓人「完成一個之後，還想再去下一個」。</p></div>
+  <div class="success-grid">
+    <div class="success-card primary"><b>① 核心 Hook</b><strong>第 1 → 第 2 點轉換率 ≥ 30%</strong><span>這是最重要的成功條件；代表第一次踩點後，使用者願意再完成下一個。</span></div>
+    <div class="success-card"><b>② 持續收集</b><strong>完成 3 點以上者 ≥ 15%</strong><span>不只體驗一次，而是開始出現「我想繼續把它收下去」的行為。</span></div>
+    <div class="success-card"><b>③ 分享意願</b><strong>分享卡產出率 ≥ 10%</strong><span>代表累積的成果有足夠的炫耀感，使用者願意把「今年踩過哪些聖誕樹」帶到站外。</span></div>
+  </div>
+  <div class="success-grid" style="margin-top:12px">
+    <div class="success-card"><b>④ 回訪訊號</b><strong>7 日回訪率 ≥ 20%</strong><span>除了現場完成任務之外，還會再次回到食尚看進度、找下一個點。</span></div>
+    <div class="success-card"><b>⑤ 有效樣本</b><strong>完成第 1 點 ≥ 300 人</strong><span>先用 300 人作為 POC 最低有效樣本建議值，避免只看少量極端玩家。</span></div>
+    <div class="success-card"><b>⑥ 深度觀察</b><strong>6 / 12 ≥ 5%｜12 / 12 ≥ 1%</strong><span>不作為 POC 必過門檻，但觀察是否出現少數高投入玩家，為未來成就分層提供依據。</span></div>
+  </div>
+  <div class="success-rule"><b>建議判定：</b>「第 1 → 第 2 點 ≥ 30%」達標，且「3 點以上／分享／7 日回訪」至少 2 項達標 → POC 通過，Q1 接全台環島任務。<span>＊此版先給主管可討論的明確數字；上線前用實際流量與既有活動 baseline 校正。</span></div>
+  <div class="fill-board"><h4>上線前需要補進來的數字 <span class="need-fill">待補資料</span></h4><div class="fill-grid">
+    <div class="fill-item"><b>POC 預估曝光 UV</b><strong>【待補：＿＿＿ UV】</strong><span>首頁／文章／Push／社群合計可觸及量</span></div>
+    <div class="fill-item"><b>預估完成第 1 點人數</b><strong>【待補：＿＿＿ 人】</strong><span>用曝光 × 預估參與率回推，確認 300 人樣本是否合理</span></div>
+    <div class="fill-item"><b>既有活動 baseline</b><strong>【待補：＿＿＿%】</strong><span>若有可比的二次行為／7 日回訪／分享率，就用來校正門檻</span></div>
+    <div class="fill-item"><b>2026 正式點位數</b><strong>【待補：12 點是否定案】</strong><span>若不是 12 點，所有完成率與樹上裝飾同步調整</span></div>
+  </div></div>
+<div class="scope-call"><div><b>POC 要回答</b><span>「累積進度＋未完成感＋收集成果＋分享」能不能形成回訪 Hook。</span></div><div><b>POC 成功後</b><span>把同一套核心換成全台環島地圖，直接進入正式玩家護照。</span></div></div>
+</div></section>
+
+<section class="page" id="creator"><div class="wrap">
+<div class="section-head"><div class="no">A</div><div><h2>加分方案 A｜創作者聯名戳記</h2><p class="sub">核心玩法不依賴創作者；如果合作成功，讓 12 枚章更有「我想收完整套」的收藏感與社群擴散力。</p></div></div>
+<div class="creator-hero"><div class="creator-art"><div class="enhance-badge">ENHANCEMENT · 示意合作方向</div><div class="seal">CREATOR COLLAB · EXAMPLE</div><div class="name">凱西 × 聖誕點燈<span>示意：由 TA 熟悉、合作彈性高的創作者，設計今年限定的 12 枚聖誕章。</span></div><div class="caption">＊凱西僅為合作概念示例，非已確認合作對象。</div></div>
+<div class="creator-value"><div class="v"><b>使用者：章更值得收</b><span>從系統章變成一套有角色、有世界觀、只在今年拿得到的作品。</span></div><div class="v"><b>創作者：也有內容可以分享</b><span>可分享設計過程、12 枚章、自己挑戰到哪裡，帶粉絲一起玩。</span></div><div class="v"><b>產品：Core 不變</b><span>不改 Mission / GPS / Progress，只替換章面與活動視覺。</span></div><div class="creator-share"><b>創作者社群貼文示意</b><div class="post"><b>「今年幫食尚畫了 12 枚聖誕點燈章 🎄」</b><p>我自己先收了 4 枚，你們可以收完幾個？→ 進玩家護照挑戰</p></div></div></div></div>
+</div></section>
+
+<section class="page" id="gift"><div class="wrap"><div class="section-head"><div class="no">B</div><div><h2>加分方案 B｜完成進度 → 實體贈品兌換</h2><p class="sub">若既有合作台或優惠券資源可承接，就把它當成完成禮兌換點；不改動全台聖誕點燈任務本身。</p></div></div>
+<div class="big-opportunity"><div class="op-copy"><div class="enhance-badge">ENHANCEMENT · 有資源就加</div><h3>不長地方分支，只多一個「完成後可以拿到什麼」。</h3><p>例如達成 6 / 12 或 12 / 12 後發電子兌換券，到既有合作台領貼紙、書籤、明信片等小贈品。</p><p class="proposal-note"><b>可結合新北聖誕、新竹聖誕等既有節慶專案場域：</b>若現場已有合作台／服務台，可直接作為完成禮兌換點，放大全台聖誕點燈的完成感。</p><div class="op-values"><div class="v"><b>產品</b><span>放大完成動機</span></div><div class="v"><b>執行</b><span>沿用既有優惠券／核銷</span></div><div class="v"><b>商務</b><span>累積 O2O 實證</span></div></div></div>
+<div class="redeem-demo"><div class="coupon"><div class="status">已完成 6 / 12 點燈</div><h4>🎁 聖誕點燈完成禮</h4><p>憑本券至合作兌換點領取限定貼紙／書籤／明信片 1 份。</p><div class="code">REDEEM 2026</div></div><div class="redeem-note">門檻與贈品依現有合作資源決定；兌換點只承接核銷，不另做地方版任務。</div></div></div>
+</div></section>
+
+<section class="page" id="benefit"><div class="wrap"><div class="section-head"><div class="no">C</div><div><h2>加分方案 C｜品牌 Benefit 放大完成與分享</h2><p class="sub">如果能談到品牌資源，讓 Benefit 成為完成後的加碼，而不是讓「有獎品」取代玩家護照本身的 Hook。</p></div></div>
+<div class="big-opportunity"><div class="brand-demo"><p class="brand-trigger">點亮 <em>12 / 12</em><br>＋ 分享成果卡<br>→ 解鎖品牌好康</p><div class="benefit-row"><div class="benefit"><div class="ico">☕</div><b>買一送一</b><span>連鎖咖啡示意</span></div><div class="benefit"><div class="ico">🧋</div><b>冬季新品</b><span>飲料新品示意</span></div><div class="benefit"><div class="ico">🎁</div><b>限定贈品</b><span>品牌小物</span></div></div></div>
+<div class="op-copy"><div class="enhance-badge">ENHANCEMENT · 商務加碼</div><h3>品牌不只買曝光，而是加入「完成任務」的時刻。</h3><p>如果 Benefit 能拉高完成率與分享率，未來可以把「任務完成禮」做成可複製商務模組；但就算沒有談到品牌，POC Core 仍可獨立上線。</p><div class="op-values"><div class="v"><b>可量化</b><span>解鎖／領取／核銷</span></div><div class="v"><b>可複製</b><span>不同檔期換品牌</span></div><div class="v"><b>不綁上線</b><span>資源有就加</span></div></div></div></div>
+</div></section>
+
+<section class="page compact" id="mvp"><div class="wrap"><div class="section-head"><div class="no">08</div><div><h2>MVP Scope v1｜POC 成功後，直接接全台環島任務</h2><p class="sub">真正要共用的是底層與核心循環：任務、GPS、個人進度、章、分享與回訪；聖誕樹只是第一個承載方式。</p></div></div>
+<div class="mvp-cycle"><div class="mvp-step"><div class="ico">🧩</div><b>Mission Engine</b><span>地點、座標、條件、期間、章面</span></div><div class="mvp-step"><div class="ico">📍</div><b>Location Check-in</b><span>到場完成與紀錄</span></div><div class="mvp-step"><div class="ico">🗺️</div><b>User Progress</b><span>聖誕樹 → 22 縣市地圖</span></div><div class="mvp-step"><div class="ico">✍️</div><b>Stamp / Collection</b><span>常態縣市章＋主題章</span></div><div class="mvp-step"><div class="ico">📣</div><b>Share & Return</b><span>成果分享、回流、再出門</span></div></div>
+<div class="grid3"><div class="card green"><div class="label">Q1 ALWAYS-ON</div><h3>全台環島任務</h3><p>把 12 格聖誕樹換成 22 縣市台灣地圖，建立真正的玩家護照長期進度。</p></div><div class="card orange"><div class="label">SEASONAL</div><h3>期間限定主題</h3><p>新春開運、媽祖繞境、夏日煙花等，在同一 Core 上換任務題材與視覺。</p></div><div class="card blue"><div class="label">SCALE</div><h3>足跡與商務深化</h3><p>依成效逐步加上實體核銷、Benefit、照片 GPS、距離、附近與年度回顧。</p></div></div>
+</div></section>
+
+<section class="page" id="future"><div class="wrap">
+<div class="section-head"><div class="no">09</div><div><h2>未來還可以這樣玩｜每個主題，都是新的「想收完」</h2><p class="sub">全台環島留著做長期進度；期間限定主題則把同一套玩家護照精神，換成當下最有感的出門理由。</p></div></div>
+<p class="future-lead">不是每次重做一個產品，而是把「<em>出門 → 留下成果 → 看見沒完成 → 再去下一個</em>」套進不同生活題材。</p>
+<div class="theme-grid">
+  <article class="theme-card spring"><div class="theme-top"><div class="theme-kicker">SEASONAL IDEA 01</div><h3>🧧 新春開運巡禮</h3><p class="tagline">今年想求什麼，就去拜哪一位神。</p></div><div class="theme-body">
+    <div class="collect-row"><span class="collect-chip">媽祖｜平安順行</span><span class="collect-chip">關聖帝君｜事業正氣</span><span class="collect-chip">觀世音｜平安順心</span><span class="collect-chip">月老｜好人緣／好姻緣</span><span class="collect-chip">財神｜財運</span><span class="collect-chip">文昌｜考運學業</span><span class="collect-chip">土地公｜在地平安</span></div>
+    <div class="theme-loop"><div><b>拜一種神</b><span>完成一個開運任務</span></div><div><b>收一枚章</b><span>逐步集滿開運圖鑑</span></div><div><b>合作可加碼</b><span>宮廟限定章／完成禮</span></div></div>
+  </div></article>
+  <article class="theme-card hotpot"><div class="theme-top"><div class="theme-kicker">THEME IDEA 02</div><h3>🍲 火鍋達人</h3><p class="tagline">你今年吃過幾種鍋？把一整套火鍋圖鑑吃完。</p></div><div class="theme-body">
+    <div class="collect-row"><span class="collect-chip">🌶️ 麻辣鍋</span><span class="collect-chip">🥘 小火鍋</span><span class="collect-chip">🔥 石頭火鍋</span><span class="collect-chip">🥩 壽喜燒</span><span class="collect-chip">🥬 酸菜白肉鍋</span><span class="collect-chip">🍲 涮涮鍋</span></div>
+    <div class="theme-loop"><div><b>吃一種鍋</b><span>解鎖一種火鍋類型</span></div><div><b>收一枚章</b><span>累積「我的火鍋圖鑑」</span></div><div><b>合作店家</b><span>指定店完成＋優惠／兌換</span></div></div>
+  </div></article>
+</div>
+<div class="theme-extra"><b>同一套機制，還可以繼續長：</b><div class="chips"><span>🛕 媽祖遶境｜路線／廟宇踩點</span><span>🎆 夏日煙花｜追不同城市的煙火</span><span>🎄 聖誕點燈 2.0｜每年換一套章</span></div></div>
+<div class="creator-rule"><b>創作者合作可以變成期間限定主題的固定加分公式：</b>每個檔期找適合 TA 的創作者設計一整套章面與分享卡，讓「收集成就」除了進度之外，也多一層今年限定、值得收藏與分享的理由。</div>
+</div></section>
+
+<section class="page" id="timeline"><div class="wrap"><div class="section-head"><div class="no">10</div><div><h2>Timeline｜今年先跑聖誕 POC，2027 把玩家護照一路接下去</h2><p class="sub">近期先把「聖誕點燈」做到好玩、跑得起來；2027 Q1 接全台環島常態主線，Q2 起再逐步放大主題、足跡與商務。</p></div></div>
+<h3 class="timeline-title">近期｜聖誕點燈 POC 開發節奏</h3>
+<div class="near">
+<div class="head">階段</div><div class="head">10/7–10/16</div><div class="head">10/19–10/30</div><div class="head">11/2–11/20</div><div class="head">11/23–12/4</div><div class="head">12/5</div><div class="head">12/5–12/31</div>
+<div class="row">工作重點</div><div class="active">產品規劃<br>Scope／玩法／KPI</div><div class="active">UX／UI 設計<br>章面／分享卡</div><div class="dev">開發 Sprint<br>最快 11/2 啟動</div><div class="qa">QA／UAT<br>座標／裝置／埋點</div><div class="launch">正式上線</div><div class="run">POC Run<br>每週看 Funnel</div>
+</div>
+<h3 class="timeline-title annual">2027｜玩家護照年度節奏</h3>
+<div class="roadmap12">
+<div class="labelcell">月份</div><div class="month">1月</div><div class="month">2月</div><div class="month">3月</div><div class="month">4月</div><div class="month">5月</div><div class="month">6月</div><div class="month">7月</div><div class="month">8月</div><div class="month">9月</div><div class="month">10月</div><div class="month">11月</div><div class="month">12月</div>
+<div class="labelcell">大事記</div><div class="bar yellow">POC Review<br>Scope v2</div><div class="bar green" style="grid-column:3/5">Q1｜全台環島任務正式上線</div><div class="bar gray" style="grid-column:5/8">Q2｜主題／兌換 Scale</div><div class="bar gray" style="grid-column:8/11">Q3｜足跡深化</div><div class="bar gray" style="grid-column:11/14">Q4｜年度回顧／商模</div>
+<div class="labelcell">功能版本</div><div class="bar green" style="grid-column:2/5">MVP 玩家護照<br>縣市任務・GPS・分享</div><div class="bar blue" style="grid-column:5/8">進階一<br>主題框架・實體核銷・Benefit</div><div class="bar blue" style="grid-column:8/11">進階二<br>附近・照片 GPS・距離</div><div class="bar gray" style="grid-column:11/14">進階三<br>年度護照・個人化</div>
+<div class="labelcell">主題拓展</div><div class="bar softorange" style="grid-column:2/4">新春開運</div><div class="bar softorange" style="grid-column:4/7">媽祖繞境</div><div class="bar yellow" style="grid-column:7/10">夏日煙花</div><div class="bar softorange" style="grid-column:12/14">聖誕點燈 2.0</div>
+<div class="labelcell">機制與建設</div><div class="bar gray" style="grid-column:2/5">22 縣市任務池・台灣地圖</div><div class="bar gray" style="grid-column:5/8">優惠券／核銷・主題模板</div><div class="bar gray" style="grid-column:8/11">照片 GPS・附近・會員貼標</div><div class="bar gray" style="grid-column:11/14">年度回顧・個人化・商模資料</div>
+<div class="labelcell">產品宣傳</div><div class="bar green" style="grid-column:2/5">玩家護照正式上線</div><div class="bar green" style="grid-column:5/11">節慶主題持續拉回訪</div><div class="bar green" style="grid-column:11/14">年度成果分享＋聖誕再行銷</div>
+</div>
+</div></section>
+
+<section class="page compact"><div class="wrap"><div class="section-head"><div class="no">11</div><div><h2>下一步｜先把聖誕點燈做到最好玩</h2><p class="sub">核心體驗先定；有更多合作、商務或行銷資源，再往上加，不讓加分項目拖慢 POC 主線。</p></div></div>
+<div class="decision-grid"><div class="decision"><div class="num">1</div><h3>核心玩法</h3><p>以「全台聖誕樹踩點 → 空樹逐步點亮 → 一點一章 → 分享今年踩過哪些聖誕樹」作為玩家護照 POC 主線。</p></div><div class="decision"><div class="num">2</div><h3>加分方案</h3><p>A 創作者聯名戳記、B 實體贈品兌換、C 品牌 Benefit；依時程與資源決定哪些能一起上。</p></div><div class="decision"><div class="num">3</div><h3>更多商業合作／行銷資源</h3><p>若業務、公服、行銷或品牌端有能快速串接的贈品、曝光、社群或合作資源，可用來放大體驗與聲量，但不改核心玩法。</p></div></div>
+<div class="recommend"><b>建議：</b>先把玩家護照的「想繼續完成」做出來；所有合作資源，都拿來讓它更想玩、更值得分享。</div>
+</div></section>
+</main>
+<footer><div class="wrap"><b>食尚玩家｜玩家護照 聖誕點燈 POC 與 MVP Scope & Timeline</b><br>Product Proposal · 2026/10/06 · PM Aileen<br>＊2025 景點為既有內容試排；2026 正式名單依今年活動資料更新。創作者與品牌案例均為提案示意，實際合作依洽談結果確認。</div></footer>
+</body></html>
