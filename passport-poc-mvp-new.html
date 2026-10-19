@@ -554,7 +554,16 @@ h2{font-size:34px}
 @media(max-width:900px){.poc-treebox{grid-template-columns:1fr}.poc-screen-grid,.poc-metrics{grid-template-columns:repeat(2,1fr)}.poc-timeline{grid-template-columns:1fr}.topbar nav{gap:9px}}
 @media(max-width:700px){.poc-two,.poc-shares,.poc-screen-grid,.poc-metrics{grid-template-columns:1fr}.poc-arrow{display:none}.poc-steps{display:grid;grid-template-columns:1fr 1fr}.poc-metric-prime{padding:22px}.poc-table td,.poc-table th{padding:10px 8px;font-size:13px}.poc-treevis .emoji{font-size:95px}.topbar .in{display:block;padding:10px 15px}.topbar nav{margin-top:5px;display:flex;overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px}.wrap{padding:0 18px}}
 </style>
-</head>
+<style>
+.county-concept{background:linear-gradient(110deg,#fff4e7,#fff);border:1px solid #f1dfd2;border-radius:23px;padding:24px;margin:25px 0}
+.county-head{display:flex;align-items:center;justify-content:space-between;gap:18px}.county-head h3{margin:0;font-size:24px}.county-head p{margin:3px 0;font-size:14px;color:var(--ink2)}.county-num{background:white;border-radius:13px;padding:10px 18px;border:1px solid #f1dfd2;color:var(--orange);font-size:24px;font-weight:900;white-space:nowrap}
+.county-two{display:grid;grid-template-columns:1.15fr .85fr;gap:17px;margin:16px 0}.county-group{background:#fff;border:1px solid #eee7de;border-radius:16px;padding:15px}.county-group>strong{font-size:15px}
+.county-big{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.county-large{min-height:92px;background:#eee;border:1px solid #ddd;border-radius:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;filter:grayscale(1);opacity:.65}
+.county-large span{font-size:33px}.county-large small{font-weight:800;font-size:12px}.county-large.lit{filter:none;opacity:1;background:#fff0dc;border:2px solid #ffb677}
+.county-stars{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}.county-small{min-height:50px;background:#eee;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:.65}
+.county-small b{font-size:19px;color:#a6a6a6;line-height:1}.county-small small{font-size:10px;color:#777}.county-caption{font-size:13px;color:var(--ink2);margin:8px 0 0}
+@media(max-width:790px){.county-two{grid-template-columns:1fr}}@media(max-width:650px){.county-concept{padding:14px}.county-large span{font-size:25px}.county-small small{font-size:9px}}
+</style></head>
 <body>
 <div class="topbar"><div class="in"><div class="brand">食尚玩家<span>PLAYER PASSPORT · POC</span></div><nav>
 <a href="#vision">產品價值</a><a href="#poc">POC 定位</a><a href="#flow">使用動線</a><a href="#missions">任務規則</a><a href="#scope">POC Scope</a><a href="#metrics">驗證指標</a><a href="#share">分享卡</a><a href="#mvp">MVP</a><a href="#timeline">Timeline</a><a href="#content-ops">內容協作</a>
@@ -569,7 +578,7 @@ h2{font-size:34px}
 <div class="hero-panel"><div class="k">主管最關心的 4 件事</div><div class="hero-points">
 <div class="hero-point"><div>01</div><div><b>POC 在測什麼？</b><span>「每週情報 → 任務或自由足跡 → 完成成果 → 下週再參與」的核心循環，能否帶動第二週有效回訪？</span></div></div>
 <div class="hero-point"><div>02</div><div><b>Hook 是什麼？</b><span>每週新情報 × 主題任務 × 點燈進度 × 三點完成禮，讓使用者完成一站後還想去下一站。</span></div></div>
-<div class="hero-point"><div>03</div><div><b>今年做得到什麼？</b><span>12 月 APP 上線 22 縣市聖誕任務與自由足跡；指定點位累積三點即可領食尚聖誕優惠券。</span></div></div>
+<div class="hero-point"><div>03</div><div><b>今年做得到什麼？</b><span>12 月上線 22 縣市聖誕點亮，任務與自主縣市打卡同步累積成果；三個指定任務點位可領聖誕優惠券。</span></div></div>
 <div class="hero-point"><div>04</div><div><b>成功後怎麼接？</b><span>2027 Q1 推出全年玩家護照 MVP，延伸 22 縣市任務、台灣地圖與主題探索。</span></div></div>
 </div></div>
 </div></div>
@@ -581,35 +590,41 @@ h2{font-size:34px}
 <div class="grid3">
 <div class="card orange"><div class="label orange">01 · 每週情報</div><h3>這週去哪裡？</h3><p>以現有美食、景點與節慶文章懶人包給出最新出遊理由；不開發新的每週情報文章模板。</p></div>
 <div class="card"><div class="label">02 · 任務挑戰</div><h3>這次去完成什麼？</h3><p>當期主題、指定景點、每週更新的任務與完成禮，促進第二個點和跨週再參與。</p></div>
-<div class="card"><div class="label">03 · 旅行足跡</div><h3>我去過哪裡？</h3><p>使用者自主到場打卡、累積個人紀錄與成果；不參加任務，也能單純記下旅行。</p></div></div>
+<div class="card"><div class="label">03 · 旅行足跡</div><h3>我點亮了哪個縣市？</h3><p>依單次 GPS 辨識到訪縣市，灰色行政區域逐步點亮；不參加指定任務，也能留下自己的區域旅行成果。</p></div></div>
 <div class="poc-note"><b>為什麼先做 POC？</b> 聖誕點燈具備明確檔期與出遊情境，適合以最小可行服務驗證「看情報 → 參與活動 → 再次回訪」是否成立；以真實行為評估 Q1 玩家護照如何擴大，而非只看單次活動曝光。</div>
 <div class="poc-note"><b>核心 TA 參考：</b>食尚玩家既有美食旅遊使用者，以北部、女性與短天數出遊族群為主；國旅問卷 N＝815 中，<b>女性 61.1%、30～50 多歲族群 81.3%、北北基桃竹 65%、短天數出遊 88.7%</b>。延伸涵蓋喜歡週末輕旅行與節慶探索的使用者，以及想記錄足跡或參與主題任務的使用者。<span style="display:block;font-size:13px;color:var(--ink3);margin-top:6px">資料來源：<a href="proposal.html#user">國旅第一服務平台策略提案</a>之國旅問卷（非 APP 全體會員人口分布）。</span></div>
 </div></section>
 
-<section class="page" id="poc"><div class="wrap"><div class="section-head"><div class="no">02</div><div><h2>12 月 POC｜同一套玩家護照，滿足兩種出遊習慣</h2><p class="sub">想完成任務的人有下一站的目標，只想記錄旅行的人也能自由使用；兩者的成果都累積在自己的聖誕樹。</p></div></div>
+<section class="page" id="poc"><div class="wrap">
+<div class="section-head"><div class="no">02</div><div><h2>12 月聖誕 POC｜從點亮縣市開始，累積自己的台灣</h2><p class="sub">聖誕點燈是玩家護照的前導體驗：任務打卡與自主縣市打卡共用同一份區域點亮成果。</p></div></div>
 <div class="poc-two">
-<div class="poc-track"><span class="poc-tag">自由探索 · 旅行足跡</span><h3>不玩任務，也能點燈</h3><p>直接開啟自由打卡，在當下位置完成單次 GPS 紀錄，留下日期、到訪地點並點亮一盞聖誕燈。</p><ol><li>進入玩家護照 → 自由打卡</li><li>主動 GPS 到場定位 → 記錄足跡</li><li>點亮我的聖誕樹 → 查看紀錄／分享</li></ol></div>
-<div class="poc-track orange"><span class="poc-tag">指定挑戰 · 聖誕任務</span><h3>有目標，更有下一站</h3><p>選主題任務、看指定點位與活動資訊，到場打卡同時記錄足跡和推進任務；完成三個不同有效點可領券。</p><ol><li>每週情報／任務清單 → 選擇地點</li><li>GPS 到場打卡 → 點亮＋完成進度</li><li>看下一個任務／累積三點領禮</li></ol></div>
+<div class="poc-track"><span class="poc-tag">自主縣市點亮</span><h3>不用先接任務，也能點亮到訪縣市</h3><p>主動觸發單次 GPS，辨識當下所在縣市；尚未到訪的縣市保持灰色，首次打卡後該縣市亮起，留下到訪日期。不是任意新增景點或累積任意燈數。</p><ol><li>進入玩家護照 → 我的聖誕點燈</li><li>點亮目前縣市 → GPS 判定所在行政區</li><li>灰色縣市轉彩色 → 首次點亮即可分享</li></ol></div>
+<div class="poc-track orange"><span class="poc-tag">指定聖誕任務</span><h3>完成任務，同時點亮所在縣市</h3><p>在指定聖誕樹或市集地點完成 GPS 任務，除了記錄任務點位，也同步更新所屬縣市的點亮狀態。</p><ol><li>每週情報／任務清單 → 選定點位</li><li>到場 GPS 打卡 → 任務進度＋縣市點亮</li><li>完成三個不同任務點位領券／分享成果</li></ol></div>
 </div>
-<div class="poc-treebox"><div class="poc-treevis"><div class="lights">✦ · ✦ · ✦</div><span class="emoji" aria-label="聖誕樹">🎄</span><small>2026 我的聖誕點燈</small></div>
-<div><h3>12 月先點亮聖誕樹，<br>2027 Q1 再點亮台灣。</h3><p>不論使用者從自由打卡或聖誕任務進來，每個不同的有效足跡都留下紀錄、點亮一盞燈。聖誕樹是 12 月共同的成果視覺；縣市地圖點亮保留到 Q1 MVP。</p><p><b>同一地點打卡只建立一筆足跡。</b> 在任務點打卡同時可累積任務進度；如果是從自由打卡進入，遇到指定任務地點可提示「此處也有任務」，由使用者自願參加。</p></div></div>
-<div class="poc-note"><b>POC 觀察重點：</b>真實情境中的任務參與、純記錄比例、首點與次點完成、第二週回訪及連續週參與；將出遊情報、任務進度和個人旅行成果串成一個可持續使用的服務。</div>
+<div class="county-concept"><div class="county-head"><div><h3>🎄 2026 我的聖誕台灣</h3><p>即使只亮起第一個縣市，也有一張想分享的聖誕成果。</p></div><div class="county-num">1 / 22</div></div>
+<div class="county-two"><div class="county-group"><strong>六都｜大型可愛主題圖</strong><div class="county-big"><div class="county-large lit"><span>🎄</span><small>臺北市</small></div><div class="county-large "><span>🎅</span><small>新北市</small></div><div class="county-large "><span>🎁</span><small>桃園市</small></div><div class="county-large "><span>🦌</span><small>臺中市</small></div><div class="county-large "><span>⛄</span><small>臺南市</small></div><div class="county-large "><span>🔔</span><small>高雄市</small></div></div></div><div class="county-group"><strong>其他 16 縣市｜小星星</strong><div class="county-stars"><div class="county-small"><b>★</b><small>基隆市</small></div><div class="county-small"><b>★</b><small>新竹市</small></div><div class="county-small"><b>★</b><small>新竹縣</small></div><div class="county-small"><b>★</b><small>苗栗縣</small></div><div class="county-small"><b>★</b><small>彰化縣</small></div><div class="county-small"><b>★</b><small>南投縣</small></div><div class="county-small"><b>★</b><small>雲林縣</small></div><div class="county-small"><b>★</b><small>嘉義縣</small></div><div class="county-small"><b>★</b><small>嘉義市</small></div><div class="county-small"><b>★</b><small>屏東縣</small></div><div class="county-small"><b>★</b><small>宜蘭縣</small></div><div class="county-small"><b>★</b><small>花蓮縣</small></div><div class="county-small"><b>★</b><small>臺東縣</small></div><div class="county-small"><b>★</b><small>澎湖縣</small></div><div class="county-small"><b>★</b><small>金門縣</small></div><div class="county-small"><b>★</b><small>連江縣</small></div></div></div></div>
+<p class="county-caption">視覺概念示意：未點亮為灰色、點亮後轉彩色；大小圖與星星之後可依台灣縣市版面配置，非正式地理排列。</p></div>
+<div class="grid3">
+<div class="card"><h3>一個縣市亮一次</h3><p>再次到訪同縣市可新增到訪日期，但不重複累積「已點亮縣市」數量。</p></div>
+<div class="card orange"><h3>任務點位另外計算</h3><p>在臺北市打卡三個不同聖誕任務點位：臺北市點亮 1 個，但指定點位進度可達 3／3，符合領券條件。</p></div>
+<div class="card"><h3>第一個縣市就能分享</h3><p>首次點亮成功即提供分享卡入口；解鎖更多縣市後，逐步填滿個人聖誕成果。</p></div></div>
+<div class="poc-note"><b>銜接正式玩家護照：</b>12 月先以 22 縣市做區域點亮的前導；2027 Q1 走向<b>鄉鎮市區板塊由灰色逐步點亮</b>，沿用同一套到訪足跡及任務連動機制。</div>
 </div></section>
 
-<section class="page" id="flow"><div class="wrap"><div class="section-head"><div class="no">03</div><div><h2>體驗動線｜情報 → 參與 → 點燈 → 再回來</h2><p class="sub">每週情報與聖誕點燈皆需有清晰的 APP 入口。使用者不用先加入任務也能打卡。</p></div></div>
+<section class="page" id="flow"><div class="wrap"><div class="section-head"><div class="no">03</div><div><h2>體驗動線｜情報 → 參與 → 點燈 → 再回來</h2><p class="sub">每週情報與聖誕點燈皆需有清晰的 APP 入口。不接任務也能 GPS 點亮到訪縣市，任務打卡也同步點亮縣市。</p></div></div>
 <div class="poc-steps">
 <div class="poc-step"><b>① APP 入口</b><span>每週情報／聖誕點燈</span></div><div class="poc-arrow">→</div>
-<div class="poc-step"><b>② 聖誕 POC 首頁</b><span>我的點燈進度＋兩種操作</span></div><div class="poc-arrow">→</div>
+<div class="poc-step"><b>② 聖誕 POC 首頁</b><span>已點亮縣市＋指定任務進度</span></div><div class="poc-arrow">→</div>
 <div class="poc-step"><b>③ 任務或自由打卡</b><span>任務詳情／當下 GPS</span></div><div class="poc-arrow">→</div>
-<div class="poc-step"><b>④ 成功及成果</b><span>點亮、優惠券進度、分享卡</span></div><div class="poc-arrow">→</div>
+<div class="poc-step"><b>④ 成功及成果</b><span>縣市點亮、任務點位進度、分享卡</span></div><div class="poc-arrow">→</div>
 <div class="poc-step"><b>⑤ 下週再參與</b><span>每週新任務＋情報懶人包</span></div>
 </div>
 <div class="grid2">
-<div class="card"><h3>🎄 想參加任務</h3><p>APP 活動入口 → 點燈首頁 → 主題任務／指定點位 → 點位詳情（時間／地址／內容） → 到場 GPS 打卡 → 任務進度＋點亮 → 下個任務／領券／分享。</p></div>
-<div class="card"><h3>📍 只想記錄旅行</h3><p>APP 護照入口 → 點燈首頁 → 自由打卡 → 單次 GPS → 記錄足跡＋點燈 → 我的紀錄／分享；遇任務點僅提示，不強制參加。</p></div></div>
+<div class="card"><h3>🎄 想參加任務</h3><p>APP 活動入口 → 點燈首頁 → 主題任務／指定點位 → 點位詳情（時間／地址／內容） → 到場 GPS 打卡 → 任務進度＋縣市點亮 → 下個任務／領券／分享。</p></div>
+<div class="card"><h3>📍 只想記錄旅行</h3><p>APP 護照入口 → 聖誕點亮首頁 → 點亮目前縣市 → 單次 GPS 判定縣市 → 該縣市由灰轉亮 → 首次點亮即可分享；到任務點可提示參與，但不強制加入。</p></div></div>
 </div></section>
 
-<section class="page" id="missions"><div class="wrap"><div class="section-head"><div class="no">04</div><div><h2>聖誕任務｜22 縣市都有任務，三點領禮</h2><p class="sub">主題任務可以累積進度；點位與完成任務數要分開計算，避免重複領獎。</p></div></div>
+<section class="page" id="missions"><div class="wrap"><div class="section-head"><div class="no">04</div><div><h2>聖誕任務｜22 縣市都有任務，三點領禮</h2><p class="sub">已點亮縣市數、完成的指定任務點位數，以及主題任務數，分開計算以避免重複領獎。</p></div></div>
 <div class="poc-line">
 <div class="poc-pill"><b>22 縣市</b><span>每個縣市都有指定任務點位</span></div>
 <div class="poc-pill"><b>六都各 3 點</b><span>其餘縣市至少 1 點；初步需 ≥ 34 個有效點位</span></div>
@@ -619,58 +634,54 @@ h2{font-size:34px}
 <div class="grid2">
 <div class="card orange"><h3>🎄 聖誕樹任務</h3><p>打卡第 1 棵指定聖誕樹可完成「點亮第一棵」；累積到第 3 棵不同聖誕樹，再完成「聖誕樹收藏家」。雖可完成兩個主題任務，但實際有效點位只有 3 個。</p></div>
 <div class="card"><h3>🎪 聖誕市集／每週新任務</h3><p>例如到一個指定聖誕市集即可完成主題任務。每週新上架一項挑戰及相應點位；任務、有效點位及兌換條件皆以系統狀態判定。</p></div></div>
-<div class="poc-note"><b>領券規則：</b>活動期間累積 <b>3 個不同且符合任務條件的指定點位</b>，食尚玩家發放聖誕禮物優惠券 1 張（建議每會員限領一次，沿用現有優惠券機制）；自由足跡不在指定點位者照樣可點燈，<b>但不列入三點領券</b>。點位展期、座標、打卡半徑及 2026 正式清單需另外盤點。</div>
+<div class="poc-note"><b>領券規則：</b>活動期間累積 <b>3 個不同且符合任務條件的指定點位</b>，食尚玩家發放聖誕禮物優惠券 1 張（建議每會員限領一次，沿用現有優惠券機制）；非指定點位仍可點亮所在縣市，<b>但不列入三點領券的任務點位進度</b>；同縣市的不同任務點位可各自累積領券條件。點位展期、座標、打卡半徑及 2026 正式清單需另外盤點。</div>
 </div></section>
 
 <section class="page compact" id="scope"><div class="wrap"><div class="section-head"><div class="no">05</div><div><h2>POC 開發 Scope｜11 月驗動線，12 月正式上線</h2><p class="sub">12 月以一套 APP 體驗提供每週情報、主題任務與自由足跡；重用既有資訊與優惠券服務，聚焦必要功能的開發與真實成效驗證。</p></div></div>
 <div class="table-scroll"><table class="poc-table"><thead><tr><th>項目</th><th>11 月內部同仁測試</th><th>12 月正式 POC</th></tr></thead><tbody>
 <tr><td>每週情報</td><td>檢查文章懶人包與 APP 入口銜接</td><td>沿用既有文章樣式、每週整理與更新</td></tr>
-<tr><td>聖誕點燈首頁</td><td>理解度、活動進度、任務／自由入口</td><td>正式點燈成果＋雙使用路徑</td></tr>
+<tr><td>縣市點亮首頁</td><td>六都大圖／其餘縣市星星的灰色與亮起狀態是否清楚</td><td>22 縣市點亮成果；首次點亮即可分享</td></tr>
 <tr><td>聖誕任務</td><td>清單／詳情／三點領券動線可用性</td><td>22 縣市、每週新增任務、任務進度／優惠券</td></tr>
-<tr><td>自由足跡</td><td>不選任務即可打卡是否清楚</td><td>單次 GPS、紀錄足跡、點亮一盞燈</td></tr>
+<tr><td>自主縣市打卡</td><td>不接任務直接 GPS 判定縣市的動線是否清楚</td><td>GPS 判定縣市、首次由灰轉亮；重複到訪不重複計數</td></tr>
 <tr><td>分享成果</td><td>分享卡資訊、生成／分享入口操作</td><td>共用視覺模板，區分自由足跡／任務成果資訊</td></tr>
 <tr><td>資料／埋點</td><td>檢查事件定義與情境</td><td>首點、次點、W2、連續四週、三點、全任務、純足跡</td></tr>
 </tbody></table></div>
-<div class="poc-note"><b>12 月開發必備（P0）：</b>APP 雙入口、聖誕活動首頁、指定景點清單與任務詳情、自由足跡與單次 GPS 打卡、點燈／任務進度、三點領券、分享卡及事件追蹤。每週情報採現有文章懶人包樣式，任務點位以共用模板管理。<br><b>後續延伸（非 12 月範圍）：</b>數位集章、創作者章、背景 GPS、照片批次匯入與台灣地圖點亮。定位未授權者仍可瀏覽情報與任務。</div>
+<div class="poc-note"><b>12 月開發必備（P0）：</b>APP 雙入口、22 縣市點亮版型（六都大圖、其餘星星）、自主 GPS 縣市打卡、指定任務連動與點位進度、三點領券、首次點亮即可分享及事件追蹤。每週情報採現有文章懶人包樣式，任務點位以共用模板管理。<br><b>後續延伸（非 12 月範圍）：</b>數位集章、創作者章、背景 GPS、照片批次匯入與鄉鎮市區細分點亮。定位未授權者仍可瀏覽情報與任務。</div>
 </div></section>
 
 <section class="page" id="metrics"><div class="wrap"><div class="section-head"><div class="no">06</div><div><h2>POC Success｜以第二週有效回訪率為核心</h2><p class="sub">記錄真實行為，不把原型意願、單純曝光或行銷點擊當成實際出遊。</p></div></div>
 <div class="poc-metric-prime"><div class="label orange">NORTH STAR · W2 RETENTION</div><div class="headline">第一週來過的人，<em>第二週有多少人願意再回來？</em></div>
 <p>建議定義：首次完成護照有效操作的會員，於首次參與後第 8–14 天，再次進入護照並完成有效互動的比例；另拆解「查看新情報／任務」與「實際再次打卡」。W2 目標值待依 APP 及相似活動基準校正，上線前鎖定門檻。</p></div>
 <div class="poc-metrics">
-<div class="poc-metric"><b>① 首點完成率</b><span class="detail">首次到場有效打卡會員 ÷ 活動入口去重會員</span><span class="goal">量首點門檻</span></div>
-<div class="poc-metric"><b>② 次點完成率</b><span class="detail">完成第二個不同有效點位會員 ÷ 首點完成人員</span><span class="goal">量第二步行動</span></div>
+<div class="poc-metric"><b>① 首點完成率</b><span class="detail">首次成功點亮縣市的會員 ÷ 活動入口去重會員；指定任務首點另計</span><span class="goal">量首點門檻</span></div>
+<div class="poc-metric"><b>② 次點完成率</b><span class="detail">完成第二個不同指定任務點位會員 ÷ 首個任務點位完成人員；另觀察第二個不同縣市點亮</span><span class="goal">量第二步行動</span></div>
 <div class="poc-metric"><b>③ 第二週回訪率</b><span class="detail">W2 Retention；區分一般有效互動與再次 GPS 打卡</span><span class="goal">★ 核心決策指標</span></div>
 <div class="poc-metric"><b>④ 連續四週回訪</b><span class="detail">觀察窗口完整的用戶，每週皆有有效護照操作</span><span class="goal">量每週新任務延續力</span></div>
 <div class="poc-metric"><b>⑤ 三點完成率／領券率</b><span class="detail">三個不同指定任務點位完成占比；領券與兌換分開追蹤</span><span class="goal">量獎勵吸引力</span></div>
 <div class="poc-metric"><b>⑥ 全任務完成率</b><span class="detail">在公布的當期主線任務全部完成；不是全台所有點位</span><span class="goal">目標 2%</span></div>
-<div class="poc-metric"><b>⑦ 純足跡使用比例</b><span class="detail">有自由打卡、未完成任何任務的會員 ÷ 有效打卡會員</span><span class="goal">量非任務使用需求</span></div>
+<div class="poc-metric"><b>⑦ 純足跡使用比例</b><span class="detail">有自主縣市打卡、未完成任何指定任務的會員 ÷ 有效打卡會員</span><span class="goal">量非任務使用需求</span></div>
 </div>
 <div class="poc-note"><b>判讀：</b>W2 是核心；首點／次點看摩擦與行動、三點看獎勵、純足跡看自然偏好。12 月開始得晚的 cohort 不可直接當成未回訪；連續四週指標須延伸觀察到 2027 年 1 月。全部主線任務 2% 先作挑戰目標，需明確固定分母與計算時點。</div>
 </div></section>
 
-<section class="page" id="share"><div class="wrap"><div class="section-head"><div class="no">07</div><div><h2>分享卡｜同一套聖誕視覺，依參與方式顯示成果</h2><p class="sub">不做集章卡或三組分享偏好問卷；共用模板，兩種內容呈現。以下為資訊示意，非最終設計。</p></div></div>
-<div class="poc-shares">
-<div class="poc-share"><div class="tree">🎄</div><small>2026 · 我的聖誕點燈</small><div class="num">8 顆燈</div><h3>今年聖誕，我走過 4 個縣市</h3><p>自由足跡成果｜點亮燈數、足跡點位、造訪縣市、活動名稱、品牌識別</p></div>
-<div class="poc-share"><div class="tree">🎁</div><small>2026 · 我的聖誕挑戰</small><div class="num">3 / 3 點</div><h3>聖誕禮物挑戰完成！</h3><p>任務成果｜有效任務點位、任務完成數、進度／完成狀態、品牌識別</p></div>
-</div>
-<div class="poc-note">分享圖不包含個人精確座標或優惠券序號；操作包含「生成／保存／分享」。分享率應以正式功能實際產出及分享事件計算，不用問卷意願代替。</div>
+<section class="page" id="share"><div class="wrap"><div class="section-head"><div class="no">07</div><div><h2>分享卡｜第一個縣市點亮，就值得分享</h2><p class="sub">同一套聖誕主題分享視覺，呈現縣市點亮成果；完成任務時加上指定點位進度。</p></div></div>
+<div class="poc-shares"><div class="poc-share"><div style="font-size:56px">🎄 <span style="filter:grayscale(1);opacity:.4;font-size:24px">★ ★ ★</span></div><small>我的 2026 聖誕台灣</small><div class="num">1 / 22</div><h3>我點亮了臺北市！</h3><p>一個縣市亮起就能分享；已解鎖可愛圖與未解鎖灰色區域共同呈現個人成果。</p></div>
+<div class="poc-share"><div style="font-size:56px">🎄 <span style="filter:grayscale(1);opacity:.4;font-size:24px">★ ★ ★</span></div><small>我的 2026 聖誕挑戰</small><div class="num">3 / 3 任務點</div><h3>聖誕禮物挑戰完成！</h3><p>同在臺北市打卡三個不同任務點位，縣市仍只點亮 1 個，但任務點位進度可累積並領券。</p></div></div>
+<div class="poc-note"><b>分享原則：</b>縣市點亮數與任務點位數分開呈現，不需達成三點才可分享。圖片不顯示個人精確 GPS 或優惠券碼。</div>
 </div></section>
 
-<section class="page compact" id="mvp"><div class="wrap"><div class="section-head"><div class="no">09</div><div><h2>2027 Q1 MVP｜將聖誕點燈變成全年玩家護照</h2><p class="sub">12 月先證明任務與週資訊能促進回訪，Q1 正式提供 22 縣市足跡地圖與常態任務；不要把兩套打卡資料重做。</p></div></div>
-<div class="grid3">
-<div class="card green"><div class="label">12 月 POC</div><h3>點亮聖誕樹</h3><p>季節限定任務／自由足跡、三點優惠券、週任務更新、聖誕成果分享；不開全台地圖點亮。</p></div>
-<div class="card orange"><div class="label orange">2027 Q1</div><h3>點亮我的台灣</h3><p>22 縣市個人旅行地圖、GPS 縣市足跡、春節主題與縣市任務，持續累積個人探索成果。</p></div>
-<div class="card"><div class="label">未來評估</div><h3>數位章與深度玩法</h3><p>少量用戶喜愛收藏章，未列 12 月範圍；未來可結合地方政府或公部門合作在地數位章，依需求與資源決定。</p></div></div>
-</div></section>
+<section class="page compact" id="mvp"><div class="wrap"><div class="section-head"><div class="no">09</div><div><h2>2027 Q1 MVP｜從聖誕縣市點亮到鄉鎮市區板塊</h2><p class="sub">12 月先讓灰色縣市隨到訪亮起；正式玩家護照延伸至更細的鄉鎮市區，串聯常態旅行足跡與指定任務。</p></div></div>
+<div class="grid3"><div class="card green"><div class="label">12 月 POC</div><h3>22 縣市聖誕點亮</h3><p>六都大型可愛主題圖與其餘縣市小星星，任務與一般到訪共用點亮成果，首次點亮即可分享。</p></div>
+<div class="card orange"><div class="label orange">2027 Q1</div><h3>我的台灣逐區亮起</h3><p>鄉鎮市區板塊由灰色逐步點亮，延伸縣市任務與春節主題；行政區細部精度依 MVP 規格確認。</p></div>
+<div class="card"><div class="label">未來拓展</div><h3>數位章與深度玩法</h3><p>公部門在地數位章可作為未來合作題材，依使用需求及合作資源評估。</p></div></div></div></section>
 
 <section class="page" id="timeline"><div class="wrap"><div class="section-head"><div class="no">10</div><div><h2>Timeline｜11 月內部走查，12 月 POC，Q1 MVP</h2></div></div>
 <div class="poc-timeline">
-<div><small>10 月 · 定稿／準備</small><strong>單一 POC Scope 與設計</strong><p>任務規則、點位清單與座標、優惠券機制、必要頁面及資料埋點定義；同步進行工程評估。</p></div>
-<div><small>11 月 · 內部測試</small><strong>畫面、理解度、動線及 QA</strong><p>找 5–8 位同仁測試兩路徑、GPS 狀態、任務進度、三點領券與分享；修 UX，不再做對外 A／B 問卷。</p></div>
+<div><small>10 月 · 定稿／準備</small><strong>單一 POC Scope 與設計</strong><p>縣市點亮規則、可愛主題圖與星星視覺狀態、指定任務點位座標、優惠券機制與埋點；同步進行工程評估。</p></div>
+<div><small>11 月 · 內部測試</small><strong>畫面、理解度、動線及 QA</strong><p>找 5–8 位同仁測試縣市點亮、GPS 狀態、任務連動、首站分享及三點領券；修 UX，不再做對外 A／B 問卷。</p></div>
 <div><small>12 月 → 2027/1 · 真實 POC</small><strong>聖誕點燈上線與 W2 追蹤</strong><p>預計 12 月初上線，按實際上線日設定 cohort；追 W2、次點、純足跡、三點領券與四週回訪，導入 Q1 決策。</p></div>
 </div>
-<div class="poc-note"><b>開發優先序：</b>入口 → 聖誕首頁／點燈 → 單次 GPS 與自由紀錄 → 任務及點位進度 → 三點券 → 週任務更新與埋點 → 分享卡。採原有資訊樣式，避免新做每週情報版型。</div>
+<div class="poc-note"><b>開發優先序：</b>入口 → 縣市點亮首頁 → GPS 辨識縣市 → 任務點位連動 → 首站分享 → 三點券 → 每週任務與埋點。採原有資訊樣式，避免新做每週情報版型。</div>
 <h3 class="timeline-title annual">2027｜玩家護照產品 Timeline</h3>
 <div class="roadmap12 product-only">
 <div class="labelcell">月份</div><div class="month">1月</div><div class="month">2月</div><div class="month">3月</div><div class="month">4月</div><div class="month">5月</div><div class="month">6月</div><div class="month">7月</div><div class="month">8月</div><div class="month">9月</div><div class="month">10月</div><div class="month">11月</div><div class="month">12月</div>
@@ -695,7 +706,7 @@ h2{font-size:34px}
 <div class="bar gray" style="grid-column:11/14"><strong>個人化推薦・年度回顧・商模 Pilot</strong><span class="detail">會員分群・AI 推薦</span></div>
 </div>
 
-<div class="recommend" style="margin-top:18px"><b>Q1 銜接：</b>2027 年原年度產品版本及拓展節奏保持不變；12 月聖誕 POC 的足跡、任務事件與會員資料應可沿用至正式玩家護照。</div>
+<div class="recommend" style="margin-top:18px"><b>Q1 銜接：</b>2027 年原年度產品版本及拓展節奏保持不變；12 月縣市點亮與任務事件應可銜接 Q1 鄉鎮市區板塊與全年玩家護照。</div>
 </div></section>
 
 <section class="page" id="content-ops"><div class="wrap">
@@ -710,7 +721,7 @@ h2{font-size:34px}
 <div class="table-scroll"><table class="poc-table"><thead><tr><th>協作項目</th><th>需要確認／交付</th><th>時點</th></tr></thead><tbody>
 <tr><td>① 點位資料與活動 QA</td><td>正式名稱、地址、經緯度、GPS 可驗證範圍、展期、主辦來源、圖片／文案授權；異動與取消備援機制。座標為必備欄位。</td><td>11 月清單定稿；上線後每週巡檢</td></tr>
 <tr><td>② 聖誕禮物優惠券</td><td>完成三點的獎勵品項／庫存、領取期間、使用期限、發券與核銷規則、合作方確認；與 PM、行銷／商務及既有券系統對齊。</td><td>上線前定案</td></tr>
-<tr><td>③ 活動規則與客服 FAQ</td><td>任務與自由打卡差異、重複打卡／領券限制、GPS 失敗、跨縣市累積、活動截止與異常回報窗口。</td><td>上線前完成；上線後滾動修訂</td></tr>
+<tr><td>③ 活動規則與客服 FAQ</td><td>縣市點亮和任務進度計數差異、重複打卡／領券限制、GPS 失敗、跨縣市累積、活動截止與異常回報窗口。</td><td>上線前完成；上線後滾動修訂</td></tr>
 <tr><td>④ 成效回顧與內容調整</td><td>每週與 PM 檢視參與、任務完成、熱門／冷門點位、W2 回訪及導流表現，調整下週任務與宣傳內容。</td><td>上線後每週檢視</td></tr>
 </tbody></table></div>
 <div class="poc-note"><b>協作節奏：</b>10 月底確認合作與內容方向 → 11 月交付首波任務／正式點位與優惠券規則 → 12 月正式上線，每週「更新情報＋新增任務＋露出宣傳＋檢視數據」。內容經營、行銷資源與工程排程須同步確認，才能有效觀察第二週回訪。</div>
@@ -720,7 +731,7 @@ h2{font-size:34px}
 <div class="grid2">
 <div class="card"><h3>W2 好、次點也好</h3><p>任務帶動延續參與，Q1 擴大縣市任務與春節主題，保留每週內容供給。</p></div>
 <div class="card"><h3>W2 好、但打卡少</h3><p>可能是每週情報或規劃用途有效；區分內容瀏覽與再次出遊，不直接宣稱任務有效。</p></div>
-<div class="card"><h3>首點少、打卡轉換卡住</h3><p>優先補活動入口、任務與自由打卡的可理解度、GPS 授權／距離／錯誤處理。</p></div>
+<div class="card"><h3>首點少、打卡轉換卡住</h3><p>優先補活動入口、縣市點亮的可理解度、GPS 縣市辨識及指定點位距離驗證。</p></div>
 <div class="card"><h3>純足跡比例高</h3><p>保留自由紀錄入口作為基本能力；它不代表足跡獨立創造週留存，也不排除任務價值。</p></div>
 </div>
 <div class="poc-note"><b>上線前確認：</b>① 2026 全台 ≥ 34 個有效任務點位與展期 ② 三點券的領取／兌換規則 ③ 主線「全完成 2%」的固定任務集合與分母 ④ W2 實際門檻與可觀察 cohort ⑤ 分享卡是否列入 12 月 P0 ⑥ 不使用集章與背景定位。</div>
