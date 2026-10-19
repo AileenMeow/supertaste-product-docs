@@ -576,6 +576,21 @@ h2{font-size:34px}
 .holiday-tree.mini{max-width:250px;border-radius:13px}
 .holiday-tree.mini .ornament{width:37px;height:37px;border-width:2px}.holiday-tree.mini .ornament b{font-size:16px}.holiday-tree.mini .ornament small{font-size:7px}.holiday-tree.mini .ornament:before{width:6px;height:5px;top:-6px}.holiday-tree.mini .tiny-star{font-size:13px}.holiday-tree.mini .tree-starlight{font-size:30px}
 @media(max-width:850px){.poc-tree-layout{grid-template-columns:1fr}}@media(max-width:650px){.poc-tree-layout{padding:14px}.ornament{width:47px;height:47px;border-width:2px}.ornament b{font-size:19px}.ornament small{font-size:8px}.tiny-star{font-size:16px}}
+
+/* 分享卡右側：主題任務完成率與實際完成清單 */
+.task-summary{display:flex;justify-content:center;align-items:center;gap:20px;margin:8px auto 0}
+.task-summary-label{font-size:12px;font-weight:700;color:var(--ink2)}
+.task-summary .num{font-size:37px;line-height:1.25}.task-summary>b{font-size:16px;color:var(--ink2)}
+.task-progress-rail{height:9px;background:#f4dfd2;border-radius:8px;overflow:hidden;margin:10px 10px 17px}
+.task-progress-rail span{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#ffba72,#f06b31)}
+.task-result-list{text-align:left;border:1px solid #efdfd3;background:#fff;border-radius:15px;padding:8px 12px;margin:12px 0}
+.task-result-list>div{display:flex;align-items:center;gap:7px;padding:9px 0;border-bottom:1px solid #eee7e0;font-size:13px}
+.task-result-list>div:last-child{border-bottom:0}
+.task-result-list>div>span:nth-child(2){flex:1}
+.task-result-list b{font-size:12px;color:#267d59}
+.task-result-list small{font-size:12px;color:var(--ink2);white-space:nowrap}
+.task-status{width:20px;text-align:center;color:#aaa;font-size:15px;flex-shrink:0}
+.task-status.done{color:#2c9c71}
 </style></head>
 <body>
 <div class="topbar"><div class="in"><div class="brand">食尚玩家<span>PLAYER PASSPORT · POC</span></div><nav>
@@ -588,11 +603,11 @@ h2{font-size:34px}
 <p class="lead">食尚玩家已經提供旅遊情報與專屬優惠，下一步要把「看到想去的地方」延伸成「實際出門、留下紀錄、下週再來」。<b>先以 2026 聖誕點燈推出真實 POC，驗證能否建立持續參與的服務循環。</b></p>
 <div class="hero-kicker">唯一核心問題</div>
 <p class="hero-answer">第一週來過的人，<br><em>第二週有多少人願意再回來？</em></p></div>
-<div class="hero-panel"><div class="k">主管最關心的 4 件事</div><div class="hero-points">
+<div class="hero-panel"><div class="k">提案的 4 個重點</div><div class="hero-points">
 <div class="hero-point"><div>01</div><div><b>POC 在測什麼？</b><span>「每週情報 → 任務或自由足跡 → 完成成果 → 下週再參與」的核心循環，能否帶動第二週有效回訪？</span></div></div>
-<div class="hero-point"><div>02</div><div><b>Hook 是什麼？</b><span>每週新情報 × 主題任務 × 點燈進度 × 三點完成禮，讓使用者完成一站後還想去下一站。</span></div></div>
-<div class="hero-point"><div>03</div><div><b>今年做得到什麼？</b><span>12 月上線 22 縣市聖誕點亮，任務與自主縣市打卡同步累積成果；三個指定任務點位可領聖誕優惠券。</span></div></div>
-<div class="hero-point"><div>04</div><div><b>成功後怎麼接？</b><span>2027 Q1 推出全年玩家護照 MVP，延伸 22 縣市任務、台灣地圖與主題探索。</span></div></div>
+<div class="hero-point"><div>02</div><div><b>Hook 是什麼？</b><span>每週新情報 × 主題任務 × 打卡後自動累積足跡；觀察不玩任務、只記錄足跡的使用比例，以及優惠券獎勵是否吸引玩家繼續挑戰下一點。</span></div></div>
+<div class="hero-point"><div>03</div><div><b>今年做得到什麼？</b><span>以「環島護照」縮小版於 12 月實際上線：驗證每週回訪與任務價值，同時完成 GPS 到訪判定、縣市點燈、任務進度和優惠券串接等核心技術開發。</span></div></div>
+<div class="hero-point"><div>04</div><div><b>成功後怎麼接？</b><span>2027 Q1 推出全年玩家護照 MVP，延伸 22 縣市任務、台灣地圖與每月／每季主題活動探索。</span></div></div>
 </div></div>
 </div></div>
 </div></div></header>
@@ -630,17 +645,17 @@ h2{font-size:34px}
 <div class="card"><h3>📍 只想記錄旅行</h3><p>APP 護照入口 → 聖誕點亮首頁 → 點亮目前縣市 → 單次 GPS 判定縣市 → 該縣市由灰轉亮 → 首次點亮即可分享；到任務點可提示參與，但不強制加入。</p></div></div>
 </div></section>
 
-<section class="page" id="missions"><div class="wrap"><div class="section-head"><div class="no">04</div><div><h2>聖誕任務｜22 縣市都有任務，三點領禮</h2><p class="sub">已點亮縣市數、完成的指定任務點位數，以及主題任務數，分開計算以避免重複領獎。</p></div></div>
+<section class="page" id="missions"><div class="wrap"><div class="section-head"><div class="no">04</div><div><h2>聖誕任務｜22 縣市都有任務，三點領禮</h2><p class="sub">讓每個縣市都有參與感；六都各規劃 3 個可就近挑戰的指定點位，讓玩家在同一都會區內也有機會完成三點領禮，不必為了領獎特地跨縣市。</p></div></div>
 <div class="poc-line">
-<div class="poc-pill"><b>22 縣市</b><span>每個縣市都有指定任務點位</span></div>
-<div class="poc-pill"><b>六都各 3 點</b><span>其餘縣市至少 1 點；初步需 ≥ 34 個有效點位</span></div>
+<div class="poc-pill"><b>22 縣市</b><span>全台各縣市皆可參與聖誕任務</span></div>
+<div class="poc-pill"><b>六都各 3 點</b><span>同一都會區就近累積三點；其餘縣市至少 1 點，初步需 ≥ 34 個有效點位</span></div>
 <div class="poc-pill"><b>每週新增 1 項</b><span>用新主題任務帶動第二週回訪</span></div>
-<div class="poc-pill"><b>3 點領 1 張</b><span>完成三個不同指定任務點位，解鎖食尚聖誕禮物優惠券</span></div>
+<div class="poc-pill"><b>3 點領 1 張</b><span>全台可跨縣市累積；六都可就近完成三個不同指定點位，領取聖誕禮物優惠券</span></div>
 </div>
 <div class="grid2">
 <div class="card orange"><h3>🎄 聖誕樹任務</h3><p>打卡第 1 棵指定聖誕樹可完成「點亮第一棵」；累積到第 3 棵不同聖誕樹，再完成「聖誕樹收藏家」。雖可完成兩個主題任務，但實際有效點位只有 3 個。</p></div>
 <div class="card"><h3>🎪 聖誕市集／每週新任務</h3><p>例如到一個指定聖誕市集即可完成主題任務。每週新上架一項挑戰及相應點位；任務、有效點位及兌換條件皆以系統狀態判定。</p></div></div>
-<div class="poc-note"><b>領券規則：</b>活動期間累積 <b>3 個不同且符合任務條件的指定點位</b>，食尚玩家發放聖誕禮物優惠券 1 張（建議每會員限領一次，沿用現有優惠券機制）；非指定點位仍可點亮所在縣市，<b>但不列入三點領券的任務點位進度</b>；同縣市的不同任務點位可各自累積領券條件。點位展期、座標、打卡半徑及 2026 正式清單需另外盤點。</div>
+<div class="poc-note"><b>領券規則：</b>活動期間累積 <b>3 個不同且符合任務條件的指定點位</b>，食尚玩家發放聖誕禮物優惠券 1 張（建議每會員限領一次，沿用現有優惠券機制）；非指定點位仍可點亮所在縣市，<b>但不列入三點領券的任務點位進度</b>；同縣市的不同任務點位可各自累積領券條件。六都三個點位需確認可在活動期間內實際完成；點位展期、座標、打卡半徑及 2026 正式清單需另外盤點。</div>
 </div></section>
 
 <section class="page compact" id="scope"><div class="wrap"><div class="section-head"><div class="no">05</div><div><h2>POC 開發 Scope｜11 月驗動線，12 月正式上線</h2><p class="sub">12 月以一套 APP 體驗提供每週情報、主題任務與自由足跡；重用既有資訊與優惠券服務，聚焦必要功能的開發與真實成效驗證。</p></div></div>
@@ -663,17 +678,25 @@ h2{font-size:34px}
 <div class="poc-metric"><b>② 次點完成率</b><span class="detail">完成第二個不同指定任務點位會員 ÷ 首個任務點位完成人員；另觀察第二個不同縣市點亮</span><span class="goal">量第二步行動</span></div>
 <div class="poc-metric"><b>③ 第二週回訪率</b><span class="detail">W2 Retention；區分一般有效互動與再次 GPS 打卡</span><span class="goal">★ 核心決策指標</span></div>
 <div class="poc-metric"><b>④ 連續四週回訪</b><span class="detail">觀察窗口完整的用戶，每週皆有有效護照操作</span><span class="goal">量每週新任務延續力</span></div>
-<div class="poc-metric"><b>⑤ 三點完成率／領券率</b><span class="detail">三個不同指定任務點位完成占比；領券與兌換分開追蹤</span><span class="goal">量獎勵吸引力</span></div>
+<div class="poc-metric"><b>⑤ 三點完成率／領券率</b><span class="detail">三個不同指定任務點位完成占比；觀察查看領券進度後的次點／三點完成行為，領券與兌換分開追蹤</span><span class="goal">觀察獎勵是否推動進度</span></div>
 <div class="poc-metric"><b>⑥ 全任務完成率</b><span class="detail">在公布的當期主線任務全部完成；不是全台所有點位</span><span class="goal">目標 2%</span></div>
 <div class="poc-metric"><b>⑦ 純足跡使用比例</b><span class="detail">有自主縣市打卡、未完成任何指定任務的會員 ÷ 有效打卡會員</span><span class="goal">量非任務使用需求</span></div>
 </div>
-<div class="poc-note"><b>判讀：</b>W2 是核心；首點／次點看摩擦與行動、三點看獎勵、純足跡看自然偏好。12 月開始得晚的 cohort 不可直接當成未回訪；連續四週指標須延伸觀察到 2027 年 1 月。全部主線任務 2% 先作挑戰目標，需明確固定分母與計算時點。</div>
+<div class="poc-note"><b>判讀：</b>W2 是核心；首點／次點看摩擦與行動，並觀察優惠券進度曝光後是否帶來後續任務完成；純足跡比例看非任務需求。沒有獎勵對照組時，只能觀察行為關聯，不直接宣稱優惠券造成轉換提升。12 月開始得晚的 cohort 不可直接當成未回訪；連續四週指標須延伸觀察到 2027 年 1 月。全部主線任務 2% 先作挑戰目標，需明確固定分母與計算時點。</div>
 </div></section>
 
-<section class="page" id="share"><div class="wrap"><div class="section-head"><div class="no">07</div><div><h2>分享卡｜只點亮一個裝飾，也能分享整棵聖誕樹</h2><p class="sub">首頁和分享卡使用同一棵聖誕樹；這不是收集章或圖鑑，任務完成時只是增加進度資訊。</p></div></div>
+<section class="page" id="share"><div class="wrap"><div class="section-head"><div class="no">07</div><div><h2>分享卡｜只點亮一個裝飾，也能分享整棵聖誕樹</h2><p class="sub">左側呈現點亮的縣市足跡；右側清楚列出「完成了哪些主題任務、整體完成進度％」，兩者共用聖誕樹視覺、不做集章卡。</p></div></div>
 <div class="poc-shares"><div class="poc-share"><small>🎄 2026 我的聖誕樹</small><div style="margin:15px auto"><div class="holiday-tree mini" role="img" aria-label="聖誕樹上有六個大型縣市裝飾、十六顆小星星；臺北市已點亮，其餘待點亮。"><div class="tree-starlight">✦</div><div class="tree-branch one"></div><div class="tree-branch two"></div><div class="tree-branch three"></div><div class="tree-branch four"></div><div class="tree-garland g1"></div><div class="tree-garland g2"></div><div class="tree-garland g3"></div><span class="ornament lit" style="left:50%;top:39%" title="臺北市"><b>🎄</b><small>臺北</small></span><span class="ornament" style="left:35%;top:49%" title="新北市"><b>🎅</b><small>新北</small></span><span class="ornament" style="left:65%;top:49%" title="桃園市"><b>🎁</b><small>桃園</small></span><span class="ornament" style="left:24%;top:65%" title="臺中市"><b>🦌</b><small>臺中</small></span><span class="ornament" style="left:50%;top:65%" title="臺南市"><b>⛄</b><small>臺南</small></span><span class="ornament" style="left:76%;top:65%" title="高雄市"><b>🔔</b><small>高雄</small></span><span class="tiny-star" style="left:50%;top:27%" title="基隆市">★</span><span class="tiny-star" style="left:40%;top:33%" title="新竹市">★</span><span class="tiny-star" style="left:60%;top:33%" title="新竹縣">★</span><span class="tiny-star" style="left:32%;top:40%" title="苗栗縣">★</span><span class="tiny-star" style="left:68%;top:40%" title="彰化縣">★</span><span class="tiny-star" style="left:22%;top:50%" title="南投縣">★</span><span class="tiny-star" style="left:50%;top:52%" title="雲林縣">★</span><span class="tiny-star" style="left:78%;top:50%" title="嘉義縣">★</span><span class="tiny-star" style="left:24%;top:55%" title="嘉義市">★</span><span class="tiny-star" style="left:39%;top:58%" title="屏東縣">★</span><span class="tiny-star" style="left:61%;top:58%" title="宜蘭縣">★</span><span class="tiny-star" style="left:79%;top:57%" title="花蓮縣">★</span><span class="tiny-star" style="left:17%;top:78%" title="臺東縣">★</span><span class="tiny-star" style="left:35%;top:78%" title="澎湖縣">★</span><span class="tiny-star" style="left:65%;top:78%" title="金門縣">★</span><span class="tiny-star" style="left:83%;top:78%" title="連江縣">★</span><div class="snow-base"></div></div></div><div class="num">1 / 22</div><h3>我點亮了臺北市！</h3><p>第一個大型裝飾亮起，就可以保存與分享。</p></div>
-<div class="poc-share"><small>🎁 2026 我的聖誕挑戰</small><div style="margin:15px auto"><div class="holiday-tree mini" role="img" aria-label="聖誕樹上有六個大型縣市裝飾、十六顆小星星；臺北市已點亮，其餘待點亮。"><div class="tree-starlight">✦</div><div class="tree-branch one"></div><div class="tree-branch two"></div><div class="tree-branch three"></div><div class="tree-branch four"></div><div class="tree-garland g1"></div><div class="tree-garland g2"></div><div class="tree-garland g3"></div><span class="ornament lit" style="left:50%;top:39%" title="臺北市"><b>🎄</b><small>臺北</small></span><span class="ornament" style="left:35%;top:49%" title="新北市"><b>🎅</b><small>新北</small></span><span class="ornament" style="left:65%;top:49%" title="桃園市"><b>🎁</b><small>桃園</small></span><span class="ornament" style="left:24%;top:65%" title="臺中市"><b>🦌</b><small>臺中</small></span><span class="ornament" style="left:50%;top:65%" title="臺南市"><b>⛄</b><small>臺南</small></span><span class="ornament" style="left:76%;top:65%" title="高雄市"><b>🔔</b><small>高雄</small></span><span class="tiny-star" style="left:50%;top:27%" title="基隆市">★</span><span class="tiny-star" style="left:40%;top:33%" title="新竹市">★</span><span class="tiny-star" style="left:60%;top:33%" title="新竹縣">★</span><span class="tiny-star" style="left:32%;top:40%" title="苗栗縣">★</span><span class="tiny-star" style="left:68%;top:40%" title="彰化縣">★</span><span class="tiny-star" style="left:22%;top:50%" title="南投縣">★</span><span class="tiny-star" style="left:50%;top:52%" title="雲林縣">★</span><span class="tiny-star" style="left:78%;top:50%" title="嘉義縣">★</span><span class="tiny-star" style="left:24%;top:55%" title="嘉義市">★</span><span class="tiny-star" style="left:39%;top:58%" title="屏東縣">★</span><span class="tiny-star" style="left:61%;top:58%" title="宜蘭縣">★</span><span class="tiny-star" style="left:79%;top:57%" title="花蓮縣">★</span><span class="tiny-star" style="left:17%;top:78%" title="臺東縣">★</span><span class="tiny-star" style="left:35%;top:78%" title="澎湖縣">★</span><span class="tiny-star" style="left:65%;top:78%" title="金門縣">★</span><span class="tiny-star" style="left:83%;top:78%" title="連江縣">★</span><div class="snow-base"></div></div></div><div class="num">3 / 3 任務點</div><h3>聖誕禮物挑戰完成！</h3><p>即使三個任務點都在臺北市，樹上仍只有臺北市亮起，任務進度則達 3／3。</p></div></div>
-<div class="poc-note">分享圖以整棵聖誕樹與亮起裝飾為視覺主體，任務與縣市數分開顯示；不呈現精確 GPS 或優惠券序號。</div></div></section>
+<div class="poc-share"><small>🎁 2026 我的聖誕任務成果</small><div style="margin:15px auto"><div class="holiday-tree mini" role="img" aria-label="聖誕樹上有六個大型縣市裝飾、十六顆小星星；臺北市已點亮，其餘待點亮。"><div class="tree-starlight">✦</div><div class="tree-branch one"></div><div class="tree-branch two"></div><div class="tree-branch three"></div><div class="tree-branch four"></div><div class="tree-garland g1"></div><div class="tree-garland g2"></div><div class="tree-garland g3"></div><span class="ornament lit" style="left:50%;top:39%" title="臺北市"><b>🎄</b><small>臺北</small></span><span class="ornament" style="left:35%;top:49%" title="新北市"><b>🎅</b><small>新北</small></span><span class="ornament" style="left:65%;top:49%" title="桃園市"><b>🎁</b><small>桃園</small></span><span class="ornament" style="left:24%;top:65%" title="臺中市"><b>🦌</b><small>臺中</small></span><span class="ornament" style="left:50%;top:65%" title="臺南市"><b>⛄</b><small>臺南</small></span><span class="ornament" style="left:76%;top:65%" title="高雄市"><b>🔔</b><small>高雄</small></span><span class="tiny-star" style="left:50%;top:27%" title="基隆市">★</span><span class="tiny-star" style="left:40%;top:33%" title="新竹市">★</span><span class="tiny-star" style="left:60%;top:33%" title="新竹縣">★</span><span class="tiny-star" style="left:32%;top:40%" title="苗栗縣">★</span><span class="tiny-star" style="left:68%;top:40%" title="彰化縣">★</span><span class="tiny-star" style="left:22%;top:50%" title="南投縣">★</span><span class="tiny-star" style="left:50%;top:52%" title="雲林縣">★</span><span class="tiny-star" style="left:78%;top:50%" title="嘉義縣">★</span><span class="tiny-star" style="left:24%;top:55%" title="嘉義市">★</span><span class="tiny-star" style="left:39%;top:58%" title="屏東縣">★</span><span class="tiny-star" style="left:61%;top:58%" title="宜蘭縣">★</span><span class="tiny-star" style="left:79%;top:57%" title="花蓮縣">★</span><span class="tiny-star" style="left:17%;top:78%" title="臺東縣">★</span><span class="tiny-star" style="left:35%;top:78%" title="澎湖縣">★</span><span class="tiny-star" style="left:65%;top:78%" title="金門縣">★</span><span class="tiny-star" style="left:83%;top:78%" title="連江縣">★</span><div class="snow-base"></div></div></div><div class="task-summary"><div><span class="task-summary-label">主題任務完成進度</span><div class="num">50%</div></div><b>2 / 4 項</b></div>
+<div class="task-progress-rail" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="主題任務完成進度 50%"><span style="width:50%"></span></div>
+<div class="task-result-list">
+<div><span class="task-status done">✓</span><span>點亮第一棵聖誕樹</span><b>完成</b></div>
+<div><span class="task-status done">✓</span><span>聖誕市集探險</span><b>完成</b></div>
+<div><span class="task-status">○</span><span>聖誕樹收藏家</span><small>1／3 棵</small></div>
+<div><span class="task-status">○</span><span>本週新任務</span><small>未完成</small></div>
+</div>
+<p>分享當下已完成的任務與整體進度；任務點位領券進度另計（示例 2／3 點），不與主題任務完成率混淆。</p></div></div>
+<div class="poc-note">分享圖共用聖誕樹：左側是縣市點亮成果、右側顯示任務名稱／完成狀態／完成百分比。完成率＝已完成主題任務數 ÷ 截至分享當下已上線的可參與主題任務數；每週新增任務可能改變分母。三點領券進度單獨統計，不呈現精確 GPS 或優惠券序號。</div></div></section>
 
 <section class="page compact" id="mvp"><div class="wrap"><div class="section-head"><div class="no">09</div><div><h2>2027 Q1 MVP｜從聖誕縣市點亮到鄉鎮市區板塊</h2><p class="sub">12 月先讓灰色縣市隨到訪亮起；正式玩家護照延伸至更細的鄉鎮市區，串聯常態旅行足跡與指定任務。</p></div></div>
 <div class="grid3"><div class="card green"><div class="label">12 月 POC</div><h3>22 縣市聖誕點亮</h3><p>六都 6 個大型可愛聖誕裝飾與其他 16 縣市小星星都放在同一棵樹上；任務與一般到訪共用點亮成果，首站即可分享。</p></div>
@@ -715,21 +738,24 @@ h2{font-size:34px}
 </div></section>
 
 <section class="page" id="content-ops"><div class="wrap">
-<div class="section-head"><div class="no">11</div><div><h2>內容經營團隊協作｜每週都有新理由，POC 才能持續運作</h2><p class="sub">任務系統提供參與機制，內容與行銷則持續提供每週出遊理由。以下事項需由內容經營團隊統籌，與 PM、商務及行銷共同對齊。</p></div></div>
+<div class="section-head"><div class="no">11</div><div><h2>內容經營團隊協作｜每週都有新理由，POC 才能持續運作</h2><p class="sub">任務系統提供參與機制，內容與行銷則持續提供每週出遊理由。內容供給、合作招商、任務獎勵與行銷曝光必須同步規劃，並與 PM／工程對齊可開發、可核銷的規則。</p></div></div>
 <div class="grid2">
-<div class="card orange"><div class="label orange">01 · 上線前｜任務企劃</div><h3>合作任務與 22 縣市點位規劃</h3><p>確認聖誕樹、聖誕市集與其他合作主題；提出 22 縣市候選地點、六都各 3 點與備援地點。同步規劃「第一棵聖誕樹／三棵樹／聖誕市集」等主線條件，以及合作品牌或主辦方可以提供的任務資源。</p><p class="micro"><b>交付：</b>任務表、地點表、合作／備援名單及內容介紹，11 月開發前先交首版。</p></div>
+<div class="card orange"><div class="label orange">01 · 上線前｜任務企劃</div><h3>合作任務與 22 縣市點位規劃</h3><p>確認聖誕樹、聖誕市集與其他合作主題；提出 22 縣市候選地點、六都各 3 點與備援地點。同步規劃「第一棵聖誕樹／三棵樹／聖誕市集」等主線條件，並盤點可合作的品牌、主辦單位與指定點位資源。</p><p class="micro"><b>交付：</b>任務表、地點表、合作／備援名單及內容介紹，11 月開發前先交首版。</p></div>
 <div class="card"><div class="label">02 · 上線後｜每週任務</div><h3>每週新增一個有出遊動機的任務</h3><p>規劃 12 月逐週任務主題、指定點位、文案、上架時間、完成條件與誘因；避免四週都只是相同型態的景點清單，並讓每週新任務有明確的曝光入口。</p><p class="micro"><b>交付：</b>四週任務排程表；每週上架前完成內容審核及 PM／工程 QA。</p></div>
 <div class="card"><div class="label">03 · 上線後｜每週情報</div><h3>既有文章懶人包每週更新</h3><p>整合當週值得去的聖誕活動、美食與順遊資訊，更新文章懶人包並連結玩家護照指定任務。以現有文章版型供應，不額外開發新文章樣式。</p><p class="micro"><b>交付：</b>每週文章主題、更新日、導流連結與推薦點位；確保活動時間資訊正確。</p></div>
 <div class="card orange"><div class="label orange">04 · 上線前＋每週｜推廣資源</div><h3>行銷宣傳計畫與資源安排</h3><p>預先盤點 APP 入口 Banner、推播、官網文章導流、社群貼文與合作方曝光檔期；排定上線首波宣傳、每週新任務曝光及三點領券提醒，並配置素材與執行窗口。</p><p class="micro"><b>交付：</b>宣傳節奏表、渠道資源／版位、素材需求、負責窗口與追蹤連結。</p></div>
+<div class="card orange" style="grid-column:1/-1"><div class="label orange">05 · 上線前優先｜招商與聖誕禮物準備</div><h3>優惠券獎勵招商、合作洽談與發券資源</h3>
+<p>由內容經營／行銷商務端提前洽談餐飲、飲品、體驗或節慶合作品牌，爭取可作為「完成三個指定任務點位」獎勵的聖誕禮物優惠券。確認合作意願、優惠內容與吸引力、可供數量、適用區域、使用期限、合作成本、露出交換條件、庫存及核銷方式，並協調上架與領取規則。</p>
+<p class="micro"><b>交付：</b>合作品牌／備援名單、優惠券方案與數量、合作條件、使用規範、兌換期限、招商負責窗口及交付時點；如合作未定，應預備食尚可自行提供的替代優惠方案，避免卡住 POC。</p></div>
 </div>
 <h3 style="font-size:22px;margin:28px 0 12px">同步需要對齊的營運配套</h3>
 <div class="table-scroll"><table class="poc-table"><thead><tr><th>協作項目</th><th>需要確認／交付</th><th>時點</th></tr></thead><tbody>
 <tr><td>① 點位資料與活動 QA</td><td>正式名稱、地址、經緯度、GPS 可驗證範圍、展期、主辦來源、圖片／文案授權；異動與取消備援機制。座標為必備欄位。</td><td>11 月清單定稿；上線後每週巡檢</td></tr>
-<tr><td>② 聖誕禮物優惠券</td><td>完成三點的獎勵品項／庫存、領取期間、使用期限、發券與核銷規則、合作方確認；與 PM、行銷／商務及既有券系統對齊。</td><td>上線前定案</td></tr>
+<tr><td>② 禮物招商與優惠券上架</td><td>確認品牌／商家合作、獎勵品項、折扣價值、合作成本、可領券量、領取與使用期限、庫存不足備援、核銷方式及合作素材；營運與 PM／券系統共同確認規則。</td><td>10–11 月優先招商；12 月上線前發券 QA</td></tr>
 <tr><td>③ 活動規則與客服 FAQ</td><td>縣市點亮和任務進度計數差異、重複打卡／領券限制、GPS 失敗、跨縣市累積、活動截止與異常回報窗口。</td><td>上線前完成；上線後滾動修訂</td></tr>
 <tr><td>④ 成效回顧與內容調整</td><td>每週與 PM 檢視參與、任務完成、熱門／冷門點位、W2 回訪及導流表現，調整下週任務與宣傳內容。</td><td>上線後每週檢視</td></tr>
 </tbody></table></div>
-<div class="poc-note"><b>協作節奏：</b>10 月底確認合作與內容方向 → 11 月交付首波任務／正式點位與優惠券規則 → 12 月正式上線，每週「更新情報＋新增任務＋露出宣傳＋檢視數據」。內容經營、行銷資源與工程排程須同步確認，才能有效觀察第二週回訪。</div>
+<div class="poc-note"><b>協作節奏：</b>10 月底啟動任務合作與優惠券招商 → 11 月交付首波任務、正式點位、合作獎勵及券規則 → 12 月正式上線，每週「更新情報＋新增任務＋露出宣傳＋檢視數據」。內容經營、行銷資源與工程排程須同步確認，才能有效觀察第二週回訪。</div>
 </div></section>
 
 <section class="page compact" id="next"><div class="wrap"><div class="section-head"><div class="no">12</div><div><h2>POC 判讀與待確認｜把資源放在真正能帶來回訪的功能</h2></div></div>
